@@ -80,3 +80,15 @@ CREATE TABLE 'CoordonnéeBancaire' (
     'client_id' INT(11) NOT NULL,
     FOREIGN KEY (`client_id`) REFERENCES `Client`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE 'Message' (
+    'id' INT(11) NOT NULL AUTO_INCREMENT,
+    'client_id' INT(11) NOT NULL,
+    'prof_id' INT(11) NOT NULL,
+    'date' DATE NOT NULL,
+    'heure' TIME NOT NULL,
+    'message' VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`client_id`) REFERENCES `Client`(`id`),
+    FOREIGN KEY (`prof_id`) REFERENCES `Prof`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
