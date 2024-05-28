@@ -62,7 +62,7 @@
         <input type="password" id="password" name="password" required><br>
 
         <label for="photo">Photo de profil:</label>
-        <input type="file" id="photo" name="photo" accept="image/png, image/jpeg" onchange="saveProfilePicture(this)"><br>
+        <input type="file" id="photo" name="photo" accept="image/png, image/jpeg" onchange="saveProfilePicture(this)" required><br>
         <script>
             function saveProfilePicture(input) {
                 if (input.files && input.files[0]) {

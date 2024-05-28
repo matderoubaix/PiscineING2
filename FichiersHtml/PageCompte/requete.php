@@ -53,18 +53,37 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        if ($type == "sportif") {
+        // Check if email already exists in the database
+        $emailExistsQuery = "SELECT * FROM client WHERE email = '$email'";
+        $emailExistsResult = $conn->query($emailExistsQuery);
+        if ($emailExistsResult->num_rows > 0) {
+            echo "<h1>Erreur lors de la création du compte</h1>";
+            echo "L'email existe déjà, veuillez utiliser un autre email.";
+        } else {
+            if ($type == "sportif") {
             $sql = "INSERT INTO client (nom, prenom, ville, code_postal, telephone, carte_etudiant, email, mdp)
             VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$carte_etudiant', '$email', '$mdp')";
-            
-        } else {
+            } else {
             $sql = "INSERT INTO prof (nom, prenom, ville, code_postal, telephone, email, mdp)
             VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$email', '$mdp')";
+            }
+            // Execute the SQL query
+            $result = $conn->query($sql);
+            if ($result) {
+            echo "<h1>Compte créé avec succès</h1>";
+            // Get the newly created user's ID
+            $user_id = $conn->insert_id;
+            // Display the user's ID
+            echo "Votre identifiant utilisateur est : " . $user_id;
+            } else {
+            echo "<h1>Erreur lors de la création du compte</h1>";
+            echo "Veuillez réessayer";
+            }
         }
-        // Execute the SQL query
-        $result = $conn->query($sql);
+        $conn->close();
     }
     ?>
+
     <footer>
         <div class="brand">
             <img class="logo" src="../../images/logoSportify.png" alt="Logo de Sportify">
