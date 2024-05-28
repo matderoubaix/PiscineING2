@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: content-box;
 }
 
 @font-face {
@@ -9,7 +9,19 @@
     src: url();
 }
 
+html{
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #000000;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 /* Navbar */
 
@@ -69,17 +81,318 @@ nav{
 
 }
 
+/* Caroussel */
+
+
+.messageBienvenue{
+    position: absolute; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+    width: 80vw;
+    background-color: #003b3f54;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2vw;
+    z-index: 1;
+    left: 10vw;
+    top: 10vh;
+}
+
+.messageBienvenue h1{
+    font-size: 3vw;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.LogoGrand{
+    width: 50vw;
+    max-width: 50vh;
+    height: auto;
+    margin: 0 0 5vh 0;
+
+}
+
+
+
+
+
+@keyframes display {
+0% {
+    transform: translateX(50%);
+    opacity: 0;
+}
+10% {
+    transform: translateX(0);
+    opacity: 1;
+}
+20% {
+    transform: translateX(0);
+    opacity: 1;
+}
+30% {
+    transform: translateX(-50%);
+    opacity: 0;
+}
+100% {
+    transform: translateX(-50%);
+    opacity: 0;
+}
+}
+
+.pic-ctn {
+position: relative;
+width: 100vw;
+height: 85vh;
+}
+
+.pic-ctn > img {
+position: absolute;
+top: 0;
+/* left: calc(50% - 100px); */
+opacity: 0;
+animation: display 10s infinite;
+height: inherit;
+width: 100%;
+object-fit: cover;
+}
+
+img:nth-child(2) {
+animation-delay: 2s;
+}
+img:nth-child(3) {
+animation-delay: 4s;
+}
+img:nth-child(4) {
+animation-delay: 6s;
+}
+img:nth-child(5) {
+animation-delay: 8s;
+}
+
+/* Section 1 */
+
+.section1{
+    width: 100%;
+    min-height: 80vh;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+}
+
+.section1 h2{
+    font-size: 2vw;
+    font-weight: bold;
+    margin: 4vw;
+}
+
+
+.coachCardContainer{
+    width: 100%;
+    min-height: 40vh;
+    height: min-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+    margin-bottom: 5vh;
+    flex-wrap: wrap;
+}
+
+.coachCard{
+    display: flex;
+    flex-direction: column-reverse;
+    /* justify-content: center; */
+    align-items: start;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+
+    box-shadow: -1px 10px 20px 0px rgba(0,0,0,0.58);
+    background-image: url("../images/coach.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    margin: 5px;
+}
+
+
+.coachDescription{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 70%;
+    height: 30%;
+    margin: 5%;
+    border-radius: 4px;
+}
+
+.coachDescription h3{
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0 0 10px;
+}
+
+.coachDescription p{
+    font-size: 0.8rem;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+
+/* Section 2 */
+
+.section2{
+    width: 100%;
+    min-height: 80vh;
+    height: min-content;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+    align-items: start;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+}
+
+.boxEvenements{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+    width: 600px;
+
+    margin: 5px;
+
+    h1{
+        font-size: 3rem;
+        font-weight: bold;
+        margin: 0 0 20px 0;
+    }
+
+    hr{
+        border: 0;
+        width: 100%;
+        height: 1px;
+        margin-bottom: 15px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+}
+
+
+.evenement{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+
+    box-shadow: -1px 10px 20px 0px rgba(0,0,0,0.58);
+    background-color: #ffffff;
+    margin: 5px;
+}
+
+.evenementDescription{
+    margin: 20px;
+}
+
+.evenementDescription h2{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 0 10px;
+
+}
+
+.evenementDescription p{
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+
+
+.boxLocalisation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+    width: 600px;
+
+    margin: 5px;
+
+    h1{
+        font-size: 3rem;
+        font-weight: bold;
+        margin: 0 0 20px 0;
+    }
+
+    hr{
+        border: 0;
+        width: 100%;
+        height: 1px;
+        margin-bottom: 15px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Footer */
 
 footer{
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     display: flex;
     flex-direction: row;
     /* justify-content: space-around; */
     /* align-items: center; */
-    background-color: #003b3f;
+    background-color: #002325;
     color: #ffffff;
     font-family: 'Roboto', sans-serif; 
     font-size: 1.4vw;
@@ -124,7 +437,7 @@ hr{
     text-decoration: none;
     transition: all 0.3s ease;
     margin: 2px;
-    list-style: url("./images/logocroppednew.svg");
+    list-style: url("../images/logocroppednew.svg");
 
 }
 
