@@ -71,14 +71,6 @@
                             <p>'.$data['prenom'].' '.$data['nom'].'</p>
                         </div>';
 
-
-                // echo "ID: " . $data['ID'] . "<br>";
-                // echo "Nom:" . $data['Nom'] . "<br>";
-                // echo "Prénom: " . $data['Prenom'] . "<br>";
-                // echo "Statut: " . $data['Statut'] . "<br>";
-                // echo "Date de naissance: " . $data['DateNaissance'] . "<br>";
-                // $image = $data['Photo'];
-                // echo "<img src='$image' height='80' width='100'>" . "<br>";
             }
         }
         
