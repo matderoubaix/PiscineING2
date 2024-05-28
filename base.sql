@@ -1,16 +1,16 @@
-DROP DATABASE IF EXISTS `base`;
-CREATE DATABASE `base`;
+DROP DATABASE IF EXISTS `sportify`;
+CREATE DATABASE `sportify`;
 
 -- Path: base.sql
-USE `base`;
+USE `sportify`;
 CREATE TABLE `Client` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(255) NOT NULL,
   `prenom` VARCHAR(255) NOT NULL,
   `ville` VARCHAR(255) NOT NULL,
-  `Code postal` INT(11) NOT NULL,
-  `Téléphone` VARCHAR(255) NOT NULL,
-  `Carte d'étudiant` VARCHAR(255) NOT NULL,
+  `code_postal` INT(11) NOT NULL,
+  `telephone` VARCHAR(255) NOT NULL,
+  `carte_etudiant` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `mdp` VARCHAR(255) NOT NULL,
   `photo` VARCHAR(255) NOT NULL,
@@ -22,8 +22,8 @@ CREATE TABLE `Prof` (
     `nom` VARCHAR(255) NOT NULL,
     `prenom` VARCHAR(255) NOT NULL,
     `ville` VARCHAR(255) NOT NULL,
-    `Code postal` INT(11) NOT NULL,
-    `Téléphone` VARCHAR(255) NOT NULL,
+    `code_postal` INT(11) NOT NULL,
+    `telephone` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
     `mdp` VARCHAR(255) NOT NULL,
     `photo` VARCHAR(255) NOT NULL,
@@ -35,8 +35,8 @@ CREATE TABLE `Admin` (
     `nom` VARCHAR(255) NOT NULL,
     `prenom` VARCHAR(255) NOT NULL,
     `ville` VARCHAR(255) NOT NULL,
-    `Code postal` INT(11) NOT NULL,
-    `Téléphone` VARCHAR(255) NOT NULL,
+    `code_postal` INT(11) NOT NULL,
+    `telephone` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
     `mdp` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`)
@@ -47,7 +47,7 @@ CREATE TABLE `Cours` (
     `nom` VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NOT NULL,
     `date` DATE NOT NULL,
-    `durée` INT(11) NOT NULL,
+    `duree` INT(11) NOT NULL,
     `prof_id` INT(11) NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`prof_id`) REFERENCES `Prof`(`id`)
@@ -69,21 +69,21 @@ CREATE TABLE `Salles` (
     `telephone` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
     `cours_id` INT(11) NOT NULL,
-    `capacité` INT(11) NOT NULL,
+    `capacite` INT(11) NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`cours_id`) REFERENCES `Cours`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `CoordonnéeBancaire` (
-    `Type de paiement` VARCHAR(255) NOT NULL,
-    `Numéro de carte` VARCHAR(255) NOT NULL,
-    `Date d'expiration` DATE NOT NULL,
-    `Code de sécurité` INT(11) NOT NULL,
+    `type_de_paiement` VARCHAR(255) NOT NULL,
+    `numero_de_carte` VARCHAR(255) NOT NULL,
+    `date_expiration` DATE NOT NULL,
+    `code_de_securite` INT(11) NOT NULL,
     `client_id` INT(11) NOT NULL,
     FOREIGN KEY (`client_id`) REFERENCES `Client`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `Message` (
+CREATE TABLE `Chat` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `client_id` INT(11) NOT NULL,
     `prof_id` INT(11) NOT NULL,

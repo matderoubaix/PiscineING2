@@ -46,7 +46,7 @@
         $servername = "localhost";
         $username= "root";
         $password= "";
-        $dbname = "base";
+        $dbname = "sportify";
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
         // Check connection
@@ -56,16 +56,13 @@
         if ($type == "sportif") {
             $sql = "INSERT INTO client (nom, prenom, ville, code_postal, telephone, carte_etudiant, email, mdp)
             VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$carte_etudiant', '$email', '$mdp')";
+            
         } else {
             $sql = "INSERT INTO prof (nom, prenom, ville, code_postal, telephone, email, mdp)
             VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$email', '$mdp')";
         }
         // Execute the SQL query
-        if ($conn->query($sql) === TRUE) {
-            echo "Data inserted successfully.";
-        } else {
-            echo "Error inserting data: " . $conn->error;
-        }
+        $result = $conn->query($sql);
     }
     ?>
     <footer>
