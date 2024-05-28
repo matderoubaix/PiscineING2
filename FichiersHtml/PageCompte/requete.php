@@ -33,6 +33,13 @@
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Retrieve form data
+        if (isset($_FILES['photo'])) {
+            $image = $_FILES['photo']['name'];
+            echo $image;
+            $image_tmp = $_FILES['photo']['tmp_name'];
+            $image_path = "../" . $image;
+            move_uploaded_file($image_tmp, $image_path);
+        }
         $type = $_POST["type"];
         $nom = $_POST["nom"];
         $prenom = $_POST["prenom"];
