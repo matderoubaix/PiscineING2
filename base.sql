@@ -87,6 +87,7 @@ CREATE TABLE `Chat` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `client_id` INT(11) NOT NULL,
     `prof_id` INT(11) NOT NULL,
+    `id_emetteur` INT(11) NOT NULL,
     `date` DATE NOT NULL,
     `heure` TIME NOT NULL,
     `message` VARCHAR(255) NOT NULL,
