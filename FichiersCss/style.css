@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: content-box;
 }
 
 @font-face {
@@ -172,8 +172,93 @@ img:nth-child(5) {
 animation-delay: 8s;
 }
 
+/* Section 1 */
+
+.section1{
+    width: 100%;
+    min-height: 80vh;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+}
+
+.section1 h2{
+    font-size: 2vw;
+    font-weight: bold;
+    margin: 4vw;
+}
 
 
+.coachCardContainer{
+    width: 100%;
+    min-height: 40vh;
+    height: min-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+    margin-bottom: 5vh;
+    flex-wrap: wrap;
+}
+
+.coachCard{
+    display: flex;
+    flex-direction: column-reverse;
+    /* justify-content: center; */
+    align-items: start;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+
+    box-shadow: -1px 10px 20px 0px rgba(0,0,0,0.58);
+    background-image: url("../images/coach.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    margin: 5px;
+}
+
+
+.coachDescription{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 70%;
+    height: 30%;
+    margin: 5%;
+    border-radius: 4px;
+}
+
+.coachDescription h3{
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 0 0 10px;
+}
+
+.coachDescription p{
+    font-size: 0.8rem;
+    margin-top: 10px;
+    margin-left: 10px;
+}
 
 
 
@@ -199,7 +284,7 @@ footer{
     flex-direction: row;
     /* justify-content: space-around; */
     /* align-items: center; */
-    background-color: #003b3f;
+    background-color: #002325;
     color: #ffffff;
     font-family: 'Roboto', sans-serif; 
     font-size: 1.4vw;
