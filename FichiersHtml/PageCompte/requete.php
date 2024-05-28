@@ -33,13 +33,6 @@
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Retrieve form data
-        if (isset($_FILES['photo'])) {
-            $image = $_FILES['photo']['name'];
-            echo $image;
-            $image_tmp = $_FILES['photo']['tmp_name'];
-            $image_path = "../" . $image;
-            move_uploaded_file($image_tmp, $image_path);
-        }
         $type = $_POST["type"];
         $nom = $_POST["nom"];
         $prenom = $_POST["prenom"];
@@ -49,6 +42,8 @@
         $carte_etudiant = $_POST["carte_etudiant"];
         $email = $_POST["email"];
         $mdp = $_POST["password"];
+        $image = $_FILES['photo']['name'];
+        
         // Process the data and insert into the database
         $servername = "localhost";
         $username= "root";
@@ -67,12 +62,17 @@
             echo "<h1>Erreur lors de la création du compte</h1>";
             echo "L'email existe déjà, veuillez utiliser un autre email.";
         } else {
+            $info = pathinfo($image);
+            $image = ".".$info['extension'];
+            $image_tmp = $_FILES['photo']['tmp_name'];
+            $image_path = "../../photo/" .$email.$image;
+            move_uploaded_file($image_tmp, $image_path);
             if ($type == "sportif") {
-            $sql = "INSERT INTO client (nom, prenom, ville, code_postal, telephone, carte_etudiant, email, mdp)
-            VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$carte_etudiant', '$email', '$mdp')";
+            $sql = "INSERT INTO client (nom, prenom, ville, code_postal, telephone, carte_etudiant, email, mdp ,photo)
+            VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$carte_etudiant', '$email', '$mdp', '$image')";
             } else {
-            $sql = "INSERT INTO prof (nom, prenom, ville, code_postal, telephone, email, mdp)
-            VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$email', '$mdp')";
+            $sql = "INSERT INTO prof (nom, prenom, ville, code_postal, telephone, email, mdp ,photo)
+            VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$email', '$mdp' , '$image')";
             }
             // Execute the SQL query
             $result = $conn->query($sql);

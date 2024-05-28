@@ -62,43 +62,8 @@
         <input type="password" id="password" name="password" required><br>
 
         <label for="photo">Photo de profil:</label>
-        <input type="file" id="photo" name="photo" accept="image/png, image/jpeg" onchange="saveProfilePicture(this)" required><br>
-        <script>
-            function saveProfilePicture(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        var image = new Image();
-                        image.src = e.target.result;
-                        image.onload = function() {
-                            var canvas = document.createElement("canvas");
-                            var ctx = canvas.getContext("2d");
-                            canvas.width = image.width;
-                            canvas.height = image.height;
-                            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-                            canvas.toBlob(function(blob) {
-                                var formData = new FormData();
-                                formData.append("image", blob);
-                                $.ajax({
-                                    url: "/upload",
-                                    type: "POST",
-                                    data: formData,
-                                    processData: false,
-                                    contentType: false,
-                                    success: function(response) {
-                                        console.log(response);
-                                    },
-                                    error: function(jqXHR, textStatus, errorMessage) {
-                                        console.log(errorMessage);
-                                    }
-                                });
-                            }, "image/png");
-                        };
-                    };
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-        </script>
+        <input type="file" id="photo" name="photo" accept="image/png, image/jpeg" onchange="saveProfilePicture(this)" required><br>  
+
         <input type="submit" value="Submit">
     </form>
     <p>Vous avez déjà un compte ? <a href="compte.html"> Connectez-vous </a></p>
