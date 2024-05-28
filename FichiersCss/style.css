@@ -261,6 +261,114 @@ animation-delay: 8s;
 }
 
 
+/* Section 2 */
+
+.section2{
+    width: 100%;
+    min-height: 80vh;
+    height: min-content;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+    align-items: start;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+}
+
+.boxEvenements{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+    width: 600px;
+
+    margin: 5px;
+
+    h1{
+        font-size: 3rem;
+        font-weight: bold;
+        margin: 0 0 20px 0;
+    }
+
+    hr{
+        border: 0;
+        width: 100%;
+        height: 1px;
+        margin-bottom: 15px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+}
+
+
+.evenement{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+
+    box-shadow: -1px 10px 20px 0px rgba(0,0,0,0.58);
+    background-color: #ffffff;
+    margin: 5px;
+}
+
+.evenementDescription{
+    margin: 20px;
+}
+
+.evenementDescription h2{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 0 10px;
+
+}
+
+.evenementDescription p{
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+
+
+.boxLocalisation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+    width: 600px;
+
+    margin: 5px;
+
+    h1{
+        font-size: 3rem;
+        font-weight: bold;
+        margin: 0 0 20px 0;
+    }
+
+    hr{
+        border: 0;
+        width: 100%;
+        height: 1px;
+        margin-bottom: 15px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+}
 
 
 
