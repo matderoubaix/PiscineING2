@@ -12,7 +12,8 @@ CREATE TABLE `Client` (
   `Téléphone` VARCHAR(255) NOT NULL,
   `Carte d'étudiant` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
-  `password` VARCHAR(255) NOT NULL,
+  `mdp` VARCHAR(255) NOT NULL,
+  `photo` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -24,7 +25,8 @@ CREATE TABLE `Prof` (
     `Code postal` INT(11) NOT NULL,
     `Téléphone` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
-    `password` VARCHAR(255) NOT NULL,
+    `mdp` VARCHAR(255) NOT NULL,
+    `photo` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -36,7 +38,7 @@ CREATE TABLE `Admin` (
     `Code postal` INT(11) NOT NULL,
     `Téléphone` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
-    `password` VARCHAR(255) NOT NULL,
+    `mdp` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
