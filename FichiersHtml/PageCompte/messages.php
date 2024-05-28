@@ -46,14 +46,8 @@
 
     <?php
       
+        $database = "sportify";
 
-        //identifier le nom de base de données
-        $database = "base";
-
-
-
-        //connectez-vous dans votre BDD
-        //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
         $db_handle = mysqli_connect('localhost', 'root', '');
         $db_found = mysqli_select_db($db_handle, $database);
 
@@ -62,7 +56,7 @@
 
         //si le BDD existe, faire le traitement
         if ($db_found) {
-            $sql = "SELECT prof.nom, prof.prenom FROM prof, message  WHERE message.client_id = $utilisateur_id AND message.prof_id = prof.id";
+            $sql = "SELECT prof.nom, prof.prenom FROM prof, chat message  WHERE chat.client_id = $utilisateur_id AND chat.prof_id = prof.id";
             $result = mysqli_query($db_handle, $sql);
             while ($data = mysqli_fetch_assoc($result)) {
 
