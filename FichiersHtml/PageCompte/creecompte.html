@@ -1,36 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Créer Compte</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil - Sportify</title>
+    <link rel="stylesheet" href="../../FichiersCss/style.css">
+    <link rel="icon" href="../../images/iconLogo.png"/>
 </head>
 <body>
-    <h1>Créer Compte</h1>
-    <form action="" method="POST">
-        <label for="nom">Nom:</label>
-        <input type="text" id="nom" name="nom" required><br><br>
+    <nav>
+
+        <img class="logo" src="../../images/logoSportify.png" alt="Logo de Sportify">
         
-        <label for="prenom">Prénom:</label>
-        <input type="text" id="prenom" name="prenom" required><br><br>
-        
-        <label for="ville">Ville:</label>
-        <input type="text" id="ville" name="ville" required><br><br>
-        
-        <label for="code_postal">Code Postal:</label>
-        <input type="text" id="code_postal" name="code_postal" required><br><br>
-        
-        <label for="telephone">Téléphone:</label>
-        <input type="text" id="telephone" name="telephone" required><br><br>
-        
-        <label for="carte_etudiant">Carte d'étudiant:</label>
-        <input type="text" id="carte_etudiant" name="carte_etudiant" required><br><br>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" required><br><br>
-        
-        <input type="submit" value="Create Account">
-    </form>
+        <div class="onglets">
+            <div class="menu">
+                <a href="../PageAccueil/index.html">ACCUEIL</a>
+            </div>
+            <div class="menu">
+                <a href="../PageParcourir/parcourir.html">PARCOURIR</a>
+            </div>
+            <div class="menu">
+                <a href="../PageRecherche/recherche.html">RECHERCHER</a>
+            </div>
+            <div class="menu">
+                <a href="../PageRendez-vous/rendez-vous.html">RENDEZ-VOUS</a>
+            </div>
+            <div class="menu">
+                <a href="compte.html">VOTRE COMPTE</a>
+            </div>
+        </div>
+    </nav>
+
+    <footer>
+        <div class="brand">
+            <img class="logo" src="../../images/logoSportify.png" alt="Logo de Sportify">
+            <hr>
+            <p>© Copyrights. All rights reserved. 2024 Sportify.com</p>
+        </div>
+        <div class="liens">
+            <p class="titreclasse">Liens rapides</p>
+            <ul>
+                <li><a href="../../PageAccueil/index.html">Accueil</a></li>
+                <li><a href="../PageParcourir/parcourir.html">Parcourir</a></li>
+                <li><a href="../PageRecherche/recherche.html">Rechercher</a></li>
+                <li><a href="../PageRendez-vous/rendez-vous.html">Rendez-vous</a></li>
+                <li><a href="compte.html">Votre compte</a></li>
+            </ul>
+        </div>
+        <div class="liens">
+            <p class="titreclasse">Contacts</p>
+            <ul>
+                <li><a href="mailto:sportify@edu.ece.fr">Contactez nous : sportify@edu.ece.fr</a></li>
+                <li><a href="tel:+33776691561">Appelez nous : +33776691561</a></li>
+                <li><a href="https://maps.app.goo.gl/p6xMkrBTmMQZojXu7">Écrivez nous ou venez nous rencontrer : <address>10 rue Sextius Michel, 75015 Paris, FRANCE</address<</a></li>
+            </ul>
+
+        </div>
+    </footer>
 </body>
 </html>
