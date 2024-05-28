@@ -87,7 +87,49 @@ $recherche = isset($_POST["recherche"])? $_POST["recherche"] : "";
 $recherche = isset($_POST["recherche"])? $_POST["recherche"] : "";
 $count = 0;
 if ($recherche != ""){
-    $sql = "SELECT * FROM admin WHERE nom LIKE '%$recherche%' OR prenom LIKE '%$recherche%' OR ville LIKE '%$recherche%' OR CAST(`Code postal` AS CHAR) LIKE '%$recherche%' OR email LIKE '%$recherche%' OR Téléphone LIKE '%$recherche%'";
+    $sql = "SELECT * FROM cours WHERE nom LIKE '%$recherche%' OR 'description' LIKE '%$recherche%' OR CAST(`durée` AS CHAR) LIKE '%$recherche%' OR CAST(`date` AS CHAR) LIKE '%$recherche%'";
+    $result = mysqli_query($db_handle, $sql);
+    if($result != false && mysqli_num_rows($result) != 0 ){
+        echo "<h3>"."Les Cours correspondants :"."</h3>";
+        $count += 1;
+        while ($data = mysqli_fetch_assoc($result)) { 
+            echo "<p>". $data['nom'] . "</p>"; 
+            echo "<p>" . $data['date'] . "</p>";
+            echo "<p>" . $data['durée'] . "</p>";
+            echo "<p>" . $data['description'] . "</p>"; 
+            echo "<br><br>";
+        }
+    }
+    $sql = "SELECT * FROM prof WHERE nom LIKE '%$recherche%' OR prenom LIKE '%$recherche%' OR ville LIKE '%$recherche%' OR CAST(`Code postal` AS CHAR) LIKE '%$recherche%' OR email LIKE '%$recherche%' OR Téléphone LIKE '%$recherche%'";
+    $result = mysqli_query($db_handle, $sql);
+    if($result != false && mysqli_num_rows($result) != 0 ){
+        echo "<h3>"."Les Coachs correspondants :"."</h3>";
+        $count += 1;
+        while ($data = mysqli_fetch_assoc($result)) { 
+            echo "<p>". $data['nom'] . "</p>"; 
+            echo "<p>" . $data['prenom'] . "</p>";
+            echo "<p>" . $data['ville'] . "</p>";
+            echo "<p>" . $data['Code postal'] . "</p>"; 
+            echo "<p>" . $data['Téléphone'] . "</p>"; 
+            echo "<p>" . $data['email'] . "</p>"; 
+            echo "<br><br>";
+        }
+    }
+    $sql = "SELECT * FROM salles WHERE nom LIKE '%$recherche%' OR adresse LIKE '%$recherche%' OR CAST(`capacité` AS CHAR) LIKE '%$recherche%' OR email LIKE '%$recherche%' OR telephone LIKE '%$recherche%'";
+    $result = mysqli_query($db_handle, $sql);
+    if($result != false && mysqli_num_rows($result) != 0 ){
+        echo "<h3>"."Les Salles correspondantes :"."</h3>";
+        $count += 1;
+        while ($data = mysqli_fetch_assoc($result)) { 
+            echo "<p>". $data['nom'] . "</p>"; 
+            echo "<p>" . $data['adresse'] . "</p>";
+            echo "<p>" . $data['capacité'] . "</p>";
+            echo "<p>" . $data['telephone'] . "</p>"; 
+            echo "<p>" . $data['email'] . "</p>"; 
+            echo "<br><br>";
+        }
+    }
+    $sql = "SELECT * FROM `admin` WHERE nom LIKE '%$recherche%' OR prenom LIKE '%$recherche%' OR ville LIKE '%$recherche%' OR CAST(`Code postal` AS CHAR) LIKE '%$recherche%' OR email LIKE '%$recherche%' OR Téléphone LIKE '%$recherche%'";
     $result = mysqli_query($db_handle, $sql);
     if($result != false && mysqli_num_rows($result) != 0 ){
         echo "<h3>"."Les Admins correspondants :"."</h3>";
@@ -102,9 +144,11 @@ if ($recherche != ""){
             echo "<br><br>";
         }
     }
+
     if($count == 0){
         echo"<h3>"."Aucun résultat correspondant :("."</h3>";
     }
 }
 else{echo"";}
+
 ?>
