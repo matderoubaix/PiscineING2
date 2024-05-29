@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE CV [
+    <!ELEMENT CV (Coach)>
+    <!ELEMENT Coach (Nom, Contact, Profil, Formations, Experiences, Competences, Langues)>
+    <!ELEMENT Nom (#PCDATA)>
+    <!ELEMENT Contact (Email, Telephone, Adresse)>
+    <!ELEMENT Email (#PCDATA)>
+    <!ELEMENT Telephone (#PCDATA)>
+    <!ELEMENT Adresse (Rue, Ville, CodePostal, Pays)>
+    <!ELEMENT Rue (#PCDATA)>
+    <!ELEMENT Ville (#PCDATA)>
+    <!ELEMENT CodePostal (#PCDATA)>
+    <!ELEMENT Pays (#PCDATA)>
+    <!ELEMENT Profil (Description)>
+    <!ELEMENT Description (#PCDATA)>
+    <!ELEMENT Formations (Formation)*>
+    <!ELEMENT Formation (Diplome, Etablissement, Annee)>
+    <!ELEMENT Diplome (#PCDATA)>
+    <!ELEMENT Etablissement (#PCDATA)>
+    <!ELEMENT Annee (#PCDATA)>
+    <!ELEMENT Experiences (Experience)*>
+    <!ELEMENT Experience (Poste, Entreprise, Periode, Description)>
+    <!ELEMENT Poste (#PCDATA)>
+    <!ELEMENT Entreprise (#PCDATA)>
+    <!ELEMENT Periode (#PCDATA)>
+    <!ELEMENT Description (#PCDATA)>
+    <!ELEMENT Competences (Competence)*>
+    <!ELEMENT Competence (#PCDATA)>
+    <!ELEMENT Langues (Langue)*>
+    <!ELEMENT Langue (NomLangue, Niveau)>
+    <!ELEMENT NomLangue (#PCDATA)>
+    <!ELEMENT Niveau (#PCDATA)>
+]>
+
+<CV>
+    <Coach>
+        <Nom>Guy DUMAIS</Nom>
+        <Contact>
+            <Email>guy.dumais@example.com</Email>
+            <Telephone>+33 1 23 45 67 89</Telephone>
+            <Adresse>
+                <Rue>123 Rue de l'Exemple</Rue>
+                <Ville>Paris</Ville>
+                <CodePostal>75001</CodePostal>
+                <Pays>France</Pays>
+            </Adresse>
+        </Contact>
+        <Profil>
+            <Description>Coach professionnel spécialisé en développement personnel et en leadership avec plus de 15 ans d'expérience.</Description>
+        </Profil>
+        <Formations>
+            <Formation>
+                <Diplome>Master en Coaching</Diplome>
+                <Etablissement>Université de Paris</Etablissement>
+                <Annee>2010</Annee>
+            </Formation>
+            <Formation>
+                <Diplome>Certification en PNL</Diplome>
+                <Etablissement>Institut Français de Programmation Neuro-Linguistique</Etablissement>
+                <Annee>2012</Annee>
+            </Formation>
+        </Formations>
+        <Experiences>
+            <Experience>
+                <Poste>Coach Senior</Poste>
+                <Entreprise>Coaching Excellence</Entreprise>
+                <Periode>2015 - Présent</Periode>
+                <Description>Accompagnement des clients dans le développement de leurs compétences en leadership et en gestion du stress.</Description>
+            </Experience>
+            <Experience>
+                <Poste>Consultant en Développement Personnel</Poste>
+                <Entreprise>Bien-Être Consulting</Entreprise>
+                <Periode>2010 - 2015</Periode>
+                <Description>Conception et animation de séminaires de développement personnel pour des groupes de professionnels.</Description>
+            </Experience>
+        </Experiences>
+        <Competences>
+            <Competence>Leadership</Competence>
+            <Competence>Gestion du stress</Competence>
+            <Competence>Communication interpersonnelle</Competence>
+            <Competence>Programmation Neuro-Linguistique (PNL)</Competence>
+        </Competences>
+        <Langues>
+            <Langue>
+                <NomLangue>Français</NomLangue>
+                <Niveau>Langue maternelle</Niveau>
+            </Langue>
+            <Langue>
+                <NomLangue>Anglais</NomLangue>
+                <Niveau>Courant</Niveau>
+            </Langue>
+        </Langues>
+    </Coach>
+</CV>
+
+<CV>
+    <Coach>
+        <Nom>Jean MARTIN</Nom>
+        <Contact>
+            <Email>jean.martin@example.com</Email>
+            <Telephone>+33 6 12 34 56 78</Telephone>
+            <Adresse>
+                <Rue>45 Avenue des Sports</Rue>
+                <Ville>Lyon</Ville>
+                <CodePostal>69001</CodePostal>
+                <Pays>France</Pays>
+            </Adresse>
+        </Contact>
+        <Profil>
+            <Description>Professeur de tennis avec plus de 20 ans d'expérience, spécialisé dans l'entraînement des jeunes talents et l'amélioration des techniques de jeu.</Description>
+        </Profil>
+        <Formations>
+            <Formation>
+                <Diplome>Licence STAPS</Diplome>
+                <Etablissement>Université Claude Bernard Lyon 1</Etablissement>
+                <Annee>2000</Annee>
+            </Formation>
+            <Formation>
+                <Diplome>Diplôme d'État de la Jeunesse, de l'Éducation Populaire et du Sport (DEJEPS)</Diplome>
+                <Etablissement>Centre National de Tennis</Etablissement>
+                <Annee>2005</Annee>
+            </Formation>
+        </Formations>
+        <Experiences>
+            <Experience>
+                <Poste>Professeur de Tennis</Poste>
+                <Entreprise>Club de Tennis de Lyon</Entreprise>
+                <Periode>2005 - Présent</Periode>
+                <Description>Enseignement du tennis à des joueurs de tous niveaux, organisation de stages et de compétitions, coaching individuel et en groupe.</Description>
+            </Experience>
+            <Experience>
+                <Poste>Entraîneur Adjoint</Poste>
+                <Entreprise>Équipe Nationale de Tennis Junior</Entreprise>
+                <Periode>2010 - 2015</Periode>
+                <Description>Assistance à l'entraînement des jeunes joueurs de l'équipe nationale, développement des programmes d'entraînement personnalisés.</Description>
+            </Experience>
+        </Experiences>
+        <Competences>
+            <Competence>Technique de jeu</Competence>
+            <Competence>Entraînement physique</Competence>
+            <Competence>Coaching mental</Competence>
+            <Competence>Analyse vidéo</Competence>
+        </Competences>
+        <Langues>
+            <Langue>
+                <NomLangue>Français</NomLangue>
+                <Niveau>Langue maternelle</Niveau>
+            </Langue>
+            <Langue>
+                <NomLangue>Anglais</NomLangue>
+                <Niveau>Intermédiaire</Niveau>
+            </Langue>
+        </Langues>
+    </Coach>
+</CV>
