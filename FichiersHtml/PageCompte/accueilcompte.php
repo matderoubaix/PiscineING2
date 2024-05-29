@@ -6,6 +6,7 @@
     <title>Page d'accueil - Sportify</title>
     <link rel="stylesheet" href="../../FichiersCss/style.css">
     <link rel="icon" href="../../images/iconLogo.png"/>
+    
 </head>
 <body>
     <nav>
@@ -30,24 +31,50 @@
             </div>
         </div>
     </nav>
+    <div class="compte">
     <?php
         if (isset($_COOKIE["email"])) {
-            echo "<h1>Bienvenue sur votre compte, " . $_COOKIE["email"] . "</h1>";
+            echo "<img src=\"../../images/logoSportify.png\" alt=\"Logo de Sportify\" style = \"height: 10rem;\"><br>";
+            echo "<div class=\"sectionCompte\">";
+            echo "<div class=\"infoCompte\">";
+            echo "<img src=\"../../photo/".$_COOKIE["photo"]."\"alt=\"Photo de profil\" style = \"width: 10rem; height: 10rem;\"><br>";
+            echo "<h1>".$_COOKIE["nom"]." ".$_COOKIE["prenom"]."<br></h1>";
+            echo "</div>";
+            echo "<div class=\"infoCompte\">";
+            echo "<h3> téléphone : <h3>";
+            echo "<h2>".$_COOKIE["telephone"]."</h2>";
+            echo "<h3> email : <h3>";
+            echo "<h2>".$_COOKIE["email"]."</h2>";
+            echo "<h3> type : <h3>";
+            echo "<h2>".$_COOKIE["type"]."</h2>";
+            echo "<h3> ville : <h3>";
+            echo "<h2>".$_COOKIE["ville"]."</h2>";
+            echo "</div>";
+            echo " </div>";
+            
         } else {
             header("Location: compte.php");
         }
     ?>
-    <button onclick="window.location.href = 'messages.php';">Vos messages</button>
+        
+    <button  onclick="window.location.href = 'messages.php';">Vos messages</button>
+    
     <?php
         if ($_COOKIE["type"] == "sportif") {
-            echo "<button onclick=\"window.location.href = 'recherchercoach.php';\">Rechercher un coach</button>";
+            
+            echo "<button  onclick=\"window.location.href = 'recherchercoach.php';\">Rechercher un coach</button>";
+            
         } else {
+
             echo "<button onclick=\"window.location.href = 'recherchersportif.php';\">Rechercher un sportif</button>";
+
         }
     ?>
+    <button onclick="window.location.href = 'rendez-vous.php';">Vos rendez-vous</button>
     <form action="deconnexion.php" method="POST">
         <input type="submit" value="Déconnexion">
     </form>
+    </div>
     <footer>
         <div class="brand">
             <img class="logo" src="../../images/logoSportify.png" alt="Logo de Sportify">
@@ -71,7 +98,6 @@
                 <li><a href="tel:+33776691561">Appelez nous : +33776691561</a></li>
                 <li><a href="https://maps.app.goo.gl/p6xMkrBTmMQZojXu7">Écrivez nous ou venez nous rencontrer : <address>10 rue Sextius Michel, 75015 Paris, FRANCE</address<</a></li>
             </ul>
-
         </div>
     </footer>
 </body>
