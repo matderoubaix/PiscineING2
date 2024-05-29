@@ -17,9 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT * FROM client WHERE email = '$email' AND mdp = '$mdp'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-        session_start();
-        $_SESSION["email"] = $email;
-        $_SESSION["type"] = $result->fetch_assoc()["typeCompte"];
+        setcookie("email", $email, time() + 3600);
+        setcookie("type", "client", time() + 3600);
         header("Location: accueilcompte.php");
         exit();
     } else {
