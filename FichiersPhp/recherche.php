@@ -34,7 +34,7 @@
     <div class="boxRecherche">
 
         <form method="POST" class="searchBox" action="recherche.php">
-            <input type="text" placeholder="Chercher un cours, un coach..." name="recherche" required>
+            <input autofocus type="text" placeholder="Chercher un cours, un coach..." name="recherche" required>
             <button> &#x1F50E;&#xFE0E;</button>
         </form>
         <div class="resultats">
