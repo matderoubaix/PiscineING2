@@ -36,10 +36,13 @@
 
     <div class="conversations">
         <h1 class="vosMessages">Vos messages</h1>
-        <div class="dm">
-            <img src="../../images/coach.jpg" alt="Photo de profil du professeur">
-            <p>Jean Pierre Segado</p>
-        </div>
+        <form method="POST" action="../PageCompte/chat.php">
+            <input type="hidden" name="prof_id" value="1">
+            <div class="dm" onclick="this.parentNode.submit();">
+                <img src="../../images/coach.jpg" alt="Photo coach">
+                <p>Jean-Pierre Segado</p>
+            </div>
+        </form>
 
     
 
@@ -51,21 +54,23 @@
         $db_handle = mysqli_connect('localhost', 'root', '');
         $db_found = mysqli_select_db($db_handle, $database);
 
-        $utilisateur_id = "2";
+        $utilisateur_id = "1";
 
 
         //si le BDD existe, faire le traitement
         if ($db_found) {
-            $sql = "SELECT prof.nom, prof.prenom FROM prof, chat message  WHERE chat.client_id = $utilisateur_id AND chat.prof_id = prof.id";
+            $sql = "SELECT DISTINCT prof.id, prof.nom, prof.prenom, prof.photo FROM prof, chat  WHERE chat.client_id = $utilisateur_id AND chat.prof_id = prof.id";
             $result = mysqli_query($db_handle, $sql);
             while ($data = mysqli_fetch_assoc($result)) {
-
-                echo '<div class="dm">
-                            <img src="../../images/coach.jpg" alt="Photo de profil du professeur">
+                echo '<form method="POST" action="../PageCompte/chat.php">
+                        <input type="hidden" name="prof_id" value="'.$data['id'].'">
+                        <div class="dm" onclick="this.parentNode.submit();">
+                            <img src="'.$data['photo'].'" alt="Photo coach">
                             <p>'.$data['prenom'].' '.$data['nom'].'</p>
-                        </div>';
-
+                        </div>
+                      </form>';
             }
+            
         }
         
         else {
