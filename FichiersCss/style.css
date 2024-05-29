@@ -148,3 +148,13 @@ hr{
     margin-bottom: 10px;
 }
 
+
+/* Page Recherche */
+
+.searchBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+}
