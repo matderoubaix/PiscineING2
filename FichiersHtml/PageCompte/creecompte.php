@@ -26,7 +26,7 @@
                 <a href="../PageRendez-vous/rendez-vous.html">RENDEZ-VOUS</a>
             </div>
             <div class="menu">
-                <a href="compte.html">VOTRE COMPTE</a>
+                <a href="compte.php">VOTRE COMPTE</a>
             </div>
         </div>
     </nav>
@@ -65,7 +65,7 @@
         <input type="file" id="photo" name="photo" accept="image/png, image/jpeg"><br>  
         <input type="submit" value="Submit">
     </form>
-    <p>Vous avez déjà un compte ? <a href="compte.html"> Connectez-vous </a></p>
+    <p>Vous avez déjà un compte ? <a href="compte.php"> Connectez-vous </a></p>
     <footer>
         <div class="brand">
             <img class="logo" src="../../images/logoSportify.png" alt="Logo de Sportify">
@@ -79,7 +79,7 @@
                 <li><a href="../PageParcourir/parcourir.html">Parcourir</a></li>
                 <li><a href="../PageRecherche/recherche.html">Rechercher</a></li>
                 <li><a href="../PageRendez-vous/rendez-vous.html">Rendez-vous</a></li>
-                <li><a href="compte.html">Votre compte</a></li>
+                <li><a href="compte.php">Votre compte</a></li>
             </ul>
         </div>
         <div class="liens">
