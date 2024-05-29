@@ -124,13 +124,19 @@
     </div>
     <div class="conversations">
         <h1 class="vosMessages">Vos messages</h1>
-        <form method="POST" action="../PageCompte/chat.php">
-            <input type="hidden" name="prof_id" value="1">
-            <div class="dm" onclick="this.parentNode.submit();">
-                <img src="../../images/coach.jpg" alt="Photo coach">
-                <p>Jean-Pierre Segado</p>
-            </div>
-        </form>
+        <?php
+        $sql = "SELECT * FROM `Client` WHERE `id`!= ".$_COOKIE["id"];
+        $result = $conn->query($sql);
+        while ($data = mysqli_fetch_assoc($result)) {
+            echo '<form method="POST" action="../PageCompte/chat.php">
+                    <input type="hidden" name="prof_id" value="'.$data['id'].'">
+                    <div class="dm" onclick="this.parentNode.submit();">
+                        <img src="../../photo/'.$data['photo'].'" alt="Photo coach">
+                        <p>'.$data['prenom'].' '.$data['nom'].' '.$data['typeCompte'].'</p>
+                    </div>
+                  </form>';
+        }
+        ?>
     </div>
     </div>
     <footer>

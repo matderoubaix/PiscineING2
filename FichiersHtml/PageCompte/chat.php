@@ -45,7 +45,7 @@
         $db_handle = mysqli_connect('localhost', 'root', '');
         $db_found = mysqli_select_db($db_handle, $database);
 
-        $utilisateur_id = "1";
+        $utilisateur_id = $_COOKIE['id'];
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -77,7 +77,7 @@
         $prof_photo = $data['photo'];
 
         echo '<div class="hautDePage">';
-        echo '<div><a style="text-decoration: none; color:black; font-size: 0.7 rem;" href="../PageCompte/messages.php">Retour</a></div>';
+        echo '<div><a style="text-decoration: none; color:black; font-size: 0.7 rem;" href="../PageCompte/accueilcompte.php">Retour</a></div>';
         echo '<div style="display :flex; flex-direction: row; margin-bottom: 10px;">';
         echo '<img style="width: 50px ; height:50px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius:50%;" src="../../images/coach.jpg" alt="Photo coach">';
         echo '<h1 style="margin: 2%;">'.$prof_prenom.' '.$prof_nom.'</h1>';

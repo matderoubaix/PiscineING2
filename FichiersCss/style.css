@@ -518,6 +518,7 @@ animation-delay: 8s;
  
  .upcoming-events {
     width: 50%;
+    overflow: scroll;
     .container {
        h3 {
           color: #333;
@@ -778,10 +779,12 @@ hr{
     display: flex;
     flex-direction: column;
     justify-content: left;
+    overflow: auto;
     align-items: center;
     width: 30%;
     height: min-content;
     min-height: 80vh;
+    max-height: 200px;
     background-color: #ffffff;
     color: #000000;
     font-family: 'Roboto', sans-serif;
