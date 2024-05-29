@@ -85,9 +85,13 @@
             $user_id = $conn->insert_id;
             // Display the user's ID
             echo "Votre identifiant utilisateur est : " . $user_id;
+            // Redirect to compte.html
+            header("Location: compte.html");
+            exit;
             } else {
             echo "<h1>Erreur lors de la création du compte</h1>";
             echo "Veuillez réessayer";
+            header("Location: creecompte.html");
             }
         }
         $conn->close();
