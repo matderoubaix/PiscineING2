@@ -150,5 +150,30 @@
 
         </div>
     </footer>
+
+    <script>
+        document.querySelector('.chatInput').addEventListener('submit', function() {
+            var chatWindow = document.querySelector('.fenetreChat');
+            chatWindow.scrollDown = chatWindow.scrollHeight;
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
