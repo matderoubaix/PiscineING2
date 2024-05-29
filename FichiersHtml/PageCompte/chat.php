@@ -58,7 +58,7 @@
             }
             if (isset($_POST['message'])){
                 $message = $_POST['message'];
-                $sql_insert = "INSERT INTO chat (client_id, prof_id, message, id_emetteur) VALUES ('$utilisateur_id', '$prof_id', '$message', '$utilisateur_id')";
+                $sql_insert = "INSERT INTO chat (emetteur_id, recepteur_id, date, heure, message) VALUES ('$utilisateur_id', '$prof_id', CURRENT_DATE, CURRENT_TIME, '$message')";
                 mysqli_query($db_handle, $sql_insert);
             }
 
@@ -69,7 +69,7 @@
         }
 
         // Retrieve professor information
-        $sql = "SELECT * FROM prof WHERE id = $prof_id";
+        $sql = "SELECT * FROM client WHERE id = $prof_id";
         $result = mysqli_query($db_handle, $sql);
         $data = mysqli_fetch_assoc($result);
         $prof_nom = $data['nom'];
@@ -87,10 +87,10 @@
         echo '<div class="fenetreChat">';
 
         if ($db_found) {
-            $sql = "SELECT * FROM chat WHERE chat.client_id = $utilisateur_id AND chat.prof_id = $prof_id";
+            $sql = "SELECT * FROM chat WHERE chat.emetteur_id = $utilisateur_id AND chat.recepteur_id = $prof_id UNION SELECT * FROM chat WHERE chat.emetteur_id = $prof_id AND chat.recepteur_id = $utilisateur_id ORDER BY id";
             $result = mysqli_query($db_handle, $sql);
             while ($data = mysqli_fetch_assoc($result)) {
-                if ($data['id_emetteur'] == $utilisateur_id) {
+                if ($data['emetteur_id'] == $utilisateur_id) {
                     echo '<div class="messageUtilisateur">';
                     echo '<div class="messageCore">';
                     echo '<p>'.$data['message'].'</p>';
@@ -116,7 +116,7 @@
 
 <form method="POST" class="chatInput" action="../PageCompte/chat.php">
     <input type="hidden" name="prof_id" value="<?php echo $prof_id; ?>">
-    <input type="text" id="messageInput" placeholder="Envoyer un message" name="message" required>
+    <input autofocus autocomplete="off" type="text" id="messageInput" placeholder="Envoyer un message" name="message" required>
     <button id="sendMessageButton">↗</button>
 </form>
     <footer>
