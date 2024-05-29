@@ -70,28 +70,15 @@
             } else {
                 $image_tmp2 = "photo.png";
             }
-            if ($type == "sportif") {
-            $sql = "INSERT INTO client (nom, prenom, ville, code_postal, telephone, carte_etudiant, email, mdp ,photo)
-            VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$carte_etudiant', '$email', '$mdp', '$image_tmp2')";
-            } else {
-            $sql = "INSERT INTO prof (nom, prenom, ville, code_postal, telephone, email, mdp ,photo)
-            VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$email', '$mdp' , '$image_tmp2')";
-            }
+            $sql = "INSERT INTO client (nom, prenom, ville, code_postal, telephone, carte_etudiant, email, mdp ,photo , typeCompte)
+            VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$carte_etudiant', '$email', '$mdp', '$image_tmp2' , '$type')";
             // Execute the SQL query
             $result = $conn->query($sql);
             if ($result) {
-            echo "<h1>Compte créé avec succès</h1>";
-            // Get the newly created user's ID
-            $user_id = $conn->insert_id;
-            // Display the user's ID
-            echo "Votre identifiant utilisateur est : " . $user_id;
-            // Redirect to compte.html
             header("Location: compte.php");
             exit;
             } 
             else {
-            echo "<h1>Erreur lors de la création du compte</h1>";
-            echo "Veuillez réessayer";
             header("Location: creecompte.php");
             exit;
             }

@@ -21,9 +21,15 @@ CREATE TABLE `Sport` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `nom` VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NOT NULL,
-    `client_email` INT(11) NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`email`) REFERENCES `Client`(`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `SportClient` (
+    `sport_id` INT(11) NOT NULL,
+    `client_email` INT(11) NOT NULL,
+    PRIMARY KEY (`sport_id`, `client_email`),
+    FOREIGN KEY (`sport_id`) REFERENCES `Sport`(`id`),
+    FOREIGN KEY (`client_email`) REFERENCES `Client`(`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Cours` (

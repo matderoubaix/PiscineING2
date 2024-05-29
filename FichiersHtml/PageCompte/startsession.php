@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         session_start();
         $_SESSION["email"] = $email;
+        $_SESSION["type"] = $result->fetch_assoc()["typeCompte"];
         header("Location: accueilcompte.php");
         exit();
     } else {
