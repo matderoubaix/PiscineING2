@@ -62,8 +62,7 @@
         <input type="password" id="password" name="password" required><br>
 
         <label for="photo">Photo de profil:</label>
-        <input type="file" id="photo" name="photo" accept="image/png, image/jpeg" onchange="saveProfilePicture(this)" required><br>  
-
+        <input type="file" id="photo" name="photo" accept="image/png, image/jpeg"><br>  
         <input type="submit" value="Submit">
     </form>
     <p>Vous avez déjà un compte ? <a href="compte.html"> Connectez-vous </a></p>
