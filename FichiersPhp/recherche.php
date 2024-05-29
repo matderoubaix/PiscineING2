@@ -14,19 +14,19 @@
         
         <div class="onglets">
             <div class="menu">
-                <a href="../PageAccueil/index.html">ACCUEIL</a>
+                <a href="../FichiersHtml/PageAccueil/index.html">ACCUEIL</a>
             </div>
             <div class="menu">
-                <a href="../PageParcourir/parcourir.html">PARCOURIR</a>
+                <a href="../FichiersHtml/PageParcourir/parcourir.html">PARCOURIR</a>
             </div>
             <div class="menu">
-                <a href="recherche.html">RECHERCHER</a>
+                <a href="../FichiersHtml/PageRecherche/recherche.html">RECHERCHER</a>
             </div>
             <div class="menu">
-                <a href="../PageRendez-vous/rendez-vous.html">RENDEZ-VOUS</a>
+                <a href="../FichiersHtml/PageRendez-vous/rendez-vous.html">RENDEZ-VOUS</a>
             </div>
             <div class="menu">
-                <a href="../PageCompte/compte.html">VOTRE COMPTE</a>
+                <a href="../FichiersHtml/PageCompte/compte.html">VOTRE COMPTE</a>
             </div>
         </div>
     </nav>
