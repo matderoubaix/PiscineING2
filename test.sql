@@ -1,5 +1,8 @@
 USE `sportify`;
-
+DELETE FROM `Client`;
+DELETE FROM `Sport`;
+DELETE FROM `SportClient`;
+DELETE FROM `Chat`;
 -- Insertion des valeurs de test dans la table `Client`
 INSERT INTO `Client` (`nom`, `prenom`, `ville`, `code_postal`, `telephone`, `carte_etudiant`, `email`, `mdp`, `photo`, `typeCompte`)
 VALUES 
@@ -46,27 +49,28 @@ VALUES
     ('Martial Arts', 'Self-defense and discipline'),
     ('Dance', 'Expression and movement');
 
-INSERT INTO `Cours` (`nom`, `description`, `date`, `heure`, `duree`, `prof_email`, `prix`, `sport_id`)
+INSERT INTO `SportClient` (`sport_id`, `client_id`)
 VALUES 
-    ('Yoga', 'Relaxation and stretching', '2022-01-01', '09:00:00', 60, 'john.doe2@example.com', 10, 1),
-    ('Pilates', 'Core strength and flexibility', '2022-01-02', '10:00:00', 60, 'jane.smith2@example.com', 15, 2);
+    (41, 113),
+    (42, 113),
+    (43, 113),
+    (44, 116),
+    (45, 116),
+    (46, 116),
+    (47, 120),
+    (48, 120),
+    (49, 120),
+    (50, 120);
 
-INSERT INTO `Reservation` (`client_email`, `cours_id`)
+INSERT INTO `Chat` (`emetteur_id`, `recepteur_id`, `date`, `heure`, `message`)
 VALUES 
-    ('john.doe@example.com', 1),
-    ('jane.smith@example.com', 2);
-
-INSERT INTO `Salles` (`nom`, `adresse`, `telephone`, `email`, `cours_id`, `capacite`)
-VALUES 
-    ('Room A', '123 Main St', '111-222-3333', 'rooma@example.com', 1, 20),
-    ('Room B', '456 Elm St', '444-555-6666', 'roomb@example.com', 2, 15);
-
-INSERT INTO `CoordonnéeBancaire` (`type_de_paiement`, `numero_de_carte`, `date_expiration`, `code_de_securite`, `client_email`)
-VALUES 
-    ('Visa', '1234567890123456', '2023-01-01', 123, 'john.doe@example.com'),
-    ('Mastercard', '9876543210987654', '2024-01-01', 456, 'jane.smith@example.com');
-
-INSERT INTO `Chat` (`emetteur_email`, `recepteur_email`, `date`, `heure`, `message`)
-VALUES 
-    ('john.doe@example.com', 'john.doe2@example.com', '2022-01-01', '09:00:00', 'Hello, how are you?'),
-    ('jane.smith@example.com', 'jane.smith2@example.com', '2022-01-02', '10:00:00', "I'm doing great, thanks!");
+    (103, 104, '2021-01-01', '12:00:00', 'Hello, Jane!'),
+    (104, 103, '2021-01-01', '12:01:00', 'Hi, John!'),
+    (103, 104, '2021-01-01', '12:02:00', 'How are you?'),
+    (104, 103, '2021-01-01', '12:03:00', 'I am good, thanks!'),
+    (103, 104, '2021-01-01', '12:04:00', 'What are you up to?'),
+    (104, 103, '2021-01-01', '12:05:00', 'Just working on some projects.'),
+    (103, 104, '2021-01-01', '12:06:00', 'Sounds interesting!'),
+    (104, 103, '2021-01-01', '12:07:00', 'Yes, it is!'),
+    (103, 104, '2021-01-01', '12:08:00', 'Well, I have to go now. Talk to you later!'),
+    (104, 103, '2021-01-01', '12:09:00', 'Sure, talk to you later!');
