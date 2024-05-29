@@ -19,8 +19,19 @@ VALUES
 INSERT INTO `Prof` (`nom`, `prenom`, `ville`, `code_postal`, `telephone`, `email`, `mdp`, `photo`)
 VALUES 
     ('John', 'Doe', 'New York', 12345, '123-456-7890', 'john.doe@example.com', 'password123', 'photo.jpg'),
-    ('Jane', 'Smith', 'Los Angeles', 67890, '987-654-3210', 'jane.smith@example.com', 'password456', 'photo.jpg');
-
+    ('Jane', 'Smith', 'Los Angeles', 67890, '987-654-3210', 'jane.smith@example.com', 'password456', 'photo.jpg'),
+    ('Alice', 'Johnson', 'Chicago', 54321, '111-222-3333', 'alice.johnson@example.com', 'password789', 'photo.jpg'),
+    ('Emily', 'Brown', 'Houston', 13579, '222-333-4444', 'emily.brown@example.com', 'password987', 'photo.jpg'),
+    ('Michael', 'Davis', 'Phoenix', 24680, '333-444-5555', 'michael.davis@example.com', 'password654', 'photo.jpg'),
+    ('Chris', 'Wilson', 'Philadelphia', 11223, '444-555-6666', 'chris.wilson@example.com', 'password321', 'photo.jpg'),
+    ('David', 'Martinez', 'San Antonio', 99887, '555-666-7777', 'david.martinez@example.com', 'password111', 'photo.jpg'),
+    ('Sarah', 'Taylor', 'San Diego', 77654, '666-777-8888', 'sarah.taylor@example.com', 'password222', 'photo.jpg'),
+    ('Laura', 'Anderson', 'Dallas', 33445, '777-888-9999', 'laura.anderson@example.com', 'password333', 'photo.jpg'),
+    ('James', 'Thomas', 'San Jose', 55667, '888-999-0000', 'james.thomas@example.com', 'password444', 'photo.jpg'),
+    ('Jessica', 'Moore', 'Austin', 77889, '999-000-1111', 'jessica.moore@example.com', 'password555', 'photo.jpg'),
+    ('Daniel', 'Jackson', 'Jacksonville', 11234, '000-111-2222', 'daniel.jackson@example.com', 'password666', 'photo.jpg'),
+    ('Olivia', 'White', 'Fort Worth', 22345, '111-222-3334', 'olivia.white@example.com', 'password777', 'photo.jpg');
+    
 INSERT INTO `Admin` (`nom`, `prenom`, `ville`, `code_postal`, `telephone`, `email`, `mdp`)
 VALUES 
     ('Alice', 'Johnson', 'Chicago', 54321, '111-222-3333', 'alice.johnson@example.com', 'password789'),
