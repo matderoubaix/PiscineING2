@@ -13,7 +13,7 @@ CREATE TABLE `Client` (
   `carte_etudiant` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   `mdp` VARCHAR(255) NOT NULL,
-  `photo` VARCHAR(255) NOT NULL,
+  `photo` VARCHAR(255) NOT NULL DEFAULT 'photo.jpg',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
