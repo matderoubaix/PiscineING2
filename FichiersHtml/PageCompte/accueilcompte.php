@@ -31,11 +31,18 @@
         </div>
     </nav>
     <?php
-        session_start();
-        if (isset($_SESSION["email"])) {
-            echo "<h1>Bienvenue sur votre compte, " . $_SESSION["email"] . "</h1>";
+        if (isset($_COOKIE["email"])) {
+            echo "<h1>Bienvenue sur votre compte, " . $_COOKIE["email"] . "</h1>";
         } else {
             header("Location: compte.php");
+        }
+    ?>
+    <button onclick="window.location.href = 'messages.php';">Vos messages</button>
+    <?php
+        if ($_COOKIE["type"] == "sportif") {
+            echo "<button onclick=\"window.location.href = 'recherchercoach.php';\">Rechercher un coach</button>";
+        } else {
+            echo "<button onclick=\"window.location.href = 'recherchersportif.php';\">Rechercher un sportif</button>";
         }
     ?>
     <form action="deconnexion.php" method="POST">

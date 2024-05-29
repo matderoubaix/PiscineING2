@@ -8,8 +8,7 @@
     <link rel="icon" href="../../images/iconLogo.png"/>
 <body>
     <?php
-        session_start();
-        if (isset($_SESSION["email"])) {
+        if (isset($_COOKIE["email"])) {
             header("Location: accueilcompte.php");
             exit();
         }

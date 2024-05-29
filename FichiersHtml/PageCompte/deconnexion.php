@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    session_destroy();
+    setcookie("email", "", time() - 3600);
+    setcookie("type", "", time() - 3600);
     header("Location: compte.php");
     exit();
     ?>
