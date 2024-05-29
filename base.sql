@@ -4,13 +4,13 @@ CREATE DATABASE `sportify`;
 -- Path: base.sql
 USE `sportify`;
 CREATE TABLE `Client` (
+ `email` VARCHAR(255) NOT NULL Unique,
   `nom` VARCHAR(255) NOT NULL,
   `prenom` VARCHAR(255) NOT NULL,
   `ville` VARCHAR(255) NOT NULL,
   `code_postal` INT(11) NOT NULL,
   `telephone` VARCHAR(255) NOT NULL,
   `carte_etudiant` VARCHAR(255) NOT NULL,
-  `email` VARCHAR(255) NOT NULL,
   `mdp` VARCHAR(255) NOT NULL,
   `photo` VARCHAR(255) NOT NULL DEFAULT 'photo.jpg',
   `typeCompte` VARCHAR(255) NOT NULL,
@@ -21,13 +21,14 @@ CREATE TABLE `Sport` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `nom` VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NOT NULL,
-    PRIMARY KEY (`id`),
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `SportClient` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
     `sport_id` INT(11) NOT NULL,
     `client_email` INT(11) NOT NULL,
-    PRIMARY KEY (`sport_id`, `client_email`),
+    PRIMARY KEY (`id`),
     FOREIGN KEY (`sport_id`) REFERENCES `Sport`(`id`),
     FOREIGN KEY (`client_email`) REFERENCES `Client`(`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
