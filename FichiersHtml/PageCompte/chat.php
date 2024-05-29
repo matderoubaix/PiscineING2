@@ -38,51 +38,58 @@
 
     
     <div class="currentChat">
-        <div class="hautDePage">
-            <div><a style="text-decoration: none; color:black; font-size: 0.7 rem;" href="../PageCompte/messages.php">Retour</a></div>
-            <div style="display :flex; flex-direction: row;">
+
     <?php
 
         $database = "sportify";
-
         $db_handle = mysqli_connect('localhost', 'root', '');
         $db_found = mysqli_select_db($db_handle, $database);
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $prof_id = $_POST['prof_id'];
-            $sql = "SELECT * FROM prof WHERE id = $prof_id";
-            $result = mysqli_query($db_handle, $sql);
-            $data = mysqli_fetch_assoc($result);
-            $prof_nom = $data['nom'];
-            $prof_prenom = $data['prenom'];
-            $prof_photo = $data['photo'];
-            echo '<img style="width: 50px ; height:50px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius:50%;" src="../../images/coach.jpg" alt="Photo coach">';
-            echo '<h1 style="margin: 2%;">'.$prof_prenom.' '.$prof_nom.'</h1>';
-            echo '</div>';
-            echo '</div>';
-        } else {
-            echo "No professor selected.";
-        }
-
-
-
-        echo '<div class="fenetreChat">';
-
-
-
-
-
-
-      
-
         $utilisateur_id = "1";
 
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            if (isset($_POST['prof_id'])){
+                $prof_id = $_POST['prof_id'];
+            }
+            else {
+                echo "No professor selected.";
+                exit();
+            }
+            if (isset($_POST['message'])){
+                $message = $_POST['message'];
+                $sql_insert = "INSERT INTO chat (client_id, prof_id, message, id_emetteur) VALUES ('$utilisateur_id', '$prof_id', '$message', '$utilisateur_id')";
+                mysqli_query($db_handle, $sql_insert);
+            }
+
+
+        } else {
+            echo "Invalid request method.";
+            exit();
+        }
+
+        // Retrieve professor information
+        $sql = "SELECT * FROM prof WHERE id = $prof_id";
+        $result = mysqli_query($db_handle, $sql);
+        $data = mysqli_fetch_assoc($result);
+        $prof_nom = $data['nom'];
+        $prof_prenom = $data['prenom'];
+        $prof_photo = $data['photo'];
+
+        echo '<div class="hautDePage">';
+        echo '<div><a style="text-decoration: none; color:black; font-size: 0.7 rem;" href="../PageCompte/messages.php">Retour</a></div>';
+        echo '<div style="display :flex; flex-direction: row; margin-bottom: 10px;">';
+        echo '<img style="width: 50px ; height:50px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius:50%;" src="../../images/coach.jpg" alt="Photo coach">';
+        echo '<h1 style="margin: 2%;">'.$prof_prenom.' '.$prof_nom.'</h1>';
+        echo '</div>';
+        echo '</div>';
+
+        echo '<div class="fenetreChat">';
 
         if ($db_found) {
             $sql = "SELECT * FROM chat WHERE chat.client_id = $utilisateur_id AND chat.prof_id = $prof_id";
             $result = mysqli_query($db_handle, $sql);
             while ($data = mysqli_fetch_assoc($result)) {
-
                 if ($data['id_emetteur'] == $utilisateur_id) {
                     echo '<div class="messageUtilisateur">';
                     echo '<div class="messageCore">';
@@ -97,19 +104,24 @@
                     echo '</div>';
                 }
             }
-        }
-        
-        else {
+        } else {
             echo "Database not found";
         }
 
-        //fermer la connection
+        echo '</div>';
+
+        // Close the database connection
         mysqli_close($db_handle);
-    ?>
+?>
+
+<form method="POST" class="chatInput" action="../PageCompte/chat.php">
+    <input type="hidden" name="prof_id" value="<?php echo $prof_id; ?>">
+    <input type="text" id="messageInput" placeholder="Envoyer un message" name="message" required>
+    <button id="sendMessageButton">↗</button>
+</form>
 
 
-        </div>
-    </div>
+
 
 
     <footer>
