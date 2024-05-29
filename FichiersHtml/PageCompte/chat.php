@@ -119,11 +119,6 @@
     <input type="text" id="messageInput" placeholder="Envoyer un message" name="message" required>
     <button id="sendMessageButton">↗</button>
 </form>
-
-
-
-
-
     <footer>
         <div class="brand">
             <img class="logo" src="../../images/logoSportify.png" alt="Logo de Sportify">

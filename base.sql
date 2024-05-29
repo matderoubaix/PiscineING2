@@ -4,7 +4,6 @@ CREATE DATABASE `sportify`;
 -- Path: base.sql
 USE `sportify`;
 CREATE TABLE `Client` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(255) NOT NULL,
   `prenom` VARCHAR(255) NOT NULL,
   `ville` VARCHAR(255) NOT NULL,
@@ -14,32 +13,17 @@ CREATE TABLE `Client` (
   `email` VARCHAR(255) NOT NULL,
   `mdp` VARCHAR(255) NOT NULL,
   `photo` VARCHAR(255) NOT NULL DEFAULT 'photo.jpg',
-  PRIMARY KEY (`id`)
+  `typeCompte` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `Prof` (
+CREATE TABLE `Sport` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `nom` VARCHAR(255) NOT NULL,
-    `prenom` VARCHAR(255) NOT NULL,
-    `ville` VARCHAR(255) NOT NULL,
-    `code_postal` INT(11) NOT NULL,
-    `telephone` VARCHAR(255) NOT NULL,
-    `email` VARCHAR(255) NOT NULL,
-    `mdp` VARCHAR(255) NOT NULL,
-    `photo` VARCHAR(255) NOT NULL,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `Admin` (
-    `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `nom` VARCHAR(255) NOT NULL,
-    `prenom` VARCHAR(255) NOT NULL,
-    `ville` VARCHAR(255) NOT NULL,
-    `code_postal` INT(11) NOT NULL,
-    `telephone` VARCHAR(255) NOT NULL,
-    `email` VARCHAR(255) NOT NULL,
-    `mdp` VARCHAR(255) NOT NULL,
-    PRIMARY KEY (`id`)
+    `description` VARCHAR(255) NOT NULL,
+    `client_email` INT(11) NOT NULL,
+    PRIMARY KEY (`id`),
+    FOREIGN KEY (`email`) REFERENCES `Client`(`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Cours` (
@@ -47,18 +31,22 @@ CREATE TABLE `Cours` (
     `nom` VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NOT NULL,
     `date` DATE NOT NULL,
+    `heure` TIME NOT NULL,
     `duree` INT(11) NOT NULL,
-    `prof_id` INT(11) NOT NULL,
+    `prof_email` INT(11) NOT NULL,
+    `prix` INT(11) NOT NULL DEFAULT '0',
+    `sport_id` INT(11) NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`prof_id`) REFERENCES `Prof`(`id`)
+    FOREIGN KEY (`prof_email`) REFERENCES `Client`(`email`),
+    FOREIGN KEY (`sport_id`) REFERENCES `Sport`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Reservation` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `client_id` INT(11) NOT NULL,
+    `client_email` INT(11) NOT NULL,
     `cours_id` INT(11) NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`client_id`) REFERENCES `Client`(`id`),
+    FOREIGN KEY (`client_email`) REFERENCES `Client`(`email`),
     FOREIGN KEY (`cours_id`) REFERENCES `Cours`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -79,19 +67,18 @@ CREATE TABLE `CoordonnéeBancaire` (
     `numero_de_carte` VARCHAR(255) NOT NULL,
     `date_expiration` DATE NOT NULL,
     `code_de_securite` INT(11) NOT NULL,
-    `client_id` INT(11) NOT NULL,
-    FOREIGN KEY (`client_id`) REFERENCES `Client`(`id`)
+    `client_email` INT(11) NOT NULL,
+    FOREIGN KEY (`client_email`) REFERENCES `Client`(`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `Chat` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
-    `client_id` INT(11) NOT NULL,
-    `prof_id` INT(11) NOT NULL,
-    `id_emetteur` INT(11) NOT NULL,
+    `emetteur_email` INT(11) NOT NULL,
+    `recepteur_email` INT(11) NOT NULL,
     `date` DATE NOT NULL,
     `heure` TIME NOT NULL,
     `message` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`client_id`) REFERENCES `Client`(`id`),
-    FOREIGN KEY (`prof_id`) REFERENCES `Prof`(`id`)
+    FOREIGN KEY (`emetteur_email`) REFERENCES `Client`(`email`),
+    FOREIGN KEY (`recepteur_email`) REFERENCES `Client`(`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
