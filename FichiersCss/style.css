@@ -26,6 +26,8 @@ body{
 /* Navbar */
 
 nav{
+    top: 0;
+    position: sticky;
     z-index: 10;
     display: flex;
     flex-direction: row;
@@ -324,7 +326,7 @@ animation-delay: 8s;
     height: 200px;
     border-radius: 10px;
 
-    box-shadow: -1px 10px 20px 0px rgba(0,0,0,0.58);
+    box-shadow: -1px 2px 4px 0px rgba(0,0,0,0.58);
     background-color: #ffffff;
     margin: 5px;
 }
@@ -666,6 +668,22 @@ hr{
     }
 }
 
+
+/* Page Recherche */
+
+.boxRecherche{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: min-content;
+    min-height: 80vh;
+
+
+}
+
+
 .searchBox{
     display: flex;
     flex-direction: row;
@@ -701,4 +719,24 @@ hr{
         margin-right: 20px;
         margin-bottom: 5px;
     }
+}
+
+.resultats{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    flex-wrap: wrap;
+    align-items: start;
+    width: 90%;
+    height: min-content;
+    min-height: 80vh;
+}
+
+.boxCours{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    width: max-content;
+    height: min-content;
 }
