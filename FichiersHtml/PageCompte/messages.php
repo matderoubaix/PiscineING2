@@ -59,7 +59,18 @@
 
         //si le BDD existe, faire le traitement
         if ($db_found) {
-            $sql = "SELECT DISTINCT prof.id, prof.nom, prof.prenom, prof.photo FROM prof, chat  WHERE chat.client_id = $utilisateur_id AND chat.prof_id = prof.id";
+            $sql = "SELECT DISTINCT `Client`.*
+            FROM `Client`
+            JOIN `Chat` ON `Client`.`id` = `Chat`.`emetteur_id`
+            WHERE `Chat`.`recepteur_id` = '1'
+            
+            UNION
+            
+            SELECT DISTINCT `Client`.*
+            FROM `Client`
+            JOIN `Chat` ON `Client`.`id` = `Chat`.`recepteur_id`
+            WHERE `Chat`.`emetteur_id` = '1';
+            ";
             $result = mysqli_query($db_handle, $sql);
             while ($data = mysqli_fetch_assoc($result)) {
                 echo '<form method="POST" action="../PageCompte/chat.php">
