@@ -20,6 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         setcookie("email", $email, time() + 3600);
         $row = $result->fetch_assoc();
         $type = $row["typeCompte"];
+        setcookie("id", $row["id"], time() + 3600);
+        echo $row["id"];
         setcookie("type", $type, time() + 3600);
         setcookie("nom", $row["nom"], time() + 3600);
         setcookie("prenom", $row["prenom"], time() + 3600);

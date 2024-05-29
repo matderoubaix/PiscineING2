@@ -30,20 +30,6 @@
             </div>
         </div>
     </nav>
-
-
-    
-
-    <div class="conversations">
-        <h1 class="vosMessages">Vos messages</h1>
-        <form method="POST" action="../PageCompte/chat.php">
-            <input type="hidden" name="prof_id" value="1">
-            <div class="dm" onclick="this.parentNode.submit();">
-                <img src="../../images/coach.jpg" alt="Photo coach">
-                <p>Jean-Pierre Segado</p>
-            </div>
-        </form>
-
     
 
 

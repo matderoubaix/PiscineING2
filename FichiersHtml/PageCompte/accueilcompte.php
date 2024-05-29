@@ -31,8 +31,22 @@
             </div>
         </div>
     </nav>
+    <div class="compteComtainer">
     <div class="compte">
     <?php
+        $servername = "localhost";
+        $username= "root";
+        $password= "";
+        $dbname = "sportify";
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        $sql = "SELECT * FROM cours WHERE id IN (SELECT cours_id FROM Reservation WHERE client_id = ".$_COOKIE["id"].")";
+        $result = $conn->query($sql);
+        
         if (isset($_COOKIE["email"])) {
             echo "<img src=\"../../images/logoSportify.png\" alt=\"Logo de Sportify\" style = \"height: 10rem;\"><br>";
             echo "<div class=\"sectionCompte\">";
@@ -56,24 +70,68 @@
             header("Location: compte.php");
         }
     ?>
-        
-    <button  onclick="window.location.href = 'messages.php';">Vos messages</button>
-    
     <?php
-        if ($_COOKIE["type"] == "sportif") {
-            
-            echo "<button  onclick=\"window.location.href = 'recherchercoach.php';\">Rechercher un coach</button>";
+        echo "<section class=\"today-box\" id=\"today-box\">
+                <span class=\"breadcrumb\">Aujourd'hui</span>
+                <h3 class=\"date-title\">".date("Y-m-d")."</h3>
+                <div class=\"plus-icon\">
+                <i class=\"ion ion-ios-add\"></i>
+                </div>
+            </section>
+            <section class=\"upcoming-events\">
+                <div class=\"container\">
+                    <h3>
+                        Prochain événement
+                    </h3>
+                    <div class=\"events-wrapper\">";
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<div class=\"event\">
+                        <i class=\"ion ion-ios-flame hot\"></i>
+                        <h4 class=\"event__point\">".$row["heure"]."</h4>
+                        <span class=\"event__duration\">".$row["date"]."</span>
+                        <p class=\"event__description\">
+                            ".$row["description"]."
+                        </p>
+                    </div>";
+            }
             
         } else {
-
-            echo "<button onclick=\"window.location.href = 'recherchersportif.php';\">Rechercher un sportif</button>";
-
+            echo "<div class=\"event\">
+                        <i class=\"ion ion-ios-flame hot\"></i>
+                        <h4 class=\"event__point\">Aucun cours réservé</h4>
+                        <span class=\"event__duration\"></span>
+                        <p class=\"event__description\">
+                            Aucun cours réservé
+                        </p>
+                    </div>";
         }
+        echo "</div>
+                </div>
+            </section>";
     ?>
-    <button onclick="window.location.href = 'rendez-vous.php';">Vos rendez-vous</button>
+  
+
+   <!--======= Upcoming Events =======-->
+
+   
+            
+         
+         <button onclick="window.location.href = 'rendez-vous.php';">Vos rendez-vous</button>
     <form action="deconnexion.php" method="POST">
         <input type="submit" value="Déconnexion">
     </form>
+    </div>
+    <div class="conversations">
+        <h1 class="vosMessages">Vos messages</h1>
+        <form method="POST" action="../PageCompte/chat.php">
+            <input type="hidden" name="prof_id" value="1">
+            <div class="dm" onclick="this.parentNode.submit();">
+                <img src="../../images/coach.jpg" alt="Photo coach">
+                <p>Jean-Pierre Segado</p>
+            </div>
+        </form>
+    </div>
     </div>
     <footer>
         <div class="brand">

@@ -7,6 +7,8 @@
     setcookie("code_postal", "", time() - 3600);
     setcookie("telephone", "", time() - 3600);
     setcookie("carte_etudiant", "", time() - 3600);
+    setcookie("photo", "", time() - 3600);
+    setcookie("id", "", time() - 3600);
     header("Location: compte.php");
     exit();
     ?>
