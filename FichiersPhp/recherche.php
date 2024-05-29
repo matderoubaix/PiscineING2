@@ -31,20 +31,15 @@
         </div>
     </nav>
 
+    <div class="boxRecherche">
 
+        <form method="POST" class="searchBox" action="recherche.php">
+            <input type="text" placeholder="Chercher un cours, un coach..." name="recherche" required>
+            <button> &#x1F50E;&#xFE0E;</button>
+        </form>
+        <div class="resultats">
 
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 <?php
@@ -64,48 +59,112 @@ if (!$db_found) {
 $recherche = isset($_POST["recherche"])? $_POST["recherche"] : "";
 $count = 0;
 if ($recherche != ""){
+
+    /* Cours */
     $sql = "SELECT * FROM cours WHERE nom LIKE '%$recherche%' OR 'description' LIKE '%$recherche%' OR CAST(`duree` AS CHAR) LIKE '%$recherche%' OR CAST(`date` AS CHAR) LIKE '%$recherche%'";
     $result = mysqli_query($db_handle, $sql);
     if($result != false && mysqli_num_rows($result) != 0 ){
-        echo "<h3>"."Les Cours correspondants :"."</h3>";
+        echo "<h3 style='margin: 10px 5px 5px 5px;'>"."Les Cours correspondants :"."</h3>";
+        echo "<div class='boxCours'>";
+
         $count += 1;
-        while ($data = mysqli_fetch_assoc($result)) { 
-            echo "<p>". $data['nom'] . "</p>"; 
-            echo "<p>" . $data['date'] . "</p>";
-            echo "<p>" . $data['duree'] . "h</p>";
-            echo "<p>" . $data['description'] . "</p>"; 
-            echo "<br><br>";
+        while ($data = mysqli_fetch_assoc($result)) {
+            $prof_id = $data['prof_id'];
+            $sql_prof = "SELECT nom, prenom FROM prof WHERE id = $prof_id";
+            $result_prof = mysqli_query($db_handle, $sql_prof);
+            if($result_prof != false && mysqli_num_rows($result_prof) != 0 ){
+                $prof_data = mysqli_fetch_assoc($result_prof);
+                $prof_nom = $prof_data['nom'];
+                $prof_prenom = $prof_data['prenom'];
+            }
+            echo " <div class='evenement'>
+                        <div class='evenementDescription'>
+                            
+                            <h2>". $data['nom'] ."</h2>
+                            <p>Le <b>". $data['date'] ."</b> pendant <b>" . $data['duree'] . "h </b></p>
+                            <p>Animé par : <b>". $prof_prenom ." ". $prof_nom ."</b></p>
+                            <p>" . $data['description'] ."</p>
+                            
+                            
+                        </div>
+                    </div>"; 
         }
+        echo "</div>";
     }
+
+
+    /* Coachs */
     $sql = "SELECT * FROM prof WHERE nom LIKE '%$recherche%' OR prenom LIKE '%$recherche%' OR ville LIKE '%$recherche%' OR CAST(`code_postal` AS CHAR) LIKE '%$recherche%' OR email LIKE '%$recherche%' OR telephone LIKE '%$recherche%'";
     $result = mysqli_query($db_handle, $sql);
     if($result != false && mysqli_num_rows($result) != 0 ){
-        echo "<h3>"."Les Coachs correspondants :"."</h3>";
+        echo "<h3 style='margin: 10px 5px 5px 5px;'>"."Les Coachs correspondants :"."</h3>";
+        echo "<div class='boxCours'>";
         $count += 1;
         while ($data = mysqli_fetch_assoc($result)) { 
-            echo "<p>". $data['nom'] . "</p>"; 
-            echo "<p>" . $data['prenom'] . "</p>";
-            echo "<p>" . $data['ville'] . "</p>";
-            echo "<p>" . $data['code_postal'] . "</p>"; 
-            echo "<p>" . $data['telephone'] . "</p>"; 
-            echo "<p>" . $data['email'] . "</p>"; 
-            echo "<br><br>";
+            echo " <div class='evenement'>
+                        <div class='evenementDescription'>
+                            <img style='width: 50px ; height:50px; border-radius:50%;' src='../photo/". $data['photo'] ."' alt='Photo du coach'>
+                            <h2>". $data['nom']." ". $data['prenom'] ."</h2>
+                            <p>".$data['ville']."</p>
+                            <p>Téléphone : ". $data['telephone'] ."</p>
+                            <p>Mail : " . $data['email'] ."</p>
+                            
+                            
+                        </div>
+                    </div>"; 
         }
+        echo "</div>";
     }
+
+    /* Salles */
     $sql = "SELECT * FROM salles WHERE nom LIKE '%$recherche%' OR adresse LIKE '%$recherche%' OR CAST(`capacite` AS CHAR) LIKE '%$recherche%' OR email LIKE '%$recherche%' OR telephone LIKE '%$recherche%'";
     $result = mysqli_query($db_handle, $sql);
     if($result != false && mysqli_num_rows($result) != 0 ){
-        echo "<h3>"."Les Salles correspondantes :"."</h3>";
+        echo "<h3 style='margin: 10px 5px 5px 5px;'>"."Les Salles correspondantes :"."</h3>";
+        echo "<div class='boxCours'>";
         $count += 1;
         while ($data = mysqli_fetch_assoc($result)) { 
-            echo "<p>". $data['nom'] . "</p>"; 
-            echo "<p>" . $data['adresse'] . "</p>";
-            echo "<p>" . $data['capacite'] . "</p>";
-            echo "<p>" . $data['telephone'] . "</p>"; 
-            echo "<p>" . $data['email'] . "</p>"; 
-            echo "<br><br>";
+            echo " <div class='evenement'>
+                        <div class='evenementDescription'>
+                            <h2>". $data['nom']."</h2>
+                            <p>".$data['adresse']."</p>
+                            <p>Capacité : ". $data['capacite'] ."</p>
+                            <p>Téléphone : ". $data['telephone'] ."</p>
+                            <p>Mail : " . $data['email'] ."</p>
+                            
+                            
+                        </div>
+                    </div>"; 
         }
+        echo "</div>";
+
     }
+
+
+    /* Sports */
+    $sql = "SELECT * FROM sport WHERE nom LIKE '%$recherche%' OR description LIKE '%$recherche%' OR CAST(`duree` AS CHAR) LIKE '%$recherche%' OR CAST(`date` AS CHAR) LIKE '%$recherche%'";
+    $result = mysqli_query($db_handle, $sql);
+    if($result != false && mysqli_num_rows($result) != 0 ){
+        echo "<h3 style='margin: 10px 5px 5px 5px;'>"."Les Sports correspondants :"."</h3>";
+        echo "<div class='boxCours'>";
+        $count += 1;
+        while ($data = mysqli_fetch_assoc($result)) { 
+            echo " <div class='evenement'>
+                        <div class='evenementDescription'>
+                            <h2>". $data['nom']."</h2>
+                            <p>".$data['description']."</p>
+                            <p>Durée : ". $data['duree'] ."</p>
+                            <p>Date : ". $data['date'] ."</p>
+                            
+                            
+                        </div>
+                    </div>"; 
+        }
+        echo "</div>";
+    }
+
+
+    /* Admins */
     $sql = "SELECT * FROM `admin` WHERE nom LIKE '%$recherche%' OR prenom LIKE '%$recherche%' OR ville LIKE '%$recherche%' OR CAST(`code_postal` AS CHAR) LIKE '%$recherche%' OR email LIKE '%$recherche%' OR telephone LIKE '%$recherche%'";
     $result = mysqli_query($db_handle, $sql);
     if($result != false && mysqli_num_rows($result) != 0 ){
@@ -129,6 +188,10 @@ if ($recherche != ""){
 else{echo"";}
 
 ?>
+
+</div>
+
+</div> 
 
 
 
