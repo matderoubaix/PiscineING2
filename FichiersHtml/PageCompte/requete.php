@@ -26,7 +26,7 @@
                 <a href="../PageRendez-vous/rendez-vous.html">RENDEZ-VOUS</a>
             </div>
             <div class="menu">
-                <a href="compte.html">VOTRE COMPTE</a>
+                <a href="compte.php">VOTRE COMPTE</a>
             </div>
         </div>
     </nav>
@@ -59,8 +59,8 @@
         $emailExistsQuery = "SELECT * FROM client WHERE email = '$email'";
         $emailExistsResult = $conn->query($emailExistsQuery);
         if ($emailExistsResult->num_rows > 0) {
-            echo "<h1>Erreur lors de la création du compte</h1>";
-            echo "L'email existe déjà, veuillez utiliser un autre email.";
+            header("Location: creecompte.php");
+            exit;
         } else {
             if (ISSET($_FILES['photo']['name']) AND !empty($_FILES['photo']['name'])) {
                 $image = $_FILES['photo']['name'];
@@ -86,12 +86,14 @@
             // Display the user's ID
             echo "Votre identifiant utilisateur est : " . $user_id;
             // Redirect to compte.html
-            header("Location: compte.html");
+            header("Location: compte.php");
             exit;
-            } else {
+            } 
+            else {
             echo "<h1>Erreur lors de la création du compte</h1>";
             echo "Veuillez réessayer";
-            header("Location: creecompte.html");
+            header("Location: creecompte.php");
+            exit;
             }
         }
         $conn->close();
@@ -111,7 +113,7 @@
                 <li><a href="../PageParcourir/parcourir.html">Parcourir</a></li>
                 <li><a href="../PageRecherche/recherche.html">Rechercher</a></li>
                 <li><a href="../PageRendez-vous/rendez-vous.html">Rendez-vous</a></li>
-                <li><a href="compte.html">Votre compte</a></li>
+                <li><a href="compte.php">Votre compte</a></li>
             </ul>
         </div>
         <div class="liens">

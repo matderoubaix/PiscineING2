@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="../../FichiersCss/style.css">
     <link rel="icon" href="../../images/iconLogo.png"/>
 <body>
+    <?php
+        session_start();
+        if (isset($_SESSION["email"])) {
+            header("Location: accueilcompte.php");
+            exit();
+        }
+        
+    ?>
     <nav>
 
         <img class="logo" src="../../images/logoSportify.png" alt="Logo de Sportify">
@@ -25,18 +33,18 @@
                 <a href="../PageRendez-vous/rendez-vous.html">RENDEZ-VOUS</a>
             </div>
             <div class="menu">
-                <a href="compte.html">VOTRE COMPTE</a>
+                <a href="compte.php">VOTRE COMPTE</a>
             </div>
         </div>
     </nav>
 
 
     <div class="section1">
-    <form action="" method="POST">
+    <form action="startsession.php" method="POST">
         Email :
-        <input type="text" id="userId" name="userId" placeholder = "Email"> <br>
+        <input type="text" id="userId" name="userId" placeholder = "Email" required> <br>
         Mot de passe :
-        <input type="password" id="passwd" name="passwd" placeholder = "Mot de passe"> <br>
+        <input type="password" id="passwd" name="passwd" placeholder = "Mot de passe" required> <br>
         <input type = "submit" value = "Se connecter">
     </form>
     <p>Pas de compte ? <a href = "creecompte.php"> Créer un compte </a></p>
@@ -56,7 +64,7 @@
                 <li><a href="../../PageParcourir/parcourir.html">Parcourir</a></li>
                 <li><a href="../../PageRecherche/recherche.html">Rechercher</a></li>
                 <li><a href="../../PageRendez-vous/rendez-vous.html">Rendez-vous</a></li>
-                <li><a href="../../PageCompte/compte.html">Votre compte</a></li>
+                <li><a href="../../PageCompte/compte.php">Votre compte</a></li>
             </ul>
         </div>
         <div class="liens">
@@ -66,7 +74,6 @@
                 <li><a href="tel:+33776691561">Appelez nous : +33776691561</a></li>
                 <li><a href="https://maps.app.goo.gl/p6xMkrBTmMQZojXu7">Écrivez nous ou venez nous rencontrer : <address>10 rue Sextius Michel, 75015 Paris, FRANCE</address></a></li>
             </ul>
-
         </div>
     </footer>
 

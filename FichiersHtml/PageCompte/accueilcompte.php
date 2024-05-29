@@ -30,42 +30,17 @@
             </div>
         </div>
     </nav>
-    <form action="requete.php" method="POST" enctype="multipart/form-data">
-        <h1>Créer un compte</h1>
-        <label for="Type"> Type de Compte </label>
-        <select name="type" id="type" required>
-            <option value="sportif">Sportif</option>
-            <option value="coach">Coach</option>
-        </select><br>
-        <label for="nom">Nom:</label>
-        <input type="text" id="nom" name="nom" required><br>
-
-        <label for="prenom">Prénom:</label>
-        <input type="text" id="prenom" name="prenom" required><br>
-
-        <label for="ville">Ville:</label>
-        <input type="text" id="ville" name="ville" required><br>
-
-        <label for="code_postal">Code Postal:</label>
-        <input type="text" id="code_postal" name="code_postal" required><br>
-
-        <label for="telephone">Téléphone:</label>
-        <input type="text" id="telephone" name="telephone" required><br>
-
-        <label for="carte_etudiant">Carte d'étudiant:</label>
-        <input type="text" id="carte_etudiant" name="carte_etudiant" required><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
-
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" required><br>
-
-        <label for="photo">Photo de profil:</label>
-        <input type="file" id="photo" name="photo" accept="image/png, image/jpeg"><br>  
-        <input type="submit" value="Submit">
+    <?php
+        session_start();
+        if (isset($_SESSION["email"])) {
+            echo "<h1>Bienvenue sur votre compte, " . $_SESSION["email"] . "</h1>";
+        } else {
+            header("Location: compte.php");
+        }
+    ?>
+    <form action="deconnexion.php" method="POST">
+        <input type="submit" value="Déconnexion">
     </form>
-    <p>Vous avez déjà un compte ? <a href="compte.php"> Connectez-vous </a></p>
     <footer>
         <div class="brand">
             <img class="logo" src="../../images/logoSportify.png" alt="Logo de Sportify">
