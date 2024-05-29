@@ -64,8 +64,10 @@
         } else {
             if (ISSET($_FILES['photo']['name']) AND !empty($_FILES['photo']['name'])) {
                 $image = $_FILES['photo']['name'];
+                $image_tmp2 = $_FILES['photo']['tmp_name'];
+                $image = pathinfo($image, PATHINFO_EXTENSION);
                 $image_tmp = $_FILES['photo']['tmp_name'];
-                $image_path = "../../photo/" .$email.$image;
+                $image_path = "../../photo/" .$email.".".$image;
                 move_uploaded_file($image_tmp, $image_path);
             } else {
                 $image_tmp2 = "photo.png";
