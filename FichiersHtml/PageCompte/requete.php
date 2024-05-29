@@ -62,17 +62,20 @@
             echo "<h1>Erreur lors de la création du compte</h1>";
             echo "L'email existe déjà, veuillez utiliser un autre email.";
         } else {
-            $info = pathinfo($image);
-            $image = ".".$info['extension'];
-            $image_tmp = $_FILES['photo']['tmp_name'];
-            $image_path = "../../photo/" .$email.$image;
-            move_uploaded_file($image_tmp, $image_path);
+            if (ISSET($_FILES['photo']['name']) AND !empty($_FILES['photo']['name'])) {
+                $image = $_FILES['photo']['name'];
+                $image_tmp = $_FILES['photo']['tmp_name'];
+                $image_path = "../../photo/" .$email.$image;
+                move_uploaded_file($image_tmp, $image_path);
+            } else {
+                $image_tmp2 = "photo.png";
+            }
             if ($type == "sportif") {
             $sql = "INSERT INTO client (nom, prenom, ville, code_postal, telephone, carte_etudiant, email, mdp ,photo)
-            VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$carte_etudiant', '$email', '$mdp', '$image')";
+            VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$carte_etudiant', '$email', '$mdp', '$image_tmp2')";
             } else {
             $sql = "INSERT INTO prof (nom, prenom, ville, code_postal, telephone, email, mdp ,photo)
-            VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$email', '$mdp' , '$image')";
+            VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$email', '$mdp' , '$image_tmp2')";
             }
             // Execute the SQL query
             $result = $conn->query($sql);
