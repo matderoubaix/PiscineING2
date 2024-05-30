@@ -221,8 +221,7 @@ animation-delay: 8s;
 .coachCard{
     display: flex;
     flex-direction: column-reverse;
-    /* justify-content: center; */
-    align-items: start;
+    align-items: center;
     color: #000000;
     font-family: 'Roboto', sans-serif;
     font-size: 1.5vw;
@@ -231,7 +230,7 @@ animation-delay: 8s;
     border-radius: 10px;
 
     box-shadow: -1px 10px 20px 0px rgba(0,0,0,0.58);
-    background-image: url("../images/coach.jpg");
+    /* background-image: url("../images/coach.jpg"); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -244,27 +243,56 @@ animation-delay: 8s;
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: start;
     color: #ffffff;
     font-family: 'Roboto', sans-serif;
     background-color: rgba(0, 0, 0, 0.6);
-    width: 70%;
-    height: 30%;
+    width: 90%;
+    min-height: 10%;
+    height: min-content;
     margin: 5%;
+    padding : 5px;
     border-radius: 4px;
 }
 
 .coachDescription h3{
     font-size: 1rem;
     font-weight: bold;
-    margin: 0 0 0 10px;
+    margin: 5px 2px 5px 10px;
 }
 
 .coachDescription p{
     font-size: 0.8rem;
+    margin: 0 0 0 10px;
+}
+
+.coachDescription div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     margin-top: 10px;
-    margin-left: 10px;
+}
+
+.coachDescription button{
+    width: max-content;
+    padding: 4%;
+    height: 20px;
+    color: #ffffff;
+    background-color: #007179;
+    border-radius: 5px;
+    border: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.coachDescription button:hover{
+    background-color: #002325;
 }
 
 

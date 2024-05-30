@@ -49,41 +49,108 @@
     <div class="section1">
         <h2>Discutez avec un de nos coachs professionnels</h2>
         <div class="coachCardContainer">
-            <div class="coachCard">
+            <div class="coachCard" style='background-image : url("../../photo/photo.png")'>
                 <div class="coachDescription">
-                    <h3>Jean-Pierre</h3>
-                    <h3>Segado</h3>
-                    <p>Coach d'informatique</p>
+                    <h3>Jean-Pierre Segado</h3>
+                    <p>Informatique</p>
+                    <div class="boutonsCoach">
+                        <form method="POST" action="../PageCompte/chat.php">
+                            <input type="hidden" name="prof_id" value="<?php echo $prof_id; ?>">
+                            <button type="submit">Discuter</button>
+                        </form>
+                        <button>Prendre rendez-vous</button>
+                    </div>  
                 </div>
             </div>
-            <div class="coachCard">
-                <div class="coachDescription">
-                    <h3>Jean-Pierre</h3>
-                    <h3>Segado</h3>
-                    <p>Coach d'informatique</p>
-                </div>
-            </div>
-            <div class="coachCard">
-                <div class="coachDescription">
-                    <h3>Jean-Pierre</h3>
-                    <h3>Segado</h3>
-                    <p>Coach d'informatique</p>
-                </div>
-            </div>
-            <div class="coachCard">
-                <div class="coachDescription">
-                    <h3>Jean-Pierre</h3>
-                    <h3>Segado</h3>
-                    <p>Coach d'informatique</p>
-                </div>
-            </div>
-            <div class="coachCard">
-                <div class="coachDescription">
-                    <h3>Jean-Pierre</h3>
-                    <h3>Segado</h3>
-                    <p>Coach d'informatique</p>
-                </div>
-            </div>
+            <?php
+                $servername = "localhost";
+                $username= "root";
+                $password= "";
+                $dbname = "sportify";
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+                $sql = "SELECT * FROM client WHERE typeCompte = 'prof'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+
+                    $count = 0;
+                    while($row = $result->fetch_assoc()) {
+                        if ($count >= 5) {
+                            break;
+                        }
+                        // Rest of the code for printing the coach card
+
+                        echo "<div style=\"background-image : url('../../photo/". $row['photo'] ."')\" class=\"coachCard\">";
+                        echo "<div class=\"coachDescription\">";
+                        echo "<h3>".$row["prenom"]." ".$row["nom"]."</h3>";
+
+
+                        // Get sport_ids for the current coach
+                        $coach_id = $row["id"];
+                        $sql_sportclient = "SELECT sport_id FROM sportclient WHERE client_id = $coach_id";
+                        $result_sportclient = $conn->query($sql_sportclient);
+
+                        if ($result_sportclient->num_rows > 0) {
+                            while($row_sportclient = $result_sportclient->fetch_assoc()) {
+                                $sport_id = $row_sportclient["sport_id"];
+
+                                // Get the sport name for the current sport_id
+                                $sql_sport = "SELECT nom FROM sport WHERE id = $sport_id";
+                                $result_sport = $conn->query($sql_sport);
+
+                                if ($result_sport->num_rows > 0) {
+                                    while($row_sport = $result_sport->fetch_assoc()) {
+                                        $sport_name = $row_sport["nom"];
+                                        // Output the sport name
+                                        echo "<p>".$sport_name."</p>";
+                                    }
+                                } else {
+                                    echo " ";
+                                }
+                            }
+                        } else {
+                            echo " ";
+                        }
+
+                        if (isset($_COOKIE["id"])){
+
+                        echo "<div class=\"boutonsCoach\">";
+
+
+                        echo "<form method=\"POST\" action=\"../PageCompte/chat.php\">
+                                <input type=\"hidden\" name=\"prof_id\" value=\"".$row["id"]."\">
+                                <button type='submit' method=\"POST\" action=\"../PageCompte/chat.php\">
+                                    Discuter
+                                </button>
+                            </form>";
+                        echo "<button type='submit'>Prendre rendez-vous</button>";
+                        echo "</div>";
+                    }  
+                        echo "</div>";
+                        echo "</div>";
+                        
+
+                        $count++;
+                    }
+                    
+                }
+                else {
+                    echo "0 results";
+                }
+                $conn->close();
+            
+            
+            
+            
+            
+            
+            
+            ?>
+
         </div>
         
 
