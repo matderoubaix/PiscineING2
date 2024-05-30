@@ -67,6 +67,10 @@
                 $username= "root";
                 $password= "";
                 $dbname = "sportify";
+                $testID = "Pas de cookie";
+
+                $testID = $_COOKIE['id'];
+                
                 // Create connection
                 $conn = new mysqli($servername, $username, $password, $dbname);
                 // Check connection
@@ -116,7 +120,9 @@
                             echo " ";
                         }
 
-                        if (isset($_COOKIE)){
+                        
+                        echo "<div style='font-size: 10px'>" . $testID . "</div>";
+                    
 
                         echo "<div class=\"boutonsCoach\">";
 
@@ -128,9 +134,9 @@
                                 </button>
                             </form>";
                         echo "<button type='submit'>Prendre rendez-vous</button>";
-                        echo "<div style='font-size: 5px'>".$_COOKIE["id"]."</div>";
                         echo "</div>";
-                    }  
+                     
+
                         echo "</div>";
                         echo "</div>";
                         
