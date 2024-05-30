@@ -84,7 +84,6 @@ if ($recherche != ""){
                             <h2>". $data['nom'] ."</h2>
                             <p>Le <b>". $data['date'] ."</b> pendant <b>" . $data['duree'] . "h </b></p>
                             <p>Animé par : <b>". $prof_prenom ." ". $prof_nom ."</b></p>
-                            <p>Cours de <b>" . $sport_id ." </b></p>
                             
                             
                         </div>
@@ -95,7 +94,7 @@ if ($recherche != ""){
 
 
     /* Coachs */
-    $sql = "SELECT * FROM client WHERE typeCompte = 'prof' AND nom LIKE '%$recherche%' OR prenom LIKE '%$recherche%' OR ville LIKE '%$recherche%' OR CAST(`code_postal` AS CHAR) LIKE '%$recherche%' OR email LIKE '%$recherche%' OR telephone LIKE '%$recherche%'";
+    $sql = "SELECT * FROM client WHERE typeCompte = 'prof' AND (nom LIKE '%$recherche%' OR prenom LIKE '%$recherche%' OR ville LIKE '%$recherche%' OR CAST(`code_postal` AS CHAR) LIKE '%$recherche%' OR email LIKE '%$recherche%' OR telephone LIKE '%$recherche%')";
     $result = mysqli_query($db_handle, $sql);
     if($result != false && mysqli_num_rows($result) != 0 ){
         echo "<h3 style='margin: 10px 5px 5px 5px;'>"."Les Coachs correspondants :"."</h3>";
@@ -179,7 +178,7 @@ else{echo"";}
 
 <footer>
         <div class="brand">
-            <img class="logo" src="../../images/logoSportify.png" alt="Logo de Sportify">
+            <img class="logo" src="../images/logoSportify.png" alt="Logo de Sportify">
             <hr>
             <p>© Copyrights. All rights reserved. 2024 Sportify.com</p>
         </div>
