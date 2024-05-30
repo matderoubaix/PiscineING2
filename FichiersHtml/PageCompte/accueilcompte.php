@@ -53,7 +53,7 @@
             }
             if ($_COOKIE["type"] == "prof") {
                 echo "
-                <form action=\"ajoutcour.php\" method=\"POST\" enctype=\"multipart/form-data\">
+                <form action=\"compte.php\" method=\"POST\" enctype=\"multipart/form-data\">
                     <h1 style = \"position : start ; margin-bottom: 3rem\">Créer un Cour</h1>
                     <label for=\"Type\"> Type de Cour </label><br>
                     <select name=\"sport\" id=\"sport\" required>";
@@ -70,25 +70,25 @@
                     <label for=\"newcate\">Nouveau sport:</label><br>
                     <input type=\"text\" id=\"newcate\" name=\"newcate\"><br>";
                 echo "<label for=\"nomCour\">Nom du Cour:</label><br>
-                    <input type=\"text\" id=\"nomCour\" name=\"nomCour\" required><br>
+                    <input type=\"text\" id=\"nomCour\" name=\"nomCour\" ><br>
 
                     <label for=\"description\">Description:</label><br>
-                    <input type=\"text\" id=\"description\" name=\"description\" required><br>
+                    <input type=\"text\" id=\"description\" name=\"description\" ><br>
 
                     <label for=\"date\">Date:</label><br>
-                    <input type=\"date\" id=\"date\" name=\"date\" required><br>
+                    <input type=\"date\" id=\"date\" name=\"date\" ><br>
 
                     <label for=\"heure\">Heure:</label><br>
-                    <input type=\"time\" id=\"heure\" name=\"heure\" required><br>
+                    <input type=\"time\" id=\"heure\" name=\"heure\" ><br>
 
                     <label for=\"duree\">Durée:</label><br>
-                    <input type=\"number\" id=\"duree\" name=\"duree\" required><br>
+                    <input type=\"number\" id=\"duree\" name=\"duree\" ><br>
 
                     <label for=\"prix\">Prix:</label><br>
-                    <input type=\"number\" id=\"prix\" name=\"prix\" required><br>
+                    <input type=\"number\" id=\"prix\" name=\"prix\" ><br>
 
                     <input type=\"submit\" value=\"Créer\">
-                </from>";
+                </form>";
             }
             else if ($_COOKIE["type"] == "client")
             {
@@ -99,11 +99,12 @@
                     while($row = $result->fetch_assoc()) {
                         echo '
                         <div class="compteboxcour">
-                            <form method="POST" action="../PageCompte/chat.php">
+                            <form method="POST" action="reservation.php">
                             <div class="compteboxCoursection">
                                     <h3>'.$row['nom'].'</h3>
-                                    <h3>'.$row['description'].'</h3> 
-                                    <input type="submit" name="'.$row['id'].'" value="reserver">
+                                    <h3>'.$row['description'].'</h3>
+                                    
+                                    <input type="submit" name="reserver" value="'.$row['id'].'">
                             </div>
                             </form>
                         </div>';
@@ -185,12 +186,9 @@
    <!--======= Upcoming Events =======-->
 
    
-            
-         
          <button onclick="window.location.href = 'rendez-vous.php';">Vos rendez-vous</button>
-    <form action="deconnexion.php" method="POST">
-        <input type="submit" value="Déconnexion">
-    </form>
+         <button onclick="window.location.href = 'deconnexion.php';">Déconnexions</button>
+   
     </div>
     <div class="conversations">
         <h1 class="vosMessages">Vos messages</h1>
