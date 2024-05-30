@@ -276,7 +276,7 @@ animation-delay: 8s;
     margin-top: 10px;
 }
 
-.coachDescription button{
+.coachDescription form{
     width: max-content;
     padding: 4%;
     height: 20px;
@@ -291,8 +291,14 @@ animation-delay: 8s;
     transition: all 0.3s ease;
 }
 
-.coachDescription button:hover{
+.coachDescription form:hover{
     background-color: #002325;
+}
+
+.coachDescription button{
+    color: #ffffff;
+    border: none;
+    background-color: transparent;
 }
 
 

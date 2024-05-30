@@ -49,27 +49,22 @@
     <div class="section1">
         <h2>Discutez avec un de nos coachs professionnels</h2>
         <div class="coachCardContainer">
-            <div class="coachCard" style='background-image : url("../../photo/photo.png")'>
-                <div class="coachDescription">
-                    <h3>Jean-Pierre Segado</h3>
-                    <p>Informatique</p>
-                    <div class="boutonsCoach">
-                        <form method="POST" action="../PageCompte/chat.php">
-                            <input type="hidden" name="prof_id" value="<?php echo $prof_id; ?>">
-                            <button type="submit">Discuter</button>
-                        </form>
-                        <button>Prendre rendez-vous</button>
-                    </div>  
-                </div>
-            </div>
+            
+
+
+
+
+
             <?php
                 $servername = "localhost";
                 $username= "root";
                 $password= "";
                 $dbname = "sportify";
-                $testID = "Pas de cookie";
+                $testID = 0;
 
-                $testID = $_COOKIE['id'];
+                if (isset($_COOKIE['id'])){
+                    $testID = $_COOKIE['id'];
+                }
                 
                 // Create connection
                 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -83,7 +78,7 @@
 
                     $count = 0;
                     while($row = $result->fetch_assoc()) {
-                        if ($count >= 5) {
+                        if ($count >= 6) {
                             break;
                         }
                         // Rest of the code for printing the coach card
@@ -120,21 +115,29 @@
                             echo " ";
                         }
 
-                        
-                        echo "<div style='font-size: 10px'>" . $testID . "</div>";
-                    
+
+
+                        if ($testID != 0){
 
                         echo "<div class=\"boutonsCoach\">";
 
 
                         echo "<form method=\"POST\" action=\"../PageCompte/chat.php\">
                                 <input type=\"hidden\" name=\"prof_id\" value=\"".$row["id"]."\">
-                                <button type='submit' method=\"POST\" action=\"../PageCompte/chat.php\">
+                                <button type='submit'>
                                     Discuter
                                 </button>
                             </form>";
-                        echo "<button type='submit'>Prendre rendez-vous</button>";
+
+                        echo "<form method=\"POST\" action=\"../PageCompte/rendez-vous.php\">
+                                <input type=\"hidden\" name=\"prof_id\" value=\"".$row["id"]."\">
+                                <button type='submit'>
+                                    Prendre rendez-vous
+                                </button>
+                            </form>";
                         echo "</div>";
+
+                        }
                      
 
                         echo "</div>";
