@@ -87,9 +87,6 @@
                     <label for=\"prix\">Prix:</label><br>
                     <input type=\"number\" id=\"prix\" name=\"prix\" required><br>
 
-                    <label for=\"capacite\">Capacité:</label><br>
-                    <input type=\"number\" id=\"capacite\" name=\"capacite\" required><br>
-
                     <input type=\"submit\" value=\"Créer\">
                 </from>";
             }
@@ -97,7 +94,7 @@
             {
                 $sql = "SELECT * FROM `Cours` WHERE id IN (SELECT cours_id FROM Reservation WHERE client_id != ".$_COOKIE["id"].")";
                 $result = $conn->query($sql);
-                echo "<h1>Les cours disponibles</h1>";
+                echo "<h1 style = \" position: sticky; background-color : white\" >Les cours disponibles</h1>";
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         echo '

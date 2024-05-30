@@ -731,11 +731,13 @@ animation-delay: 8s;
 .compteEvenement{
     display: flex;    
     flex-direction: column;
+    
     align-items: center;
     justify-content:space-between;
     color: #000000;
     font-family: 'Roboto', sans-serif;
     overflow: scroll;
+    max-height: 50rem;
     font-size: 1.5vw;
     width: 30%;
     border-radius: 10px;
@@ -885,12 +887,8 @@ hr{
     font-family: 'Roboto', sans-serif;
     font-size: 1vw;
     width: 100%;
-    height: min-content;
-    max-height: 200px;
-    overflow: scroll;
-    
+    height: min-content;    
     background: linear-gradient(70deg, #e4e4e4, rgb(255, 255, 255));
-          
     border-bottom: 1px solid #bebebe;
 }
 
@@ -918,7 +916,8 @@ hr{
     display: flex;
     flex-direction: column;
     justify-content: left;
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
     align-items: center;
     width: 30%;
     height: min-content;
