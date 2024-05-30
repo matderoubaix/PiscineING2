@@ -70,12 +70,13 @@ if ($recherche != ""){
         $count += 1;
         while ($data = mysqli_fetch_assoc($result)) {
             $prof_id = $data['prof_id'];
-            $sql_prof = "SELECT nom, prenom FROM prof WHERE id = $prof_id";
+            $sql_prof = "SELECT nom, prenom FROM client WHERE typeCompte = 'prof' AND id = $prof_id";
             $result_prof = mysqli_query($db_handle, $sql_prof);
             if($result_prof != false && mysqli_num_rows($result_prof) != 0 ){
                 $prof_data = mysqli_fetch_assoc($result_prof);
                 $prof_nom = $prof_data['nom'];
                 $prof_prenom = $prof_data['prenom'];
+                $sport_id = $data['sport_id'];
             }
             echo " <div class='evenement'>
                         <div class='evenementDescription'>
@@ -83,7 +84,7 @@ if ($recherche != ""){
                             <h2>". $data['nom'] ."</h2>
                             <p>Le <b>". $data['date'] ."</b> pendant <b>" . $data['duree'] . "h </b></p>
                             <p>Animé par : <b>". $prof_prenom ." ". $prof_nom ."</b></p>
-                            <p>" . $data['description'] ."</p>
+                            <p>Cours de <b>" . $sport_id ." </b></p>
                             
                             
                         </div>
@@ -94,7 +95,7 @@ if ($recherche != ""){
 
 
     /* Coachs */
-    $sql = "SELECT * FROM prof WHERE nom LIKE '%$recherche%' OR prenom LIKE '%$recherche%' OR ville LIKE '%$recherche%' OR CAST(`code_postal` AS CHAR) LIKE '%$recherche%' OR email LIKE '%$recherche%' OR telephone LIKE '%$recherche%'";
+    $sql = "SELECT * FROM client WHERE typeCompte = 'prof' AND nom LIKE '%$recherche%' OR prenom LIKE '%$recherche%' OR ville LIKE '%$recherche%' OR CAST(`code_postal` AS CHAR) LIKE '%$recherche%' OR email LIKE '%$recherche%' OR telephone LIKE '%$recherche%'";
     $result = mysqli_query($db_handle, $sql);
     if($result != false && mysqli_num_rows($result) != 0 ){
         echo "<h3 style='margin: 10px 5px 5px 5px;'>"."Les Coachs correspondants :"."</h3>";
@@ -142,7 +143,7 @@ if ($recherche != ""){
 
 
     /* Sports */
-    $sql = "SELECT * FROM sport WHERE nom LIKE '%$recherche%' OR description LIKE '%$recherche%' OR CAST(`duree` AS CHAR) LIKE '%$recherche%' OR CAST(`date` AS CHAR) LIKE '%$recherche%'";
+    $sql = "SELECT * FROM sport WHERE nom LIKE '%$recherche%' OR description LIKE '%$recherche%'";
     $result = mysqli_query($db_handle, $sql);
     if($result != false && mysqli_num_rows($result) != 0 ){
         echo "<h3 style='margin: 10px 5px 5px 5px;'>"."Les Sports correspondants :"."</h3>";
@@ -153,32 +154,10 @@ if ($recherche != ""){
                         <div class='evenementDescription'>
                             <h2>". $data['nom']."</h2>
                             <p>".$data['description']."</p>
-                            <p>Durée : ". $data['duree'] ."</p>
-                            <p>Date : ". $data['date'] ."</p>
-                            
-                            
                         </div>
                     </div>"; 
         }
         echo "</div>";
-    }
-
-
-    /* Admins */
-    $sql = "SELECT * FROM `admin` WHERE nom LIKE '%$recherche%' OR prenom LIKE '%$recherche%' OR ville LIKE '%$recherche%' OR CAST(`code_postal` AS CHAR) LIKE '%$recherche%' OR email LIKE '%$recherche%' OR telephone LIKE '%$recherche%'";
-    $result = mysqli_query($db_handle, $sql);
-    if($result != false && mysqli_num_rows($result) != 0 ){
-        echo "<h3>"."Les Admins correspondants :"."</h3>";
-        $count += 1;
-        while ($data = mysqli_fetch_assoc($result)) { 
-            echo "<p>". $data['nom'] . "</p>"; 
-            echo "<p>" . $data['prenom'] . "</p>";
-            echo "<p>" . $data['ville'] . "</p>";
-            echo "<p>" . $data['code_postal'] . "</p>"; 
-            echo "<p>" . $data['telephone'] . "</p>"; 
-            echo "<p>" . $data['email'] . "</p>"; 
-            echo "<br><br>";
-        }
     }
 
     if($count == 0){

@@ -3,6 +3,8 @@ DELETE FROM `Client`;
 DELETE FROM `Sport`;
 DELETE FROM `SportClient`;
 DELETE FROM `Chat`;
+DELETE FROM `Cours`;
+DELETE FROM `Reservation`;
 -- Insertion des valeurs de test dans la table `Client`
 INSERT INTO `Client` (`nom`, `prenom`, `ville`, `code_postal`, `telephone`, `carte_etudiant`, `email`, `mdp`, `photo`, `typeCompte`)
 VALUES 
@@ -50,16 +52,16 @@ VALUES
 
 INSERT INTO `Cours` (`nom`, `description`, `date`, `heure`, `prof_id`, `duree`, `prix`, `sport_id`)
 VALUES 
-    ('Yoga Class', 'Beginner yoga class', '2021-01-01', '10:00:00', 1, 58, 10, 1),
-    ('Pilates Class', 'Intermediate pilates class', '2021-01-02', '11:00:00', 1, 58, 15, 2),
-    ('Zumba Class', 'Advanced zumba class', '2021-01-03', '12:00:00', 1, 58, 20, 3),
-    ('Boxing Class', 'Beginner boxing class', '2021-01-04', '13:00:00', 1, 58, 25, 4),
-    ('Cycling Class', 'Intermediate cycling class', '2021-01-05', '14:00:00', 1, 58, 30, 5),
-    ('Swimming Class', 'Advanced swimming class', '2021-01-06', '15:00:00', 1, 58, 35, 6),
-    ('Running Class', 'Beginner running class', '2021-01-07', '16:00:00', 1, 58, 40, 7),
-    ('Weightlifting Class', 'Intermediate weightlifting class', '2021-01-08', '17:00:00', 1, 58, 45, 8),
-    ('Martial Arts Class', 'Advanced martial arts class', '2021-01-09', '18:00:00', 1, 58, 50, 9),
-    ('Dance Class', 'Beginner dance class', '2021-01-10', '19:00:00', 1, 58, 55, 10);
+    ('Yoga Class', 'Beginner yoga class', '2021-01-01', '10:00:00', 11, 58, 10, 1),
+    ('Pilates Class', 'Intermediate pilates class', '2021-01-02', '11:00:00', 11, 58, 15, 2),
+    ('Zumba Class', 'Advanced zumba class', '2021-01-03', '12:00:00', 11, 58, 20, 3),
+    ('Boxing Class', 'Beginner boxing class', '2021-01-04', '13:00:00', 11, 58, 25, 4),
+    ('Cycling Class', 'Intermediate cycling class', '2021-01-05', '14:00:00', 11, 58, 30, 5),
+    ('Swimming Class', 'Advanced swimming class', '2021-01-06', '15:00:00', 11, 58, 35, 6),
+    ('Running Class', 'Beginner running class', '2021-01-07', '16:00:00', 11, 58, 40, 7),
+    ('Weightlifting Class', 'Intermediate weightlifting class', '2021-01-08', '17:00:00', 11, 58, 45, 8),
+    ('Martial Arts Class', 'Advanced martial arts class', '2021-01-09', '18:00:00', 11, 58, 50, 9),
+    ('Dance Class', 'Beginner dance class', '2021-01-10', '19:00:00', 11, 58, 55, 10);
     
 INSERT INTO `Reservation` (`client_id`, `cours_id`)
 VALUES 
