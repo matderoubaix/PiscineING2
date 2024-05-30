@@ -56,6 +56,10 @@ if (!$db_found) {
     echo "No connection";
 }
 
+if (isset($_COOKIE['id'])){
+    $testID = $_COOKIE['id'];
+}
+
 $recherche = isset($_POST["recherche"])? $_POST["recherche"] : "";
 $count = 0;
 if ($recherche != ""){
@@ -107,11 +111,31 @@ if ($recherche != ""){
                             <h2>". $data['nom']." ". $data['prenom'] ."</h2>
                             <p>".$data['ville']."</p>
                             <p>Téléphone : ". $data['telephone'] ."</p>
-                            <p>Mail : " . $data['email'] ."</p>
+                            <p>Mail : " . $data['email'] ."</p>";
+                            if ($testID != 0){
+
+                                echo "<div class=\"boutonsCoach\">";
+        
+        
+                                echo "<form method=\"POST\" action=\"../PageCompte/chat.php\">
+                                        <input type=\"hidden\" name=\"prof_id\" value=\"".$data["id"]."\">
+                                        <button type='submit'>
+                                            Discuter
+                                        </button>
+                                    </form>";
+        
+                                echo "<form method=\"POST\" action=\"../PageCompte/rendez-vous.php\">
+                                        <input type=\"hidden\" name=\"prof_id\" value=\"".$data["id"]."\">
+                                        <button type='submit'>
+                                            Prendre rendez-vous
+                                        </button>
+                                    </form>";
+                                echo "</div>";
+        
+                                }
                             
-                            
-                        </div>
-                    </div>"; 
+                        echo"</div>".
+                    "</div>"; 
         }
         echo "</div>";
     }
