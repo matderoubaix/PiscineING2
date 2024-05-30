@@ -26,7 +26,7 @@
                 <a href="../FichiersHtml/PageRendez-vous/rendez-vous.html">RENDEZ-VOUS</a>
             </div>
             <div class="menu">
-                <a href="../FichiersHtml/PageCompte/compte.html">VOTRE COMPTE</a>
+                <a href="../FichiersHtml/PageCompte/compte.php">VOTRE COMPTE</a>
             </div>
         </div>
     </nav>
@@ -211,7 +211,7 @@ else{echo"";}
                 <li><a href="../PageParcourir/parcourir.html">Parcourir</a></li>
                 <li><a href="recherche.html">Rechercher</a></li>
                 <li><a href="../PageRendez-vous/rendez-vous.html">Rendez-vous</a></li>
-                <li><a href="../PageCompte/compte.html">Votre compte</a></li>
+                <li><a href="../PageCompte/compte.php">Votre compte</a></li>
             </ul>
         </div>
         <div class="liens">
