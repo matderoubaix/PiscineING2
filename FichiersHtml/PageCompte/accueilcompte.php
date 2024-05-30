@@ -51,7 +51,7 @@
             echo "<img src=\"../../images/logoSportify.png\" alt=\"Logo de Sportify\" style = \"height: 10rem;\"><br>";
             echo "<div class=\"sectionCompte\">";
             echo "<div class=\"infoCompte\">";
-            echo "<img src=\"../../photo/".$_COOKIE["photo"]."\"alt=\"Photo de profil\" style = \"width: 10rem; height: 10rem;\"><br>";
+            echo "<img src=\"../../photo/".$_COOKIE["photo"]."\"alt=\"Photo de profil\" style = \"width: 10rem; height: 10rem; border-radius: 50%;\"><br>";
             echo "<h1>".$_COOKIE["nom"]." ".$_COOKIE["prenom"]."<br></h1>";
             echo "</div>";
             echo "<div class=\"infoCompte\">";
@@ -125,7 +125,17 @@
     <div class="conversations">
         <h1 class="vosMessages">Vos messages</h1>
         <?php
-        $sql = "SELECT * FROM `Client` WHERE `id`!= ".$_COOKIE["id"];
+        $sql = "SELECT DISTINCT `Client`.*
+        FROM `Client`
+        JOIN `Chat` ON `Client`.`id` = `Chat`.`emetteur_id`
+        WHERE `Chat`.`recepteur_id` = ".$_COOKIE["id"]."
+        
+        UNION
+        
+        SELECT DISTINCT `Client`.*
+        FROM `Client`
+        JOIN `Chat` ON `Client`.`id` = `Chat`.`recepteur_id`
+        WHERE `Chat`.`emetteur_id` = ". $_COOKIE["id"];
         $result = $conn->query($sql);
         while ($data = mysqli_fetch_assoc($result)) {
             echo '<form method="POST" action="../PageCompte/chat.php">
