@@ -120,14 +120,14 @@ if ($recherche != ""){
                                 echo "<div class=\"boutonsCoach\">";
         
         
-                                echo "<form method=\"POST\" action=\"../PageCompte/chat.php\">
+                                echo "<form method=\"POST\" action=\"../FichiersHtml/PageCompte/chat.php\">
                                         <input type=\"hidden\" name=\"prof_id\" value=\"".$data["id"]."\">
                                         <button type='submit'>
                                             Discuter
                                         </button>
                                     </form>";
         
-                                echo "<form method=\"POST\" action=\"../PageCompte/rendez-vous.php\">
+                                echo "<form method=\"POST\" action=\"../FichiersHtml/PageRendez-vous/rendezvous.php\">
                                         <input type=\"hidden\" name=\"prof_id\" value=\"".$data["id"]."\">
                                         <button type='submit'>
                                             Prendre rendez-vous

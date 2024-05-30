@@ -31,9 +31,99 @@
         </div>
     </nav>
 
+    <div class="currentChat">
 
-    
+    <?php
 
+        $database = "sportify";
+        $db_handle = mysqli_connect('localhost', 'root', '');
+        $db_found = mysqli_select_db($db_handle, $database);
+
+        $utilisateur_id = $_COOKIE['id'];
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            if (isset($_POST['prof_id'])){
+                $prof_id = $_POST['prof_id'];
+            }
+            else {
+                echo "No professor selected.";
+                exit();
+            }
+
+
+        } else {
+            echo "Invalid request method.";
+            exit();
+        }
+
+        // Retrieve professor information
+        $sql = "SELECT * FROM client WHERE id = $prof_id";
+        $result = mysqli_query($db_handle, $sql);
+        $data = mysqli_fetch_assoc($result);
+        $prof_nom = $data['nom'];
+        $prof_prenom = $data['prenom'];
+        $prof_photo = $data['photo'];
+
+        echo '<div class="hautDePage">';
+        echo '<div><a style="text-decoration: none; color:black; font-size: 0.7 rem;" href="../PageCompte/accueilcompte.php">Retour</a></div>';
+        echo '<div style="display :flex; flex-direction: row; margin-bottom: 10px;">';
+        echo '<img style="width: 50px ; height:50px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius:50%;" src="../../photo/'.$prof_photo.'" alt="Photo coach">';
+        echo '<h1 style="margin: 2%;">'.$prof_prenom.' '.$prof_nom.'</h1>';
+        echo '</div>';
+        echo '</div>';
+
+        echo '<div class="emploiDuTemps">';
+        echo '<div class="tableau>
+                <div class="joursSemaine">
+                    <div class="jour">Lundi</div>
+                    <div class="jour">Mardi</div>
+                    <div class="jour">Mercredi</div>
+                    <div class="jour">Jeudi</div>
+                    <div class="jour">Vendredi</div>
+                    <div class="jour">Samedi</div>
+                    <div class="jour">Dimanche</div>
+                </div>
+        ';
+
+        if ($db_found) {
+            $heure = 8;
+            // 0 = lundi, 1 = mardi, 2 = mercredi, 3 = jeudi, 4 = vendredi, 5 = samedi, 6 = dimanche
+            while ($data = mysqli_fetch_assoc($result)) {
+
+                if ($heure == 20) {
+                    break;
+                }
+                echo '<div class="ligneHoraires">';
+                for ($jour = 0; $jour < 7; $jour++) {
+                    $chercher_jour = "SELECT * FROM cours WHERE prof_id = $prof_id AND jour = $jour AND heure = $heure";
+                    $result = mysqli_query($db_handle, $sql);
+                    $data = mysqli_fetch_assoc($result);
+                    if ($data) {
+                        echo '<div class="caseHoraire">';
+                        echo '<p>'.$data['nom'].'</p>';
+                        echo '</div>';
+                    } else {
+                        echo '<div class="caseHoraire">';
+                        echo '</div>';
+                    }
+                }
+                echo '</div>';
+                $heure++;
+            }
+        } else {
+            echo "Database not found";
+        }
+
+        echo '</div>';
+
+        echo '</div>';
+
+        // Close the database connection
+        mysqli_close($db_handle);
+    ?>
+
+    </div>
 
 
     
