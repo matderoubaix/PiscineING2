@@ -267,7 +267,7 @@ animation-delay: 8s;
     margin: 0 0 0 10px;
 }
 
-.coachDescription div{
+.coachDescription .boutonsCoach{
     width: 100%;
     display: flex;
     flex-direction: row;
