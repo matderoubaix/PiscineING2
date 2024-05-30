@@ -11,6 +11,11 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+DROP DATABASE IF EXISTS `sportify`;
+CREATE DATABASE `sportify`;
+
+-- Path: base.sql
+USE `sportify`;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -151,16 +156,16 @@ CREATE TABLE IF NOT EXISTS `cours` (
 --
 
 INSERT INTO `cours` (`id`, `nom`, `description`, `date`, `heure`, `duree`, `prof_id`, `prix`, `sport_id`) VALUES
-(1, 'Yoga Class', 'Beginner yoga class', '2021-01-01', '10:00:00', 58, 1, 10, 1),
-(2, 'Pilates Class', 'Intermediate pilates class', '2021-01-02', '11:00:00', 58, 1, 15, 2),
-(3, 'Zumba Class', 'Advanced zumba class', '2021-01-03', '12:00:00', 58, 1, 20, 3),
-(4, 'Boxing Class', 'Beginner boxing class', '2021-01-04', '13:00:00', 58, 1, 25, 4),
-(5, 'Cycling Class', 'Intermediate cycling class', '2021-01-05', '14:00:00', 58, 1, 30, 5),
-(6, 'Swimming Class', 'Advanced swimming class', '2021-01-06', '15:00:00', 58, 1, 35, 6),
-(7, 'Running Class', 'Beginner running class', '2021-01-07', '16:00:00', 58, 1, 40, 7),
-(8, 'Weightlifting Class', 'Intermediate weightlifting class', '2021-01-08', '17:00:00', 58, 1, 45, 8),
-(9, 'Martial Arts Class', 'Advanced martial arts class', '2021-01-09', '18:00:00', 58, 1, 50, 9),
-(10, 'Dance Class', 'Beginner dance class', '2021-01-10', '19:00:00', 58, 1, 55, 10);
+(1, 'Yoga Class', 'Beginner yoga class', '2021-01-01', '10:00:00', 58, 11, 10, 1),
+(2, 'Pilates Class', 'Intermediate pilates class', '2021-01-02', '11:00:00', 58, 11, 15, 2),
+(3, 'Zumba Class', 'Advanced zumba class', '2021-01-03', '12:00:00', 58, 11, 20, 3),
+(4, 'Boxing Class', 'Beginner boxing class', '2021-01-04', '13:00:00', 58, 11, 25, 4),
+(5, 'Cycling Class', 'Intermediate cycling class', '2021-01-05', '14:00:00', 58, 11, 30, 5),
+(6, 'Swimming Class', 'Advanced swimming class', '2021-01-06', '15:00:00', 58, 11, 35, 6),
+(7, 'Running Class', 'Beginner running class', '2021-01-07', '16:00:00', 58, 11, 40, 7),
+(8, 'Weightlifting Class', 'Intermediate weightlifting class', '2021-01-08', '17:00:00', 58, 11, 45, 8),
+(9, 'Martial Arts Class', 'Advanced martial arts class', '2021-01-09', '18:00:00', 58, 11, 50, 9),
+(10, 'Dance Class', 'Beginner dance class', '2021-01-10', '19:00:00', 58, 11, 55, 10);
 
 -- --------------------------------------------------------
 

@@ -8,7 +8,6 @@
         $heure = $_POST["heure"];
         $duree = $_POST["duree"];
         $prix = $_POST["prix"];
-        $capacite = $_POST["capacite"];
         $id = $_COOKIE["id"];
         $servername = "localhost";
         $username = "root";
@@ -20,8 +19,8 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $sql = "INSERT INTO `Cour` (`nom`, `description`, `date`, `heure`, `duree`, `prix`, `capacite`, `id_sport`, `id_client`) 
-        VALUES ('$nom', '$description', '$date', '$heure', '$duree', '$prix', '$capacite', '$type', '$id')";
+        $sql = "INSERT INTO `Cours` (`nom`, `description`, `date`, `heure`, `duree`, `prix`, `sport_id`, `prof_id`) 
+        VALUES ('$nom', '$description', '$date', '$heure', '$duree', '$prix', '$type', '$id')";
         $conn->query($sql);
         header("Location: accueilcompte.php");
     }
