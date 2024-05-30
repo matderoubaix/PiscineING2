@@ -296,6 +296,7 @@ animation-delay: 8s;
 }
 
 .coachDescription button{
+    cursor: pointer;
     color: #ffffff;
     border: none;
     background-color: transparent;

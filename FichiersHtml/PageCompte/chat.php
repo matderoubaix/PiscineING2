@@ -79,7 +79,7 @@
         echo '<div class="hautDePage">';
         echo '<div><a style="text-decoration: none; color:black; font-size: 0.7 rem;" href="../PageCompte/accueilcompte.php">Retour</a></div>';
         echo '<div style="display :flex; flex-direction: row; margin-bottom: 10px;">';
-        echo '<img style="width: 50px ; height:50px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius:50%;" src="../../images/coach.jpg" alt="Photo coach">';
+        echo '<img style="width: 50px ; height:50px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius:50%;" src="../../photo/'.$prof_photo.'" alt="Photo coach">';
         echo '<h1 style="margin: 2%;">'.$prof_prenom.' '.$prof_nom.'</h1>';
         echo '</div>';
         echo '</div>';
