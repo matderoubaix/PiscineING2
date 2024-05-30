@@ -322,7 +322,7 @@ animation-delay: 8s;
     color: #000000;
     font-family: 'Roboto', sans-serif;
     font-size: 1.5vw;
-    width: 100%;
+    width: max-content;
     height: 200px;
     border-radius: 10px;
 
@@ -333,6 +333,7 @@ animation-delay: 8s;
 
 .evenementDescription{
     margin: 20px;
+    width: max-content;
 }
 
 .evenementDescription h2{
@@ -1049,8 +1050,10 @@ hr{
     flex-direction: row;
     justify-content: start;
     align-items: start;
-    width: max-content;
+    width: 100%;
+    /* width: max-content; */
     height: min-content;
+    overflow-x: scroll;
 }
 
 /* page parcourir */
