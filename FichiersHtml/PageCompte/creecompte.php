@@ -35,7 +35,7 @@
     <form action="creecompte.php" method="POST" enctype="multipart/form-data">
         <label for="Type"> Type de Compte </label><br>
         <select name="type" id="type" required>
-            <option value="sportif">Sportif</option>
+            <option value="client">Sportif</option>
             <option value="coach">Coach</option>
         </select><br>
         <label for="nom">Nom:</label><br>

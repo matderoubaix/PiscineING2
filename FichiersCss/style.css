@@ -481,7 +481,6 @@ animation-delay: 8s;
     display: flex;
     flex-direction: row;
     justify-content: right;
-    margin-left: 30rem;
     
  }
  .today-box {
@@ -694,8 +693,63 @@ animation-delay: 8s;
  }
  
 
-
-
+.compteEvenement{
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-between;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    overflow: scroll;
+    font-size: 1.5vw;
+    width: 30%;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.compteEvenement select{
+    font-size: 1rem;
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Roboto', sans-serif;
+    color: #007179;
+    margin: 0 0 0 10px;
+    border: none;
+    border-bottom: 1px solid #007179;
+    outline: none;
+    width: 80%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.compteEvenement label{
+    font-size: 1rem;
+    font-weight: lighter;
+    font-style: italic;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 0 0 10px;
+}
+.compteEvenement input{
+    font-size: 1rem;
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Roboto', sans-serif;
+    color: #007179;
+    margin: 0 0 0 10px;
+    border: none;
+    border-bottom: 1px solid #007179;
+    outline: none;
+    width: 80%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.compteEvenement h1{
+    font-size: 2rem;
+    font-weight: lighter;
+    
+    margin: 0 0 0 10px;
+}
 
 
 
@@ -786,7 +840,44 @@ hr{
 .vosMessages{
     font-size: 2rem;
 }
+.compteboxcour{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1vw;
+    width: 100%;
+    height: min-content;
+    max-height: 200px;
+    overflow: scroll;
+    
+    background: linear-gradient(70deg, #e4e4e4, rgb(255, 255, 255));
+          
+    border-bottom: 1px solid #bebebe;
+}
 
+.compteboxCoursection
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5vw;
+    width: 100%;
+    height: 10%;
+    height: min-content;
+    
+}
+.compteboxCoursection h3{
+    font-size: 1rem;
+    font-weight: lighter;
+    margin: 0 0 20px 0;
+}
 
 .conversations{
     display: flex;

@@ -6,7 +6,14 @@
     <title>Page d'accueil - Sportify</title>
     <link rel="stylesheet" href="../../FichiersCss/style.css">
     <link rel="icon" href="../../images/iconLogo.png"/>
-    
+    <script>
+        function allowMessage() {
+            document.getElementById("newcate").disabled = false;
+        }
+        function disallowMessage() {
+            document.getElementById("newcate").disabled = true;
+        }
+    </script>
 </head>
 <body>
     <nav>
@@ -32,21 +39,87 @@
         </div>
     </nav>
     <div class="compteComtainer">
+    <div class="compteEvenement">
+        <?php
+            $servername = "localhost";
+            $username= "root";
+            $password= "";
+            $dbname = "sportify";
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            if ($_COOKIE["type"] == "prof") {
+                echo "
+                <form action=\"ajoutcour.php\" method=\"POST\" enctype=\"multipart/form-data\">
+                    <h1 style = \"position : start ; margin-bottom: 3rem\">Créer un Cour</h1>
+                    <label for=\"Type\"> Type de Cour </label><br>
+                    <select name=\"sport\" id=\"sport\" required>";
+                    echo "<option value=\"Autre\" onclick = allowMessage() >Autre</option>";
+                $sql = "SELECT * FROM `Sport`";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<option value=\"".$row["id"]."\"onclick = disallowMessage()>".$row["nom"]."</option>";
+                    }
+                }
+                echo"
+                    </select><br>
+                    <label for=\"newcate\">Nouveau sport:</label><br>
+                    <input type=\"text\" id=\"newcate\" name=\"newcate\"><br>";
+                echo "<label for=\"nomCour\">Nom du Cour:</label><br>
+                    <input type=\"text\" id=\"nomCour\" name=\"nomCour\" required><br>
+
+                    <label for=\"description\">Description:</label><br>
+                    <input type=\"text\" id=\"description\" name=\"description\" required><br>
+
+                    <label for=\"date\">Date:</label><br>
+                    <input type=\"date\" id=\"date\" name=\"date\" required><br>
+
+                    <label for=\"heure\">Heure:</label><br>
+                    <input type=\"time\" id=\"heure\" name=\"heure\" required><br>
+
+                    <label for=\"duree\">Durée:</label><br>
+                    <input type=\"number\" id=\"duree\" name=\"duree\" required><br>
+
+                    <label for=\"prix\">Prix:</label><br>
+                    <input type=\"number\" id=\"prix\" name=\"prix\" required><br>
+
+                    <label for=\"capacite\">Capacité:</label><br>
+                    <input type=\"number\" id=\"capacite\" name=\"capacite\" required><br>
+
+                    <input type=\"submit\" value=\"Créer\">
+                </from>";
+            }
+            else if ($_COOKIE["type"] == "client")
+            {
+                $sql = "SELECT * FROM `Cours` WHERE id IN (SELECT cours_id FROM Reservation WHERE client_id != ".$_COOKIE["id"].")";
+                $result = $conn->query($sql);
+                echo "<h1>Les cours disponibles</h1>";
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo '
+                        <div class="compteboxcour">
+                            <form method="POST" action="../PageCompte/chat.php">
+                            <div class="compteboxCoursection">
+                                    <h3>'.$row['nom'].'</h3>
+                                    <h3>'.$row['description'].'</h3> 
+                                    <input type="submit" name="'.$row['id'].'" value="reserver">
+                            </div>
+                            </form>
+                        </div>';
+                    }
+                }
+            }
+    
+    ?>
+    </div>
     <div class="compte">
     <?php
-        $servername = "localhost";
-        $username= "root";
-        $password= "";
-        $dbname = "sportify";
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
         $sql = "SELECT * FROM cours WHERE id IN (SELECT cours_id FROM Reservation WHERE client_id = ".$_COOKIE["id"].")";
         $result = $conn->query($sql);
-        
         if (isset($_COOKIE["email"])) {
             echo "<img src=\"../../images/logoSportify.png\" alt=\"Logo de Sportify\" style = \"height: 10rem;\"><br>";
             echo "<div class=\"sectionCompte\">";
