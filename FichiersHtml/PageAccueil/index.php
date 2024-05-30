@@ -129,7 +129,7 @@
                                 </button>
                             </form>";
 
-                        echo "<form method=\"POST\" action=\"../PageCompte/rendez-vous.php\">
+                        echo "<form method=\"POST\" action=\"../PageRendez-vous/rendezvous.php\">
                                 <input type=\"hidden\" name=\"prof_id\" value=\"".$row["id"]."\">
                                 <button type='submit'>
                                     Prendre rendez-vous
