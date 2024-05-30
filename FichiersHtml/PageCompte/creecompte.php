@@ -30,42 +30,100 @@
             </div>
         </div>
     </nav>
-    <form action="requete.php" method="POST" enctype="multipart/form-data">
-        <h1>Créer un compte</h1>
-        <label for="Type"> Type de Compte </label>
+    <div class="compte" style = "height : 80rem; margin-top : 2rem ; margin-bottom : 2rem; justify-content: center;"> 
+    <h1 style = "position : start ; margin-bottom: 3rem">Créer un compte</h1>
+    <form action="creecompte.php" method="POST" enctype="multipart/form-data">
+        <label for="Type"> Type de Compte </label><br>
         <select name="type" id="type" required>
             <option value="sportif">Sportif</option>
             <option value="coach">Coach</option>
         </select><br>
-        <label for="nom">Nom:</label>
+        <label for="nom">Nom:</label><br>
         <input type="text" id="nom" name="nom" required><br>
 
-        <label for="prenom">Prénom:</label>
+        <label for="prenom">Prénom:</label><br>
         <input type="text" id="prenom" name="prenom" required><br>
 
-        <label for="ville">Ville:</label>
+        <label for="ville">Ville:</label><br>
         <input type="text" id="ville" name="ville" required><br>
 
-        <label for="code_postal">Code Postal:</label>
+        <label for="code_postal">Code Postal:</label><br>
         <input type="text" id="code_postal" name="code_postal" required><br>
 
-        <label for="telephone">Téléphone:</label>
+        <label for="telephone">Téléphone:</label><br>
         <input type="text" id="telephone" name="telephone" required><br>
 
-        <label for="carte_etudiant">Carte d'étudiant:</label>
+        <label for="carte_etudiant">Carte d'étudiant:</label><br>
         <input type="text" id="carte_etudiant" name="carte_etudiant" required><br>
 
-        <label for="email">Email:</label>
+        <label for="email">Email:</label><br>
         <input type="email" id="email" name="email" required><br>
 
-        <label for="password">Mot de passe:</label>
+        <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                // Retrieve form data
+                $type = $_POST["type"];
+                $nom = $_POST["nom"];
+                $prenom = $_POST["prenom"];
+                $ville = $_POST["ville"];
+                $code_postal = $_POST["code_postal"];
+                $telephone = $_POST["telephone"];
+                $carte_etudiant = $_POST["carte_etudiant"];
+                $email = $_POST["email"];
+                $mdp = $_POST["password"];
+                $image = $_FILES['photo']['name'];
+                
+                // Process the data and insert into the database
+                $servername = "localhost";
+                $username= "root";
+                $password= "";
+                $dbname = "sportify";
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+                // Check if email already exists in the database
+                $emailExistsQuery = "SELECT * FROM client WHERE email = '$email'";
+                $emailExistsResult = $conn->query($emailExistsQuery);
+                if ($emailExistsResult->num_rows > 0) {
+                    header("Location: creecompte.php");
+                    exit;
+                } else {
+                    if (ISSET($_FILES['photo']['name']) AND !empty($_FILES['photo']['name'])) {
+                        $image = $_FILES['photo']['name'];
+                        $image = pathinfo($image, PATHINFO_EXTENSION);
+                        $image_tmp = $_FILES['photo']['tmp_name'];
+                        $image_path = $email.".".$image;
+                        move_uploaded_file($image_tmp, "../../photo/" .$image_path);
+                    } else {
+                        $image_tmp2 = "photo.png";
+                    }
+                    $sql = "INSERT INTO client (nom, prenom, ville, code_postal, telephone, carte_etudiant, email, mdp ,photo , typeCompte)
+                    VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$carte_etudiant', '$email', '$mdp', '$image_path' , '$type')";
+                    // Execute the SQL query
+                    $result = $conn->query($sql);
+                    if ($result) {
+                    header("Location: compte.php");
+                    exit;
+                    } 
+                    else {
+                        echo "<p style=\"font-size: 0.9rem;font-weight: lighter; margin-right: 40px;text-align: center;color: red;\">Email déjà existant <p>";
+                    }
+                }
+                $conn->close();
+            }
+            ?>
+        <label for="password">Mot de passe:</label><br>
         <input type="password" id="password" name="password" required><br>
 
-        <label for="photo">Photo de profil:</label>
+        <label for="photo">Photo de profil:</label><br>
         <input type="file" id="photo" name="photo" accept="image/png, image/jpeg"><br>  
         <input type="submit" value="Submit">
     </form>
     <p>Vous avez déjà un compte ? <a href="compte.php"> Connectez-vous </a></p>
+    </div>
     <footer>
         <div class="brand">
             <img class="logo" src="../../images/logoSportify.png" alt="Logo de Sportify">

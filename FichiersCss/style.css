@@ -385,7 +385,6 @@ animation-delay: 8s;
     font-family: 'Roboto', sans-serif;
     font-size: 1.5vw;
     width: 60%;
-    
     border-radius: 10px;
     box-shadow: -1px 2px 4px 0px rgba(0,0,0,0.58);    
     background-color: #f3f3f3;
@@ -411,10 +410,22 @@ animation-delay: 8s;
 .compte h1{
     font-size: 2rem;
     font-weight: lighter;
+    
     margin: 0 0 0 10px;
 }
 
 .compte button {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #007179;
+    font-size: 1.5rem;
+    outline: none;
+}
+
+.compte select
+{
     width: 80%;
     padding: 10px;
     margin: 10px;
@@ -518,6 +529,7 @@ animation-delay: 8s;
  
  .upcoming-events {
     width: 50%;
+    max-height: 300px;
     overflow: scroll;
     .container {
        h3 {

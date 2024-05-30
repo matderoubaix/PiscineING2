@@ -36,18 +36,60 @@
             </div>
         </div>
     </nav>
-
-
-    <div class="section1">
-    <form action="startsession.php" method="POST">
+    
+    <div class="compte" style = "height : 40rem; margin-top : 2rem ; margin-bottom : 2rem; justify-content: center;"> 
+    <h1 style = "position : start ; margin-bottom: 3rem">Se connecter</h1>
+    <form action="compte.php" method="POST">
         Email :
         <input type="text" id="userId" name="userId" placeholder = "Email" required> <br>
         Mot de passe :
         <input type="password" id="passwd" name="passwd" placeholder = "Mot de passe" required> <br>
+        <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Retrieve the email and password from the form
+            $email = $_POST["userId"];
+            $mdp = $_POST["passwd"];
+            // TODO: Implement your login verification logic here
+            $servername = "localhost";
+            $username= "root";
+            $password= "";
+            $dbname = "sportify";
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            $sql = "SELECT * FROM client WHERE email = '$email' AND mdp = '$mdp'";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                setcookie("email", $email, time() + 3600);
+                $row = $result->fetch_assoc();
+                $type = $row["typeCompte"];
+                setcookie("id", $row["id"], time() + 3600);
+                echo $row["id"];
+                setcookie("type", $type, time() + 3600);
+                setcookie("nom", $row["nom"], time() + 3600);
+                setcookie("prenom", $row["prenom"], time() + 3600);
+                setcookie("ville", $row["ville"], time() + 3600);
+                setcookie("code_postal", $row["code_postal"], time() + 3600);
+                setcookie("telephone", $row["telephone"], time() + 3600);
+                setcookie("carte_etudiant", $row["carte_etudiant"], time() + 3600);
+                setcookie("photo", $row["photo"], time() + 3600);
+                header("Location: accueilcompte.php");
+                exit();
+            } else {
+                echo "<p style=\"font-size: 0.9rem;font-weight: lighter; margin-right: 40px;text-align: center;color: red;\">Email ou mot de passe incorrect <p>";
+            }
+            $conn->close();
+            }
+        ?>
         <input type = "submit" value = "Se connecter">
     </form>
     <p>Pas de compte ? <a href = "creecompte.php"> Créer un compte </a></p>
     </div>
+    </div>
+    
 
 
     <footer>
