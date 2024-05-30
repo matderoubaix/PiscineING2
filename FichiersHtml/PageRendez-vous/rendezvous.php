@@ -39,6 +39,8 @@
         $db_handle = mysqli_connect('localhost', 'root', '');
         $db_found = mysqli_select_db($db_handle, $database);
 
+
+
         $utilisateur_id = $_COOKIE['id'];
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -74,7 +76,7 @@
         echo '</div>';
 
         echo '<div class="emploiDuTemps">';
-        echo '<div class="tableau>
+        echo '<div class="tableau">
                 <div class="joursSemaine">
                     <div class="jour">Lundi</div>
                     <div class="jour">Mardi</div>
@@ -87,29 +89,28 @@
         ';
 
         if ($db_found) {
-            $heure = 8;
+            $heure = 0;
             // 0 = lundi, 1 = mardi, 2 = mercredi, 3 = jeudi, 4 = vendredi, 5 = samedi, 6 = dimanche
-            while ($data = mysqli_fetch_assoc($result)) {
-
+            for ($heure = 8; $heure < 20; $heure+=2) {
                 if ($heure == 20) {
                     break;
                 }
                 echo '<div class="ligneHoraires">';
                 for ($jour = 0; $jour < 7; $jour++) {
                     $chercher_jour = "SELECT * FROM cours WHERE prof_id = $prof_id AND jour = $jour AND heure = $heure";
-                    $result = mysqli_query($db_handle, $sql);
-                    $data = mysqli_fetch_assoc($result);
-                    if ($data) {
-                        echo '<div class="caseHoraire">';
-                        echo '<p>'.$data['nom'].'</p>';
-                        echo '</div>';
+                    $resultat = mysqli_query($db_handle, $sql);
+                    $donnees = mysqli_fetch_assoc($result);
+                    if ($donnees) {
+                        echo '<div style="background-color: white;" class="caseHoraire">';
+                        echo '<p>'.$donnees["nom"].'</p>';
                     } else {
-                        echo '<div class="caseHoraire">';
-                        echo '</div>';
+                        echo '<div style="background-color: rgb(0, 122, 255);" class="caseHoraire">';
+                        echo '<p style="color: white;">'.$heure.'h</p>';
                     }
+
+                    echo '</div>';
                 }
                 echo '</div>';
-                $heure++;
             }
         } else {
             echo "Database not found";
@@ -118,6 +119,7 @@
         echo '</div>';
 
         echo '</div>';
+        
 
         // Close the database connection
         mysqli_close($db_handle);
