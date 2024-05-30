@@ -992,6 +992,7 @@ hr{
     width: 100%;
     height: min-content;
     min-height: 80vh;
+    margin-bottom: 10px;
 
 
 }
