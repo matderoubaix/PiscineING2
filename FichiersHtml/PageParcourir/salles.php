@@ -14,7 +14,7 @@
         
         <div class="onglets">
             <div class="menu">
-                <a href="../PageAccueil/index.html">ACCUEIL</a>
+                <a href="../PageAccueil/index.php">ACCUEIL</a>
             </div>
             <div class="menu">
                 <a href="parcourir.html">PARCOURIR</a>
@@ -57,14 +57,16 @@ if($result != false && mysqli_num_rows($result) != 0 ){
         if($result_cours != false && mysqli_num_rows($result_cours) != 0 ){
             $cours_data = mysqli_fetch_assoc($result_cours);
             $cours_nom = $cours_data['nom'];}
-        echo " <div class='evenement'>
+        $image = $data['photo_salle'];
+        echo " <div class='evenement_card'>
                     <div class='evenementDescription'>
-                        <h2>". $data['nom']."</h2>
+                        <h2>". $data['nom']."</h2>"."<img src='$image' alt='photo salle' width = 100% height = 200px>"."
                         <p>".$data['adresse']."</p>
-                        <p>Capacité : ". $data['capacite'] ."</p>
+                        <p>Horaires : ". $data['horaires'] ."</p>
+                        <p>Activité : " . $cours_nom ."</p>
                         <p>Téléphone : ". $data['telephone'] ."</p>
-                        <p>Mail : " . $data['email'] ."</p>
-                        <p>Activité : " . $cours_nom ."</p>   
+                        <p>Mail : " . $data['email'] ."</p>  
+                        <p>Capacité : ". $data['capacite'] ."</p> 
                     </div>
                 </div>"; 
     }
@@ -82,7 +84,7 @@ if($result != false && mysqli_num_rows($result) != 0 ){
         <div class="liens">
             <p class="titreclasse">Liens rapides</p>
             <ul>
-                <li><a href="../PageAccueil/index.html">Accueil</a></li>
+                <li><a href="../PageAccueil/index.php">Accueil</a></li>
                 <li><a href="../PageParcourir/parcourir.html">Parcourir</a></li>
                 <li><a href="../PageRecherche/recherche.html">Rechercher</a></li>
                 <li><a href="../PageRendez-vous/rendez-vous.html">Rendez-vous</a></li>

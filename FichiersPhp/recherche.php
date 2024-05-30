@@ -14,7 +14,7 @@
         
         <div class="onglets">
             <div class="menu">
-                <a href="../FichiersHtml/PageAccueil/index.html">ACCUEIL</a>
+                <a href="../FichiersHtml/PageAccueil/index.php">ACCUEIL</a>
             </div>
             <div class="menu">
                 <a href="../FichiersHtml/PageParcourir/parcourir.html">PARCOURIR</a>
@@ -185,7 +185,7 @@ else{echo"";}
         <div class="liens">
             <p class="titreclasse">Liens rapides</p>
             <ul>
-                <li><a href="../PageAccueil/index.html">Accueil</a></li>
+                <li><a href="../PageAccueil/index.php">Accueil</a></li>
                 <li><a href="../PageParcourir/parcourir.html">Parcourir</a></li>
                 <li><a href="recherche.html">Rechercher</a></li>
                 <li><a href="../PageRendez-vous/rendez-vous.html">Rendez-vous</a></li>
