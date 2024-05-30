@@ -48,9 +48,11 @@ $database = "sportify";
 $hostname = "localhost";
 $username = "root";
 $password = "";
+$testID = 0;
 
 $db_handle = mysqli_connect($hostname, $username, $password);
 $db_found = mysqli_select_db($db_handle, $database);
+
 
 if (!$db_found) {
     echo "No connection";
@@ -105,13 +107,14 @@ if ($recherche != ""){
         echo "<div class='boxCours'>";
         $count += 1;
         while ($data = mysqli_fetch_assoc($result)) { 
-            echo " <div class='evenement'>
+            echo " <div class='searchResult'>
                         <div class='evenementDescription'>
                             <img style='width: 50px ; height:50px; border-radius:50%;' src='../photo/". $data['photo'] ."' alt='Photo du coach'>
                             <h2>". $data['nom']." ". $data['prenom'] ."</h2>
                             <p>".$data['ville']."</p>
                             <p>Téléphone : ". $data['telephone'] ."</p>
                             <p>Mail : " . $data['email'] ."</p>";
+                            
                             if ($testID != 0){
 
                                 echo "<div class=\"boutonsCoach\">";
