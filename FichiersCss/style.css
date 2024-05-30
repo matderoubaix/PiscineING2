@@ -1213,7 +1213,7 @@ hr{
     width: 600px;
     height: 200px;
     border-radius: 10px;
-    background-image: url("../images/coach.jpg");
+    background-image: url("../images/images_parcourir/loisir.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -1233,7 +1233,7 @@ hr{
     width: 600px;
     height: 200px;
     border-radius: 10px;
-    background-image: url("../images/coach.jpg");
+    background-image: url("../images/images_parcourir/competition.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -1253,7 +1253,7 @@ hr{
     width: 600px;
     height: 200px;
     border-radius: 10px;
-    background-image: url("../images/coach.jpg");
+    background-image: url("../images/images_parcourir/salle.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
