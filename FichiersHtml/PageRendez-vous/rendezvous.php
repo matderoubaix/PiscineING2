@@ -33,6 +33,15 @@
 
     <div class="pageRendezVous">
 
+
+
+
+
+
+
+
+
+
     <?php
 
         $database = "sportify";
@@ -42,16 +51,65 @@
 
 
         $utilisateur_id = $_COOKIE['id'];
+        $nom_utilisateur = $_COOKIE['nom'];
+        $prenom_utilisateur = $_COOKIE['prenom'];
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (isset($_POST['prof_id'])){
                 $prof_id = $_POST['prof_id'];
+                $sql_professeur = "SELECT * FROM client WHERE id = $prof_id";
+                $result_professeur = mysqli_query($db_handle, $sql_professeur);
+                $data_professeur = mysqli_fetch_assoc($result_professeur);
+                $nom_professeur = $data_professeur['nom'];
+                $prenom_professeur = $data_professeur['prenom'];
+
             }
             else {
                 echo "No professor selected.";
                 exit();
             }
+
+            if (isset($_POST['heure']) && isset($_POST['jour']) && isset($_POST['prof_id'])){
+                $heure = $_POST['heure'];
+                $jour = $_POST['jour'] + 1;
+                $prof_id = $_POST['prof_id'];
+                $dayOfWeek = date('N', strtotime("Sunday +{$jour} days"));
+                $sql_insert = "INSERT INTO cours (nom, description, prof_id, duree, date, heure, sport_id, prix) VALUES ('Cours Particulier','Cours particulier avec $nom_utilisateur', '$prof_id', 1 , CURRENT_DATE + INTERVAL $dayOfWeek DAY, '$heure:00:00', 1, 20)";
+                mysqli_query($db_handle, $sql_insert);
+
+
+                $to = $_COOKIE['email'];
+                $subject = "Confirmation de rendez-vous";
+                $message = "Merci d'avoir pris rendez-vous chez Sportify, ".$prenom_utilisateur." ".$nom_utilisateur." !<br><br>Voici les détails de votre rendez-vous :<br><br>Professeur : ".$prenom_professeur." ".$nom_professeur." <br>Date : ".date('Y-m-d', strtotime("Sunday +{$jour} days"))."<br>Heure : $heure:00<br><br>Vous pouvez annuler votre rendez-vous en vous connectant à votre compte Sportify.<br><br>À bientôt chez Sportify !<br><br>L'équipe Sportify.";
+                $headers = "From: matderoubaix@live.fr\r\n";
+                $headers .= "Reply-To: matderoubaix@live.fr\r\n";
+                $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+                if(mail($to, $subject, $message, $headers)) {
+                    echo '<div id="notification" style="position: fixed; bottom: 90px; right: 10px; background-color: #ffffff; padding: 20px; font-size:20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">&check; Email envoyé !</div>';
+
+                } else {
+                    echo "Failed to send email.";
+                }
+
+                echo '<div id="notification" style="position: fixed; bottom: 10px; right: 10px; background-color: #ffffff; padding: 20px; font-size:20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">&check; Rendez-vous réservé avec succès !</div>';
+                echo      '<script>
+                    setTimeout(function(){
+                        document.getElementById("notification").remove();
+                        document.getElementById("notification").remove();
+                    }, 3000);
+                </script>';
+
+
+                $trouver_rendezvous = "SELECT * FROM cours ORDER BY id DESC LIMIT 1";
+                $resultatrdv = mysqli_query($db_handle, $trouver_rendezvous);
+                $donneesrdv = mysqli_fetch_assoc($resultatrdv);
+                $cours_id = $donneesrdv['id'];
+                $sql_insert2 = "INSERT INTO reservation (client_id, cours_id) VALUES ('$utilisateur_id', '$cours_id')";
+                mysqli_query($db_handle, $sql_insert2);
+            }
+
 
 
         } else {
@@ -104,12 +162,14 @@
                         echo '<p>'.$donnees["nom"].'</p>';
                     } else {
                         echo '<div style="background-color: rgb(0, 122, 255);" class="caseHoraire">';
-                        echo '<form method="POST" action="reserver.php">
+                        echo '<form method="POST" action="rendezvous.php">
                                 <input type="hidden" name="prof_id" value="'.$prof_id.'">
                                 <input type="hidden" name="heure" value="'.$heure.'">
                                 <input type="hidden" name="jour" value="'.$jour.'">
+                                <a href="reserver.php" onclick="this.parentNode.submit(); return false;">
+                                    <p style="color: white;">'.$heure.'h</p>
+                                </a>
                             </form>';
-                        echo '<p style="color: white;">'.$heure.'h</p>';
                     }
 
                     echo '</div>';
@@ -128,6 +188,16 @@
         // Close the database connection
         mysqli_close($db_handle);
     ?>
+
+
+
+
+
+
+
+
+
+
 
     </div>
 
