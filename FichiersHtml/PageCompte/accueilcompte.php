@@ -92,8 +92,11 @@
             }
             else if ($_COOKIE["type"] == "client")
             {
-                $sql = "SELECT * FROM `Cours` WHERE id IN (SELECT cours_id FROM Reservation WHERE client_id != ".$_COOKIE["id"].")";
-                $result = $conn->query($sql);
+               // $sql = "SELECT * FROM `Cours` WHERE id NOT IN (SELECT cours_id FROM Reservation WHERE client_id = ".$_COOKIE["id"].")";
+                if ($_COOKIE["type"] == "client") {
+                    $sql = "SELECT * FROM cours WHERE id NOT IN (SELECT cours_id FROM Reservation WHERE client_id = ".$_COOKIE["id"].")";
+                    $result = $conn->query($sql);
+                }
                 echo "<h1 style = \" position: sticky; background-color : white\" >Les cours disponibles</h1>";
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {

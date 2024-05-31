@@ -18,5 +18,5 @@
         $sql = "INSERT INTO `coordonnéeBancaire` (`type_de_paiement`,`numero_de_carte`, `date_expiration`,`client_id`) VALUES ( '$type_de_paiement', '$numero_de_carte', '$date_expiration','$id')";
         $result = $conn->query($sql);
     }
-    header("Location: compte.php");
+    header("Location: reservation.php");
 ?>

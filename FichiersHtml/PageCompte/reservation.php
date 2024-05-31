@@ -88,7 +88,13 @@
             $conn->close();
         }
         ?>
-        <button onclick="window.location.href = 'valider.php';">Valider</button>
+        <button onclick="validation()">Valider</button>
+        <script>
+            function validation() {
+                alert("Votre réservation a bien été prise en compte");
+                window.location.href = 'valider.php';
+            }
+        </script>
         <button onclick="window.location.href = 'compte.php';">Retour</button>
     </div>
     </div>
