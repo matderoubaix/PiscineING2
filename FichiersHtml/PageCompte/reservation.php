@@ -30,7 +30,7 @@
         </div>
     </nav>
     
-    <div class="compte" style = "height : 40rem; margin-top : 2rem ; margin-bottom : 2rem; justify-content: center;"> 
+    <div class="compte" style = "height : 70rem; margin-top : 2rem ; margin-bottom : 2rem; justify-content: center;"> 
     <h1 style = "position : start ; margin-bottom: 3rem">Se connecter</h1>
         <?php
             session_start();
@@ -59,8 +59,8 @@
                     <td>" . $row["description"] . "</td> 
                     <td>" . $row["date"] . "</td> 
                     <td>" . $row["heure"] . "</td> 
-                    <td>" . $row["duree"] . "</td>
-                    <td>" . $row["prix"] . "</td> </tr>";
+                    <td>" . $row["duree"] . " heure(s) </td>
+                    <td>" . $row["prix"] . " euro(s) </td> </tr>";
                 }
                 echo "</table>";
                 $sql = "SELECT * FROM coordonnéebancaire WHERE client_id = ".$_COOKIE["id"];
@@ -72,23 +72,27 @@
                 else {
                     echo "<h1> Entrée vos coordonnées bancaires pour réserver un cours </h1>";
                 echo "<form action=\"coordonneBancaire.php\" method='POST'>
+                <div style = \"display : block; margin-left : 7rem ; margin-right : auto ;   \">
                 <select name = \"type\" >
                 <option> visa </option>
-                <option> carte bancaire </option>               
-                <label for='numero'>Numéro de carte bancaire</label>
+                <option> carte bancaire </option>
+                <option> mastercard </option>
+                </select>               
+                <br><label for='numero'>Numéro de carte bancaire</label>
                 <input type='text' id='numero' name='numero' required>
-                <label for='date'>Date d'expiration</label>
+                <br><label for='date'>Date d'expiration</label>
                 <input type='date' id='date' name='date' required>
-                <label for='crypto'>Cryptogramme</label>
+                <br><label for='crypto'>Cryptogramme</label>
                 <input type='text' id='crypto' name='crypto' required>
-                <input type='submit' value='Valider'>
+                <input type='submit' value='Payer'>
+                </div>
                 </form>";
                 }
             }
             $conn->close();
         }
         ?>
-        <button onclick="validation()">Valider</button>
+        <button onclick="validation()">Valider le Cours</button>
         <script>
             function validation() {
                 alert("Votre réservation a bien été prise en compte");

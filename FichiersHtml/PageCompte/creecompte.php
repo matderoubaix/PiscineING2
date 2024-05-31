@@ -36,7 +36,7 @@
         <label for="Type"> Type de Compte </label><br>
         <select name="type" id="type" required>
             <option value="client">Sportif</option>
-            <option value="coach">Coach</option>
+            <option value="prof">Coach</option>
         </select><br>
         <label for="nom">Nom:</label><br>
         <input type="text" id="nom" name="nom" required><br>
@@ -54,7 +54,7 @@
         <input type="text" id="telephone" name="telephone" required><br>
 
         <label for="carte_etudiant">Carte d'étudiant:</label><br>
-        <input type="text" id="carte_etudiant" name="carte_etudiant" required><br>
+        <input type="text" id="carte_etudiant" name="carte_etudiant"><br>
 
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email" required><br>

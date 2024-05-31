@@ -478,6 +478,42 @@ animation-delay: 8s;
     outline: none;
 }
 
+.compte table{
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #007179;
+    font-size: 1.5rem;
+    outline: none;
+}
+.compte tr{
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border-bottom: 10px solid #007179;
+    font-size: 1.5rem;
+    outline: none;
+}
+.compte th{
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-bottom: 1px solid #007179;
+    font-size: 1.5rem;
+    outline: none;
+
+}
+.compte td{
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    outline: none;
+}
+
 .compte select
 {
     width: 80%;

@@ -53,7 +53,7 @@
             }
             if ($_COOKIE["type"] == "prof") {
                 echo "
-                <form action=\"compte.php\" method=\"POST\" enctype=\"multipart/form-data\">
+                <form action=\"ajoutcour.php\" method=\"POST\" enctype=\"multipart/form-data\">
                     <h1 style = \"position : start ; margin-bottom: 3rem\">Créer un Cour</h1>
                     <label for=\"Type\"> Type de Cour </label><br>
                     <select name=\"sport\" id=\"sport\" required>";
@@ -107,7 +107,8 @@
                                     <h3>'.$row['nom'].'</h3>
                                     <h3>'.$row['description'].'</h3>
                                     
-                                    <input type="submit" name="reserver" value="'.$row['id'].'">
+                                    <input type="hidden" name="reserver" value="'.$row['id'].'">
+                                    <input type="submit" value="Réserver">
                             </div>
                             </form>
                         </div>';
@@ -119,7 +120,12 @@
     </div>
     <div class="compte">
     <?php
+    if ($_COOKIE["type"] == "client") {
         $sql = "SELECT * FROM cours WHERE id IN (SELECT cours_id FROM Reservation WHERE client_id = ".$_COOKIE["id"].")";
+    }
+    else {
+        $sql = "SELECT * FROM cours WHERE prof_id =" .$_COOKIE["id"];
+    }
         $result = $conn->query($sql);
         if (isset($_COOKIE["email"])) {
             echo "<img src=\"../../images/logoSportify.png\" alt=\"Logo de Sportify\" style = \"height: 10rem;\"><br>";
