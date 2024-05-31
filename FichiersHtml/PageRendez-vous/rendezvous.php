@@ -31,7 +31,7 @@
         </div>
     </nav>
 
-    <div class="currentChat">
+    <div class="pageRendezVous">
 
     <?php
 
@@ -84,27 +84,31 @@
                     <div class="jour">Jeudi</div>
                     <div class="jour">Vendredi</div>
                     <div class="jour">Samedi</div>
-                    <div class="jour">Dimanche</div>
                 </div>
         ';
 
         if ($db_found) {
             $heure = 0;
-            // 0 = lundi, 1 = mardi, 2 = mercredi, 3 = jeudi, 4 = vendredi, 5 = samedi, 6 = dimanche
-            for ($heure = 8; $heure < 20; $heure+=2) {
+            for ($heure = 10; $heure < 20; $heure++) {
                 if ($heure == 20) {
                     break;
                 }
                 echo '<div class="ligneHoraires">';
-                for ($jour = 0; $jour < 7; $jour++) {
-                    $chercher_jour = "SELECT * FROM cours WHERE prof_id = $prof_id AND jour = $jour AND heure = $heure";
-                    $resultat = mysqli_query($db_handle, $sql);
-                    $donnees = mysqli_fetch_assoc($result);
-                    if ($donnees) {
+                for ($jour = 2; $jour < 8; $jour++) {
+                    $chercher_jour = "SELECT * FROM cours WHERE prof_id = $prof_id AND HOUR(heure) = $heure AND DAYOFWEEK(date) = $jour";
+                    $resultat = mysqli_query($db_handle, $chercher_jour);
+                    $donnees = mysqli_fetch_assoc($resultat);
+
+                    if (isset($donnees)) {
                         echo '<div style="background-color: white;" class="caseHoraire">';
                         echo '<p>'.$donnees["nom"].'</p>';
                     } else {
                         echo '<div style="background-color: rgb(0, 122, 255);" class="caseHoraire">';
+                        echo '<form method="POST" action="reserver.php">
+                                <input type="hidden" name="prof_id" value="'.$prof_id.'">
+                                <input type="hidden" name="heure" value="'.$heure.'">
+                                <input type="hidden" name="jour" value="'.$jour.'">
+                            </form>';
                         echo '<p style="color: white;">'.$heure.'h</p>';
                     }
 

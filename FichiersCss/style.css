@@ -1023,8 +1023,8 @@ hr{
     border-radius: 5px;
     box-shadow: 3px 3px 2px 0px #E2E2E2;
     font-size: 1.5rem;
-    overflow: auto;
     border-radius: 5px;
+    overflow: auto;
 }
 
 
@@ -1282,6 +1282,17 @@ hr{
 
 /* Page Rendez-vous */
 
+.pageRendezVous{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+    min-height: 80vh;
+    margin-bottom: 10px;
+}
+
 .emploiDuTemps{
     display: flex;
     flex-direction: column;
@@ -1299,13 +1310,21 @@ hr{
     justify-content: start;
     width: 60%;
     height: min-content;
+
+    background: #FFFFFF;
+    color: #000000;
+    border: 1px solid #C4D1EB;
+    border-radius: 5px;
+    box-shadow: 3px 3px 2px 0px #E2E2E2;
+    font-size: 1.5rem;
+    border-radius: 5px;
 }
 
 .joursSemaine{
     display: flex;
     flex-direction: row;
     justify-content: start;
-    align-items: end; 
+    align-items: center; 
     width: 100%;
     height: 50px;
     background-color: #ffffff;
