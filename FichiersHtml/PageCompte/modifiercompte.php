@@ -136,7 +136,7 @@
                 <form action = \"modifiercompte.php\" method = \"POST\">
                 <select name=\"typeCompte\" id=\"typeCompte\">
                     <option value=\"client\">Sportif</option>
-                    <option value=\"coach\">Coach</option>
+                    <option value=\"prof\">Coach</option>
                     <option value=\"admin\">Admin</option>
                 </select><br>
                 <label for=\"nom\">Nom :</label>
