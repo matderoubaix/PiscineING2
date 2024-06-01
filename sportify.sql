@@ -249,6 +249,7 @@ CREATE TABLE IF NOT EXISTS `sport` (
 --
 
 INSERT INTO `sport` (`id`, `nom`, `description`, `compétition`, `image_sport`) VALUES
+(0, 'Cours Particulier', 'Cours Particulier', 0, '../coach.jpg'),
 (1, 'Yoga', 'Relaxation and stretching', 1, '../coach.jpg'),
 (2, 'Pilates', 'Core strength and flexibility', 0, '../coach.jpg'),
 (3, 'Zumba', 'Dance and cardio', 1, '../coach.jpg'),
