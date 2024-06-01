@@ -96,6 +96,18 @@
                         echo "Erreur: " . $sql . "<br>" . $conn->error;
                     }
                 }
+                elseif (isset($_POST['suppr'])) 
+                {
+                    $id_modif = $_SESSION["id_modif"];
+                    $sql = "DELETE FROM client WHERE id = '$id_modif'";
+                    if ($conn->query($sql) === TRUE) {
+                        echo "<script>alert('Suppression effectuée avec succès');</script>";
+                        session_destroy();
+                        header("Location: compte.php");
+                    } else {
+                        echo "Erreur: " . $sql . "<br>" . $conn->error;
+                    }
+                }
                 if (isset($_POST['id_modif'])) $_SESSION["id_modif"] = $_POST['id_modif'];
                 $id_modif = $_SESSION["id_modif"] ; 
                 // TODO: Implement your login verification logic here
@@ -119,6 +131,7 @@
                 <label for=\"carte_etudiant\">Carte d'étudiant :</label>
                 <input type=\"text\" id=\"carte_etudiant\" name=\"carte_etudiant\"><br>
                 <button type=\"submit\" name=\"modif\" value=\"modif\">Modifier</button>
+                <button type=\"submit\" name=\"suppr\" value=\"suppr\">Supprimer</button>
                 </form>";
             }
         ?>

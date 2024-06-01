@@ -62,7 +62,9 @@
                         </form>";
                     }
                     echo "</table>";
-                    echo "</div>";
+                    echo "</div> 
+                    <button type=\"submit\" onclick=\"window.location.href = 'creecompte.php';\" name=\"ajout\" value=\"ajout\">Ajouter un nouveau compte</button> ";
+
                 } else {
                     echo "0 results";
                 }

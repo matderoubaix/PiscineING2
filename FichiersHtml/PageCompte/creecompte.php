@@ -37,6 +37,11 @@
         <select name="type" id="type" required>
             <option value="client">Sportif</option>
             <option value="prof">Coach</option>
+            <?php 
+                if ($_COOKIE["type"] == "admin") {
+                    echo "<option value=\"admin\">Administrateur</option>";
+                }
+            ?>
         </select><br>
         <label for="nom">Nom:</label><br>
         <input type="text" id="nom" name="nom" required><br>
