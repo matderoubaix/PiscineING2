@@ -302,6 +302,34 @@ animation-delay: 8s;
     background-color: transparent;
 }
 
+.boutonsCoach .cv{
+    margin-bottom: 15px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 25px;
+}
+.boutonsCoach .cv:hover{
+    background-color: transparent;
+    border: none;
+    color: #b4b4b4;
+    font-size: 25px;
+}
+.boutonsCoach .cv button{
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 25px;
+    transition: all 0.3s ease;
+}
+.boutonsCoach .cv button:hover{
+    background-color: transparent;
+    border: none;
+    color: #a5a5a5;
+    font-size: 25px;
+}
+
 
 /* Section 2 */
 

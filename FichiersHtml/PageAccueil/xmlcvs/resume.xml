@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resume>
+    <personalInformation>
+        <name>John Smith</name>
+        <address>5678 Rue Oak, Springfield, IL 62704</address>
+        <phone>+1-555-555-5555</phone>
+        <email>johnsmith@example.com</email>
+    </personalInformation>
+    <objective>
+        <statement>Obtenir un poste d'enseignant en sport dans une organisation réputée pour partager ma passion pour le fitness et aider les individus à atteindre leurs objectifs de fitness.</statement>
+    </objective>
+    <experience>
+        <job>
+            <title>Enseignant en sport</title>
+            <company>Sportify</company>
+            <location>San Francisco, CA</location>
+            <duration>Jan 2020 - Présent</duration>
+            <responsibilities>
+                <responsibility>Conception et mise en œuvre de programmes de fitness adaptés aux besoins individuels.</responsibility>
+                <responsibility>Fournir des conseils et de la motivation aux élèves pour les aider à atteindre leurs objectifs de fitness.</responsibility>
+            </responsibilities>
+        </job>
+        <job>
+            <title>Assistant Enseignant en sport</title>
+            <company>Sportify</company>
+            <location>Chicago, IL</location>
+            <duration>Jun 2018 - Dec 2019</duration>
+            <responsibilities>
+                <responsibility>Aider à organiser et à conduire des activités et des événements sportifs.</responsibility>
+                <responsibility>Fournir un soutien à l'enseignant en sport dans la prestation des cours de fitness.</responsibility>
+            </responsibilities>
+        </job>
+    </experience>
+    <education>
+        <degree>
+            <level>Bachelor of Science en Éducation Physique</level>
+            <institution>Université de l'Illinois</institution>
+            <location>Urbana, IL</location>
+            <year>2018</year>
+        </degree>
+    </education>
+    <skills>
+        <skill>Entraînement physique</skill>
+        <skill>Coaching sportif</skill>
+        <skill>Éducation physique</skill>
+        <skill>Organisation d'événements</skill>
+        <skill>Communication</skill>
+    </skills>
+    <references>
+        <reference>
+            <name>Jane Smith</name>
+            <contact>jane.smith@sportify.com</contact>
+            <relationship>Manager chez Sportify</relationship>
+        </reference>
+    </references>
+</resume>
