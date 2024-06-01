@@ -194,7 +194,7 @@
                                 cases[i].setAttribute("duree", casePrecedente.getAttribute("duree") - 1);
                                 cases[i].style.backgroundColor = "white";
                                 cases[i].innerHTML = casePrecedente.innerHTML;
-                                
+
                             }
                         }
                     }
