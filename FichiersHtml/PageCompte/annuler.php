@@ -36,7 +36,7 @@
             session_start();
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Retrieve the email and password from the form
-            if (isset($_POST['reserver'])) $_SESSION["id_cour"] = $_POST['reserver'];
+            if (isset($_POST['annuler'])) $_SESSION["id_cour"] = $_POST['annuler'];
             $id_cour = $_SESSION["id_cour"] ; 
             // TODO: Implement your login verification logic here
             $servername = "localhost";
@@ -63,48 +63,20 @@
                     <td>" . $row["prix"] . " euro(s) </td> </tr>";
                 }
                 echo "</table>";
-                $sql = "SELECT * FROM coordonnéebancaire WHERE client_id = ".$_COOKIE["id"];
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                    echo "<p> Votre carte bancaire : " . $row["numero_de_carte"] . "</p>";
-                }
-                else {
-                echo "<h1> Entrée vos coordonnées bancaires pour réserver un cours </h1>";
-                echo "<form action=\"coordonneBancaire.php\" method='POST'>
-                <div style = \"display : block; margin-left : 7rem ; margin-right : auto ;   \">
-                <select name = \"type\" >
-                <option> visa </option>
-                <option> carte bancaire </option>
-                <option> mastercard </option>
-                </select>               
-                <br><label for='numero'>Numéro de carte bancaire</label>
-                <input type='text' id='numero' name='numero' required>
-                <br><label for='date'>Date d'expiration</label>
-                <input type='date' id='date' name='date' required>
-                <br><label for='crypto'>Cryptogramme</label>
-                <input type='text' id='crypto' name='crypto' required>
-                <input type='submit' value='Payer'>
-                </div>
-                </form>";
-                }
             }
             $conn->close();
         }
         ?>
-        <button onclick="validation()">Valider le Cours</button>
+        <button onclick="validation()">Valider l'annulation</button>
         <script>
             function validation() {
-                alert("Votre réservation a bien été prise en compte");
-                window.location.href = 'valider.php';
+                alert("Votre réservation a bien été annulée");
+                window.location.href = 'annulerRes.php';
             }
         </script>
         <button onclick="window.location.href = 'compte.php';">Retour</button>
     </div>
     </div>
-    
-
-
     <footer>
         <div class="brand">
             <img class="logo" src="../../images/logoSportify.png" alt="Logo de Sportify">
