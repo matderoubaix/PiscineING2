@@ -31,6 +31,8 @@
         </div>
     </nav>
 
+    <div class="section2">
+
 <?php 
 
 $database = "sportify";
@@ -49,7 +51,7 @@ $sql = "SELECT * FROM sport WHERE compétition = TRUE";
 $result = mysqli_query($db_handle, $sql);
 if($result != false && mysqli_num_rows($result) != 0 ){
     echo "<h3 style='margin: 10px 5px 5px 5px;'>"."Nos Sports en Compétition :"."</h3>";
-    echo "<div class='boxCours'>";
+    echo "<div class='boxParcourir'>";
     while ($data = mysqli_fetch_assoc($result)) { 
         $image = $data['image_sport'];
         echo " <div class='evenement_card'>
@@ -62,6 +64,7 @@ if($result != false && mysqli_num_rows($result) != 0 ){
     echo "</div>";
 }
 ?>
+    </div>
 
     <footer>
         <div class="brand">

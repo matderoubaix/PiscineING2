@@ -31,6 +31,8 @@
         </div>
     </nav>
 
+    <div class="section2">
+
 <?php 
 
 $database = "sportify";
@@ -49,7 +51,7 @@ $sql = "SELECT * FROM salles";
 $result = mysqli_query($db_handle, $sql);
 if($result != false && mysqli_num_rows($result) != 0 ){
     echo "<h3 style='margin: 10px 5px 5px 5px;'>"."Nos Salles :"."</h3>";
-    echo "<div class='boxCours'>";
+    echo "<div class='boxParcourir'>";
     while ($data = mysqli_fetch_assoc($result)) { 
         $cours_id = $data['cours_id'];
         $sql_cours = "SELECT nom FROM cours WHERE id = '$cours_id' ";
@@ -74,6 +76,8 @@ if($result != false && mysqli_num_rows($result) != 0 ){
 }
 
 ?>
+
+    </div>
 
     <footer>
         <div class="brand">
