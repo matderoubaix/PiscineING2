@@ -168,21 +168,20 @@
             while($row = $result->fetch_assoc()) {
                 echo "<div class=\"event\">
                 <form method=\"POST\" action=\"annuler.php\">
-                        <i class=\"ion ion-ios-flame hot\"></i>
                         <h4 class=\"event__point\">".$row["heure"]."</h4>
                         <span class=\"event__duration\">".$row["date"]."</span>
                         <p class=\"event__description\">
                             ".$row["description"]."
                         </p>
                         <input type=\"hidden\" name=\"annuler\" value=\"".$row["id"]."\">
-                        <input type=\"submit\" value=\"Annuler\">
+                        <input class=\"event__delete\" type=\"submit\" value=\"𐌢\">
+                        
                 </form>
                     </div>";
             }
             
         } else {
             echo "<div class=\"event\">
-                        <i class=\"ion ion-ios-flame hot\"></i>
                         <h4 class=\"event__point\">Aucun cours réservé</h4>
                         <span class=\"event__duration\"></span>
                         <p class=\"event__description\">
