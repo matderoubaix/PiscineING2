@@ -115,6 +115,11 @@
                     }
                 }
             }
+            elseif ($_COOKIE["type"] == "admin")
+            {
+                header("location: panneladmin.php");
+            }
+
     
     ?>
     </div>
