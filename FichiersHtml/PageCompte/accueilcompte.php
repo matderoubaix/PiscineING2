@@ -94,7 +94,7 @@
             {
                // $sql = "SELECT * FROM `Cours` WHERE id NOT IN (SELECT cours_id FROM Reservation WHERE client_id = ".$_COOKIE["id"].")";
                 if ($_COOKIE["type"] == "client") {
-                    $sql = "SELECT * FROM cours WHERE id NOT IN (SELECT cours_id FROM Reservation WHERE client_id = ".$_COOKIE["id"].")";
+                    $sql = "SELECT * FROM cours WHERE id NOT IN (SELECT cours_id FROM Reservation WHERE client_id = ".$_COOKIE["id"].")AND date >= CURDATE()";
                     $result = $conn->query($sql);
                 }
                 echo "<h1 style = \" position: sticky; background-color : white\" >Les cours disponibles</h1>";
@@ -121,7 +121,7 @@
     <div class="compte">
     <?php
     if ($_COOKIE["type"] == "client") {
-        $sql = "SELECT * FROM cours WHERE id IN (SELECT cours_id FROM Reservation WHERE client_id = ".$_COOKIE["id"].")";
+        $sql = "SELECT * FROM cours WHERE id IN (SELECT cours_id FROM Reservation WHERE client_id = ".$_COOKIE["id"].") AND date >= CURDATE() ORDER BY date";
     }
     else {
         $sql = "SELECT * FROM cours WHERE prof_id =" .$_COOKIE["id"];
