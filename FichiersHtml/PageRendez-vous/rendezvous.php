@@ -156,12 +156,13 @@
                     $chercher_jour = "SELECT * FROM cours WHERE prof_id = $prof_id AND HOUR(heure) = $heure AND DAYOFWEEK(date) = $jour";
                     $resultat = mysqli_query($db_handle, $chercher_jour);
                     $donnees = mysqli_fetch_assoc($resultat);
+                    
 
                     if (isset($donnees)) {
-                        echo '<div style="background-color: white;" class="caseHoraire">';
+                        echo '<div style="background-color: white;" class="caseHoraire" duree="'.$donnees['duree'].'" heureEtJour="'.$jour.' '.$heure.'">';
                         echo '<p>'.$donnees["nom"].'</p>';
                     } else {
-                        echo '<div style="background-color: rgb(0, 122, 255);" class="caseHoraire">';
+                        echo '<div style="background-color: rgb(0, 122, 255);" class="caseHoraire" heureEtJour="'.$jour.' '.$heure.'">';
                         echo '<form method="POST" action="rendezvous.php">
                                 <input type="hidden" name="prof_id" value="'.$prof_id.'">
                                 <input type="hidden" name="heure" value="'.$heure.'">
@@ -183,6 +184,21 @@
         echo '</div>';
 
         echo '</div>';
+
+        echo '<script>
+                    var cases = document.getElementsByClassName("caseHoraire");
+                    for (var i = 0; i < cases.length; i++) {
+                        if (cases[i].style.backgroundColor == "rgb(0, 122, 255)") {
+                            var casePrecedente = cases[i - 6];
+                            if (casePrecedente && casePrecedente.style.backgroundColor == "white" && casePrecedente.getAttribute("duree") > 1) {
+                                cases[i].setAttribute("duree", casePrecedente.getAttribute("duree") - 1);
+                                cases[i].style.backgroundColor = "white";
+                                cases[i].innerHTML = casePrecedente.innerHTML;
+                                
+                            }
+                        }
+                    }
+                </script>';
         
 
         // Close the database connection
