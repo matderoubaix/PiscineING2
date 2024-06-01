@@ -30,7 +30,7 @@
         </div>
     </nav>
     
-    <div class="compte" style = "height : 70rem; margin-top : 2rem ; margin-bottom : 2rem; justify-content: center;"> 
+    <div class="compte" style = "height : min-content; margin-top : 2rem ; margin-bottom : 2rem; justify-content: center;"> 
         <?php
             session_start();
             $servername = "localhost";
@@ -125,13 +125,14 @@
                         echo "Erreur: " . $sql . "<br>" . $conn->error;
                     }
                 }
-                if (isset($_POST['id_modif'])) $_SESSION["id_modif"] = $_POST['id_modif'];
+                elseif (isset($_POST['id_modif'])) $_SESSION["id_modif"] = $_POST['id_modif'];
+               
+                $id_modif = $_SESSION["id_modif"] ; 
+                // TODO: Implement your login verification logic here
                 $sql = "SELECT * FROM client WHERE id = '$id_modif'";
                 $result = $conn->query($sql);
                 $row = $result->fetch_assoc();
-                $id_modif = $_SESSION["id_modif"] ; 
-                // TODO: Implement your login verification logic here
-                echo "<h1> Modification <h1>
+                echo "<h1 style='margin: 15px'> Modification <h1>
                 <form action = \"modifiercompte.php\" method = \"POST\">
                 <select name=\"typeCompte\" id=\"typeCompte\">
                     <option value=\"client\">Sportif</option>
@@ -139,23 +140,23 @@
                     <option value=\"admin\">Admin</option>
                 </select><br>
                 <label for=\"nom\">Nom :</label>
-                <input type=\"text\" id=\"nom\" name=\"nom\" placeholder = \"".$row["nom"]."\" ><br>
+                <input type=\"text\" id=\"nom\" name=\"nom\" value = \"".$row["nom"]."\" ><br>
                 <label for=\"prenom\">Prénom :</label>
-                <input type=\"text\" id=\"prenom\" name=\"prenom\" ><br>
+                <input type=\"text\" id=\"prenom\" name=\"prenom\" value = \"".$row["prenom"]."\" ><br>
                 <label for=\"ville\">Ville :</label>
-                <input type=\"text\" id=\"ville\" name=\"ville\" ><br>
+                <input type=\"text\" id=\"ville\" name=\"ville\" value = \"".$row["ville"]."\" ><br>
                 <label for=\"code_postal\">Code Postal :</label>
-                <input type=\"text\" id=\"code_postal\" name=\"code_postal\" ><br>
+                <input type=\"text\" id=\"code_postal\" name=\"code_postal\" value = \"".$row["code_postal"]."\"><br>
                 <label for=\"telephone\">Téléphone :</label>
-                <input type=\"text\" id=\"telephone\" name=\"telephone\" ><br>
+                <input type=\"text\" id=\"telephone\" name=\"telephone\" value = \"".$row["telephone"]."\" ><br>
                 <label for=\"carte_etudiant\">Carte d'étudiant :</label>
-                <input type=\"text\" id=\"carte_etudiant\" name=\"carte_etudiant\"><br>
+                <input type=\"text\" id=\"carte_etudiant\" name=\"carte_etudiant\" value = \"".$row["carte_etudiant"]."\"><br>
                 <button type=\"submit\" name=\"modif\" value=\"modif\">Modifier</button>
                 <button type=\"submit\" name=\"suppr\" value=\"suppr\">Supprimer</button>
                 </form>";
             }
         ?>
-        <button onclick="window.location.href = 'compte.php';">Retour</button>
+        <button onclick="window.location.href = 'panneladmin.php';">Retour</button>
     </div>
     </div>
     <footer>
