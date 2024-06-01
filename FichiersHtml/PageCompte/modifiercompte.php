@@ -126,6 +126,9 @@
                     }
                 }
                 if (isset($_POST['id_modif'])) $_SESSION["id_modif"] = $_POST['id_modif'];
+                $sql = "SELECT * FROM client WHERE id = '$id_modif'";
+                $result = $conn->query($sql);
+                $row = $result->fetch_assoc();
                 $id_modif = $_SESSION["id_modif"] ; 
                 // TODO: Implement your login verification logic here
                 echo "<h1> Modification <h1>
@@ -136,7 +139,7 @@
                     <option value=\"admin\">Admin</option>
                 </select><br>
                 <label for=\"nom\">Nom :</label>
-                <input type=\"text\" id=\"nom\" name=\"nom\" ><br>
+                <input type=\"text\" id=\"nom\" name=\"nom\" placeholder = \"".$row["nom"]."\" ><br>
                 <label for=\"prenom\">Prénom :</label>
                 <input type=\"text\" id=\"prenom\" name=\"prenom\" ><br>
                 <label for=\"ville\">Ville :</label>
