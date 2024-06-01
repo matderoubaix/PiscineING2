@@ -99,6 +99,23 @@
                 elseif (isset($_POST['suppr'])) 
                 {
                     $id_modif = $_SESSION["id_modif"];
+                    $sql = "SELECT photo FROM client WHERE id = '$id_modif'";
+                    $result = $conn->query($sql);
+                    $row = $result->fetch_assoc();
+                    $photo = $row["photo"];
+                    if ($photo != "photo.png") {
+                        unlink("../../photo/".$photo);
+                    }
+                    $sql = "DELETE FROM coordonnéebancaire WHERE client_id = '$id_modif'";
+                    $result = $conn->query($sql);
+                    $sql = "DELETE FROM chat WHERE emetteur_id = '$id_modif' OR recepteur_id = '$id_modif'";
+                    $result = $conn->query($sql);
+                    $sql = "DELETE FROM reservation WHERE client_id = '$id_modif'";
+                    if ($conn->query($sql) === TRUE) {
+                        echo "<script>alert('Suppression effectuée avec succès');</script>";
+                    } else {
+                        echo "Erreur: " . $sql . "<br>" . $conn->error;
+                    }
                     $sql = "DELETE FROM client WHERE id = '$id_modif'";
                     if ($conn->query($sql) === TRUE) {
                         echo "<script>alert('Suppression effectuée avec succès');</script>";
