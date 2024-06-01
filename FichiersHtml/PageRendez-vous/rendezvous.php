@@ -90,7 +90,7 @@
                     echo '<div id="notification" style="position: fixed; bottom: 90px; right: 10px; background-color: #ffffff; padding: 20px; font-size:20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">&check; Email envoyé !</div>';
 
                 } else {
-                    echo "Failed to send email.";
+                    echo '<div id="notification" style="position: fixed; bottom: 90px; right: 10px; background-color: #ffffff; padding: 20px; font-size:20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">&#10060; Impossible d\'envoyer l\'email.</div>';
                 }
 
                 echo '<div id="notification" style="position: fixed; bottom: 10px; right: 10px; background-color: #ffffff; padding: 20px; font-size:20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">&check; Rendez-vous réservé avec succès !</div>';
