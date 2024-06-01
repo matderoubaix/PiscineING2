@@ -72,7 +72,7 @@
 
             if (isset($_POST['heure']) && isset($_POST['jour']) && isset($_POST['prof_id'])){
                 $heure = $_POST['heure'];
-                $jour = $_POST['jour'] + 1;
+                $jour = $_POST['jour'];
                 $prof_id = $_POST['prof_id'];
                 $dayOfWeek = date('N', strtotime("Sunday +{$jour} days"));
                 $sql_insert = "INSERT INTO cours (nom, description, prof_id, duree, date, heure, sport_id, prix) VALUES ('Cours Particulier','Cours particulier avec $nom_utilisateur', '$prof_id', 1 , CURRENT_DATE + INTERVAL $dayOfWeek DAY, '$heure:00:00', 1, 20)";
