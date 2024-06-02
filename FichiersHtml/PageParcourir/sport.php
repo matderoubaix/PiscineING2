@@ -30,9 +30,10 @@
             </div>
         </div>
     </nav>
-
     <div class="section2">
-
+    <?php
+        $access_key = 'O_K51UtYki-xLm0p2-mycOvC_4pY5I-hN1THZ7gpL8k';
+    ?>
 <?php 
 
 $database = "sportify";
@@ -53,10 +54,25 @@ if($result != false && mysqli_num_rows($result) != 0 ){
     echo "<h3 style='margin: 10px 5px 5px 5px;'>"."Nos Sports en loisir :"."</h3>";
     echo "<div class='boxParcourir'>";
     while ($data = mysqli_fetch_assoc($result)) { 
-        $image = $data['image_sport'];
+        if ($data['nom'] == "Cours Particulier") {
+            $query = 'sportif';
+        }
+        else {
+            $query = $data['nom'];
+        }
+
+        $url = "https://api.unsplash.com/search/photos?page=1&query=$query&client_id=$access_key";
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $result2 = curl_exec($ch);
+        curl_close($ch);
+        $data2 = json_decode($result2, true);
+        $firstImageUrl = $data2['results'][0]['urls']['small'];
         echo " <div class='evenement_card'>
                     <div class='evenementDescription'>
-                        <h2>". $data['nom']."</h2>"."<img src='$image' alt='image sport' width = 100% height = 200px>"." 
+                        <h2>". $data['nom']."</h2>"."<img src='$firstImageUrl' alt='image sport' width = 100% height = 200px>"." 
                         <p>Description : ". $data['description'] ."</p> 
                     </div>
                 </div>"; 
