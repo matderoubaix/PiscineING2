@@ -48,7 +48,7 @@
                 if ($result->num_rows > 0) {
                     echo "<h1 style = 'position : start ; margin: 2rem'>Liste des clients</h1>";
                     echo "<div style = \"overflow: scroll; max-height: 60vh;\">";
-                    echo "<table> <tr style='position: sticky'> <th>Nom</th> <th>Prénom</th> <th>Ville</th> <th>Code Postal</th> <th>Téléphone</th> <th>Email</th> <th>Carte d'étudiant</th> </tr>";
+                    echo "<table> <tr style='position: sticky'> <th>Nom</th> <th>Prénom</th> <th>Ville</th> <th>Code Postal</th> <th>Téléphone</th> <th>Email</th> <th>Carte d'étudiant</th> <th> Type </th> <th> </th> </tr>";
                     while($row = $result->fetch_assoc()) {
                         echo "<form action= \"modifiercompte.php\" method = \"POST\"><tr> <td>" . $row["nom"] . "</td> 
                         <td>" . $row["prenom"] . "</td> 
@@ -69,6 +69,7 @@
                     echo "0 results";
                 }
             ?>
+            <button type="submit" onclick="window.location.href = 'deconnexion.php';" name="retour" value="retour">Déconnexion</button>
         </div>
     </div>
     <footer>

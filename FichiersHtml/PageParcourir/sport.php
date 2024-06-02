@@ -69,7 +69,11 @@ if($result != false && mysqli_num_rows($result) != 0 ){
         $result2 = curl_exec($ch);
         curl_close($ch);
         $data2 = json_decode($result2, true);
-        $firstImageUrl = $data2['results'][0]['urls']['small'];
+        if (empty($data2['results'])) {
+            $firstImageUrl = "../coach.jpg";
+        } else {
+            $firstImageUrl = $data2['results'][0]['urls']['small'];
+        }
         echo " <div class='evenement_card'>
                     <div class='evenementDescription'>
                         <h2>". $data['nom']."</h2>"."<img src='$firstImageUrl' alt='image sport' width = 100% height = 200px>"." 
