@@ -1,10 +1,23 @@
 <style>
     body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: Arial, sans-serif;
     margin: 20px;
     padding: 20px;
     background-color: #f9f9f9;
     color: #333;
+    align-items: center;
+}
+
+.cv {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height: 100%;
 }
 
 h1 {
@@ -46,10 +59,16 @@ ul li {
 
 </style>
 
+<head>
+    <title>CV</title>
+    <link rel="icon" href="../../images/iconLogo.png"/>
+</head>
+
 <?php
 function display_resume($xml_file) {
     $xml = simplexml_load_file($xml_file) or die("Error: Cannot create object");
 
+    echo "<div class='cv'>";
     echo "<h1>" . $xml->personalInformation->name . "</h1>";
     echo "<p>" . $xml->personalInformation->address . "<br>";
     echo $xml->personalInformation->phone . "<br>";
@@ -88,6 +107,7 @@ function display_resume($xml_file) {
         echo $reference->contact . "<br>";
         echo $reference->relationship . "</p>";
     }
+    echo "</div>";
 }
 
 
