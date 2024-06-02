@@ -53,6 +53,9 @@
         <label for="code_postal">Code Postal:</label><br>
         <input type="text" id="code_postal" name="code_postal" required><br>
 
+        <label for="CV">CV:</label><br>
+        <input type="file" id="CV" name="CV" accept="application/xml"><br>
+
         <label for="telephone">Téléphone:</label><br>
         <input type="text" id="telephone" name="telephone" required><br>
 
@@ -103,8 +106,17 @@
                     } else {
                         $image_tmp2 = "photo.png";
                     }
-                    $sql = "INSERT INTO client (nom, prenom, ville, code_postal, telephone, carte_etudiant, email, mdp ,photo , typeCompte)
-                    VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$carte_etudiant', '$email', '$mdp', '$image_path' , '$type')";
+                    if (ISSET($_FILES['cv']['name']) AND !empty($_FILES['cv']['name'])) {
+                        $cv = $_FILES['cv']['name'];
+                        $cv = pathinfo($cv, PATHINFO_EXTENSION);
+                        $cv_tmp = $_FILES['cv']['tmp_name'];
+                        $cv_path = $email.".".$cv;
+                        move_uploaded_file($cv_tmp, "../../cv/" .$cv_path);
+                    } else {
+                        $cv_path = "";
+                    }
+                    $sql = "INSERT INTO client (nom, prenom, ville, code_postal, telephone, carte_etudiant, email, mdp ,photo , typeCompte , cv)
+                    VALUES ('$nom', '$prenom', '$ville', '$code_postal', '$telephone', '$carte_etudiant', '$email', '$mdp', '$image_path' , '$type','$cv_path')";
                     // Execute the SQL query
                     $result = $conn->query($sql);
                     if ($result) {
