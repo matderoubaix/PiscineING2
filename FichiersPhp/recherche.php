@@ -221,7 +221,7 @@ else{echo"";}
                 <li><a href="../PageAccueil/index.php">Accueil</a></li>
                 <li><a href="../PageParcourir/parcourir.html">Parcourir</a></li>
                 <li><a href="recherche.html">Rechercher</a></li>
-                <li><a href="../PageRendez-vous/rendez-vous.html">Rendez-vous</a></li>
+                
                 <li><a href="../PageCompte/compte.php">Votre compte</a></li>
             </ul>
         </div>

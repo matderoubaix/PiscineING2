@@ -22,9 +22,7 @@
             <div class="menu">
                 <a href="../PageRecherche/recherche.html">RECHERCHER</a>
             </div>
-            <div class="menu">
-                <a href="../PageRendez-vous/rendez-vous.html">RENDEZ-VOUS</a>
-            </div>
+
             <div class="menu">
                 <a href="compte.php">VOTRE COMPTE</a>
             </div>
@@ -141,7 +139,7 @@
                 <li><a href="../../PageAccueil/index.php">Accueil</a></li>
                 <li><a href="../PageParcourir/parcourir.html">Parcourir</a></li>
                 <li><a href="../PageRecherche/recherche.html">Rechercher</a></li>
-                <li><a href="../PageRendez-vous/rendez-vous.html">Rendez-vous</a></li>
+                
                 <li><a href="compte.php">Votre compte</a></li>
             </ul>
         </div>

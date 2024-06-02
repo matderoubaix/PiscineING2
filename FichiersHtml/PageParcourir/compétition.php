@@ -22,9 +22,7 @@
             <div class="menu">
                 <a href="../PageRecherche/recherche.html">RECHERCHER</a>
             </div>
-            <div class="menu">
-                <a href="../PageRendez-vous/rendez-vous.html">RENDEZ-VOUS</a>
-            </div>
+
             <div class="menu">
                 <a href="../PageCompte/compte.php">VOTRE COMPTE</a>
             </div>
@@ -98,7 +96,7 @@ if($result != false && mysqli_num_rows($result) != 0 ){
                 <li><a href="../PageAccueil/index.php">Accueil</a></li>
                 <li><a href="../PageParcourir/parcourir.html">Parcourir</a></li>
                 <li><a href="../PageRecherche/recherche.html">Rechercher</a></li>
-                <li><a href="../PageRendez-vous/rendez-vous.html">Rendez-vous</a></li>
+                
                 <li><a href="../PageCompte/compte.php">Votre compte</a></li>
             </ul>
         </div>
