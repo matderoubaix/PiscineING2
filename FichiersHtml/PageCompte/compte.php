@@ -28,9 +28,7 @@
             <div class="menu">
                 <a href="../PageRecherche/recherche.html">RECHERCHER</a>
             </div>
-            <div class="menu">
-                <a href="../PageRendez-vous/rendez-vous.html">RENDEZ-VOUS</a>
-            </div>
+
             <div class="menu">
                 <a href="compte.php">VOTRE COMPTE</a>
             </div>
