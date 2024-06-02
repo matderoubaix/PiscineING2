@@ -106,6 +106,12 @@
                     if ($photo != "photo.png") {
                         unlink("../../photo/".$photo);
                     }
+                    $sql = "DELETE FROM salles WHERE id IN (SELECT id FROM cours WHERE prof_id = '$id_modif')";
+                    $result = $conn->query($sql);
+                    $sql = "DELETE FROM cours WHERE prof_id = '$id_modif'";
+                    $result = $conn->query($sql);
+                    $sql = "DELETE FROM sportclient WHERE client_id = '$id_modif'";
+                    $result = $conn->query($sql);
                     $sql = "DELETE FROM coordonnéebancaire WHERE client_id = '$id_modif'";
                     $result = $conn->query($sql);
                     $sql = "DELETE FROM chat WHERE emetteur_id = '$id_modif' OR recepteur_id = '$id_modif'";
