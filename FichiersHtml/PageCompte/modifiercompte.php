@@ -104,9 +104,6 @@
                     if ($photo != "photo.png") {
                         unlink("../../photo/".$photo);
                     }
-                    if ($row["cv"] != "") {
-                        unlink("../../cv/".$row["cv"]);
-                    }
                     $sql = "DELETE FROM salles WHERE id IN (SELECT id FROM cours WHERE prof_id = '$id_modif')";
                     $result = $conn->query($sql);
                     $sql = "DELETE FROM cours WHERE prof_id = '$id_modif'";

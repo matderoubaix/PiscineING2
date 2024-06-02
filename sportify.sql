@@ -80,7 +80,6 @@ CREATE TABLE IF NOT EXISTS `client` (
   `mdp` varchar(255) NOT NULL,
   `photo` varchar(255) NOT NULL DEFAULT 'photo.jpg',
   `typeCompte` varchar(255) NOT NULL,
-  `CV` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3;
