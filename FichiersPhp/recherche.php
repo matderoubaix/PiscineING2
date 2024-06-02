@@ -134,7 +134,7 @@ if ($recherche != ""){
                                         </button>
                                     </form>";
 
-                                echo "<form class='cv' method=\"POST\" action=\"../PageAccueil/cv.php\">
+                                echo "<form class='cvRecherche' method=\"POST\" action=\"../FichiersHtml/PageAccueil/cv.php\">
                                         <input type=\"hidden\" name=\"resume\" value=\"resume.xml\">
                                         <button type='submit'>&#128462;</button>
                                     </form>";

@@ -310,7 +310,16 @@ animation-delay: 8s;
     color: #ffffff;
     font-size: 25px;
 }
-.boutonsCoach .cv:hover{
+.boutonsCoach .cvRecherche{
+    margin-bottom: 15px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    color: #000000;
+    font-size: 25px;
+}
+
+.boutonsCoach .cv:hover, .boutonsCoach .cvRecherche:hover{
     background-color: transparent;
     border: none;
     color: #b4b4b4;
@@ -323,7 +332,14 @@ animation-delay: 8s;
     font-size: 25px;
     transition: all 0.3s ease;
 }
-.boutonsCoach .cv button:hover{
+.boutonsCoach .cvRecherche button{
+    background-color: transparent;
+    border: none;
+    color: #000000;
+    font-size: 25px;
+    transition: all 0.3s ease;
+}
+.boutonsCoach .cv button:hover, .boutonsCoach .cvRecherche button:hover{
     background-color: transparent;
     border: none;
     color: #a5a5a5;
